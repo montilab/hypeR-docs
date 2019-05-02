@@ -111,7 +111,7 @@
 <div id="multiple-experiments" class="section level3">
 <h3 class="hasAnchor">
 <a href="#multiple-experiments" class="anchor"></a>Multiple experiments</h3>
-<p>Sometimes, we are generating reports for mutliple signatures across multiple experiments. Typically, the best way to manage this data is to process it all at once and generate a markdown report to analyze ourselves or share with our collaborators.</p>
+<p>Sometimes, we are generating reports for multiple signatures across multiple experiments. Typically, the best way to manage this data is to process it all at once and generate a markdown report to analyze ourselves or share with collaborators.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">signatures &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/signatures.rds"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>))</a>
 <a class="sourceLine" id="cb1-2" title="2">project &lt;-<span class="st"> </span>signatures<span class="op">$</span>project</a></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(project)</a></code></pre></div>
@@ -131,7 +131,7 @@
 <div id="hyper-enrichment" class="section level3">
 <h3 class="hasAnchor">
 <a href="#hyper-enrichment" class="anchor"></a>Hyper enrichment</h3>
-<p>All workflows begin with performing hyper enrichment with <strong><em>hypeR</em></strong>.</p>
+<p>All workflows begin with performing hyper enrichment with <code>hypeR</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">lmultihyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(project, <span class="cf">function</span>(x) <span class="kw"><a href="../reference/hypeR.html">hypeR</a></span>(x, gsets, <span class="dt">bg=</span><span class="dv">35423</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(lmultihyp_obj)</a></code></pre></div>
 <pre><code>#&gt; [1] "YAP-KO Experiment" "TNF-KO Experiment" "TAZ-KO Experiment"</code></pre>
@@ -174,7 +174,7 @@
 <div id="markdown-reports" class="section level3">
 <h3 class="hasAnchor">
 <a href="#markdown-reports" class="anchor"></a>Markdown reports</h3>
-<p><strong><em>hyp_to_rmd</em></strong> will accept multiple formats, including a single <strong><em>hyp</em></strong> or <strong><em>multihyp</em></strong> objects as well as a list of either, including a list of <strong><em>hyp</em></strong> or <strong><em>multihyp</em></strong> objects together. When a list of <strong><em>multihyp</em></strong> objects are passed for example, each experiment will become its own section, while each signature becomes its own tab within that section. Lists of keyword arguments can be passed for <strong><em>hyp_plot</em></strong>, <strong><em>hyp_emap</em></strong>, and <strong><em>hyp_hmap</em></strong>, allowing customization of their functionality per report.</p>
+<p><code>hyp_to_rmd</code> will accept multiple formats, including a single <code>hyp</code> or <code>multihyp</code> object as well as a list of either, including a list of <code>hyp</code> or <code>multihyp</code> objects together. When a list of <code>multihyp</code> objects are passed for example, each experiment will become its own section, while each signature becomes its own tab within that section. Lists of keyword arguments can be passed for <code>hyp_plot</code>, <code>hyp_emap</code>, and <code>hyp_hmap</code>, allowing customization of their functionality per report.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw"><a href="../reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(lmultihyp_obj,</a>
 <a class="sourceLine" id="cb14-2" title="2">           <span class="dt">file_path=</span><span class="st">"hyper-enrichment.rmd"</span>,</a>
 <a class="sourceLine" id="cb14-3" title="3">           <span class="dt">title=</span><span class="st">"Hyper Enrichment (hypeR)"</span>,</a>
@@ -194,7 +194,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/anfederico">Anthony Federico</a>.</p>
+  <p>Developed by <a href="https://github.com/anfederico">Anthony Federico</a>, <a href="https://github.com/montilab">Stefano Monti</a>.</p>
 </div>
 
 <div class="pkgdown">
