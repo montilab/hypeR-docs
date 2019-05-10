@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate overlap similarity of two sets — overlap_similarity • hypeR</title>
+<title>Enrichment test via one-sided Kolmogorov–Smirnov test — .ks_enrichment • hypeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,9 +37,9 @@
 
 
 
-<meta property="og:title" content="Calculate overlap similarity of two sets — overlap_similarity" />
+<meta property="og:title" content="Enrichment test via one-sided Kolmogorov–Smirnov test — .ks_enrichment" />
 
-<meta property="og:description" content="Calculate overlap similarity of two sets" />
+<meta property="og:description" content="Enrichment test via one-sided Kolmogorov–Smirnov test" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -130,35 +130,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate overlap similarity of two sets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/hyp_emap.R'><code>R/hyp_emap.R</code></a></small>
-    <div class="hidden name"><code>overlap_similarity.Rd</code></div>
+    <h1>Enrichment test via one-sided Kolmogorov–Smirnov test</h1>
+    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/ks_enrichment.R'><code>R/ks_enrichment.R</code></a></small>
+    <div class="hidden name"><code>dot-ks_enrichment.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Calculate overlap similarity of two sets</p>
+    <p>Enrichment test via one-sided Kolmogorov–Smirnov test</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>overlap_similarity</span>(<span class='no'>a</span>, <span class='no'>b</span>)</pre>
+    <pre class="usage"><span class='fu'>.ks_enrichment</span>(<span class='no'>signature</span>, <span class='no'>gsets</span>, <span class='kw'>weights</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>weights.pwr</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>absolute</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>do.plots</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>a</th>
-      <td><p>A vector</p></td>
+      <th>signature</th>
+      <td><p>A vector of ranked symbols</p></td>
     </tr>
     <tr>
-      <th>b</th>
-      <td><p>A vector</p></td>
+      <th>gsets</th>
+      <td><p>A list of genesets</p></td>
+    </tr>
+    <tr>
+      <th>weights</th>
+      <td><p>Weights for weighted score (Subramanian et al.)</p></td>
+    </tr>
+    <tr>
+      <th>weights.pwr</th>
+      <td><p>Exponent for weights (Subramanian et al.)</p></td>
+    </tr>
+    <tr>
+      <th>absolute</th>
+      <td><p>Takes max-min score rather than the max deviation from null</p></td>
+    </tr>
+    <tr>
+      <th>do.plot</th>
+      <td><p>Use true to generate plot</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numerical value</p>
+    <p>A list of data and plots</p>
     
 
   </div>

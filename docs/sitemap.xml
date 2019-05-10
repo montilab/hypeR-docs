@@ -4,13 +4,10 @@
     <loc>https://github.com/montilab/hypeR/index.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/dot-VERBOSE.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/dot-dots_plot.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-enrichment_map.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/reference/dot-enrichment_plot.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-hiearchy_map.html</loc>
@@ -19,22 +16,37 @@
     <loc>https://github.com/montilab/hypeR/reference/dot-hyper_enrichment.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-ks_enrichment.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-kstest.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/find_members.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/format_str.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/ggempty.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/ggeplot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/ggvenn.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/hyp_dots.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp_emap.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp_hmap.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/reference/hyp_plot.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp_show.html</loc>
@@ -47,6 +59,9 @@
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp_to_table.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/hypdat.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hypeR.html</loc>
@@ -88,27 +103,24 @@
     <loc>https://github.com/montilab/hypeR/reference/string_args.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/articles/basics.html</loc>
+    <loc>https://github.com/montilab/hypeR/articles/docs/basics.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/articles/data.html</loc>
+    <loc>https://github.com/montilab/hypeR/articles/docs/data.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/articles/docs/installation.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/articles/docs/multihyp.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/articles/docs/reporting.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/articles/docs/visualize.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/articles/hypeR.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/articles/installation.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/articles/multihyp.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/articles/relational.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/articles/reporting.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/articles/visualize.html</loc>
   </url>
 </urlset>

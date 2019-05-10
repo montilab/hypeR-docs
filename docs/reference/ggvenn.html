@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate overlap similarity of two sets — overlap_similarity • hypeR</title>
+<title>Venn diagram implemented in ggplot — ggvenn • hypeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,9 +37,9 @@
 
 
 
-<meta property="og:title" content="Calculate overlap similarity of two sets — overlap_similarity" />
+<meta property="og:title" content="Venn diagram implemented in ggplot — ggvenn" />
 
-<meta property="og:description" content="Calculate overlap similarity of two sets" />
+<meta property="og:description" content="Venn diagram implemented in ggplot" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -130,35 +130,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate overlap similarity of two sets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/hyp_emap.R'><code>R/hyp_emap.R</code></a></small>
-    <div class="hidden name"><code>overlap_similarity.Rd</code></div>
+    <h1>Venn diagram implemented in ggplot</h1>
+    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/ggvenn.R'><code>R/ggvenn.R</code></a></small>
+    <div class="hidden name"><code>ggvenn.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Calculate overlap similarity of two sets</p>
+    <p>Venn diagram implemented in ggplot</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>overlap_similarity</span>(<span class='no'>a</span>, <span class='no'>b</span>)</pre>
+    <pre class="usage"><span class='fu'>ggvenn</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>ga</span>, <span class='no'>gb</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>a</th>
-      <td><p>A vector</p></td>
+      <td><p>A vector for group a</p></td>
     </tr>
     <tr>
       <th>b</th>
-      <td><p>A vector</p></td>
+      <td><p>A vector for group b</p></td>
+    </tr>
+    <tr>
+      <th>ga</th>
+      <td><p>A string label for group a</p></td>
+    </tr>
+    <tr>
+      <th>gb</th>
+      <td><p>A string label for group b</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Plot title</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numerical value</p>
+    <p>A ggplot object</p>
     
 
   </div>

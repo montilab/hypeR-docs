@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Carry out set enrichment test based on hyper-geometric distribution — .hyper_enrichment • hypeR</title>
+<title>Overrepresentation test via hyper-geometric distribution — .hyper_enrichment • hypeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,9 +37,9 @@
 
 
 
-<meta property="og:title" content="Carry out set enrichment test based on hyper-geometric distribution — .hyper_enrichment" />
+<meta property="og:title" content="Overrepresentation test via hyper-geometric distribution — .hyper_enrichment" />
 
-<meta property="og:description" content="Carry out set enrichment test based on hyper-geometric distribution" />
+<meta property="og:description" content="Overrepresentation test via hyper-geometric distribution" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.10.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.10.3</span>
       </span>
     </div>
 
@@ -79,45 +79,42 @@
         <li>
   <a href="../index.html">Home</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Tutorials
+    Docs
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/installation.html">Installation</a>
+      <a href="../articles/docs/installation.html">Installation</a>
     </li>
     <li>
-      <a href="../articles/basics.html">Basic Usage</a>
+      <a href="../articles/docs/basics.html">Basic Usage</a>
     </li>
     <li>
-      <a href="../articles/data.html">Downloading Data</a>
+      <a href="../articles/docs/data.html">Downloading Data</a>
     </li>
     <li>
-      <a href="../articles/visualize.html">Visualize Results</a>
+      <a href="../articles/docs/visualize.html">Visualize Results</a>
     </li>
     <li>
-      <a href="../articles/relational.html">Relational Genesets</a>
+      <a href="../articles/docs/multihyp.html">Multiple Signatures</a>
     </li>
     <li>
-      <a href="../articles/multihyp.html">Multiple Signatures</a>
-    </li>
-    <li>
-      <a href="../articles/reporting.html">Generating Reports</a>
+      <a href="../articles/docs/reporting.html">Generating Reports</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/montilab/hypeR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -133,53 +130,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Carry out set enrichment test based on hyper-geometric distribution</h1>
+    <h1>Overrepresentation test via hyper-geometric distribution</h1>
     <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/hyper_enrichment.R'><code>R/hyper_enrichment.R</code></a></small>
     <div class="hidden name"><code>dot-hyper_enrichment.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Carry out set enrichment test based on hyper-geometric distribution</p>
+    <p>Overrepresentation test via hyper-geometric distribution</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>.hyper_enrichment</span>(<span class='no'>drawn</span>, <span class='no'>categories</span>,
-  <span class='kw'>ntotal</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unique'>unique</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlist'>unlist</a></span>(<span class='no'>categories</span>))), <span class='kw'>min.drawsize</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-  <span class='kw'>mht</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>.hyper_enrichment</span>(<span class='no'>signature</span>, <span class='no'>gsets</span>, <span class='kw'>bg</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unique'>unique</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlist'>unlist</a></span>(<span class='no'>gsets</span>))),
+  <span class='kw'>do.plots</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>drawn</th>
-      <td><p>One or more sets of 'drawn' items (e.g., genes). Basically, a list of signatures.</p></td>
+      <th>signature</th>
+      <td><p>A vector of symbols</p></td>
     </tr>
     <tr>
-      <th>categories</th>
-      <td><p>list of gene sets (e.g., MSigDB c2)</p></td>
+      <th>gsets</th>
+      <td><p>A list of genesets</p></td>
     </tr>
     <tr>
-      <th>ntotal</th>
-      <td><p>background population, i.e., the total no. of items from which items are supposed to have been drawn</p></td>
+      <th>bg</th>
+      <td><p>Size of background population genes</p></td>
     </tr>
     <tr>
-      <th>min.drawsize</th>
-      <td><p>min no. of drawn items that must be among categories' items</p></td>
-    </tr>
-    <tr>
-      <th>mht</th>
-      <td><p>correct for multiple hypothesis testing across multiple 'draws'</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>Use false to suppress logs</p></td>
+      <th>do.plots</th>
+      <td><p>Use true to generate plots</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data.frame with rows indexed by the signature(s) tested</p>
+    <p>A list of data and plots</p>
     
 
   </div>

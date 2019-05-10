@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate overlap similarity of two sets — overlap_similarity • hypeR</title>
+<title>Visualize hyp/multihyp objects as a dots plot — hyp_dots • hypeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,9 +37,9 @@
 
 
 
-<meta property="og:title" content="Calculate overlap similarity of two sets — overlap_similarity" />
+<meta property="og:title" content="Visualize hyp/multihyp objects as a dots plot — hyp_dots" />
 
-<meta property="og:description" content="Calculate overlap similarity of two sets" />
+<meta property="og:description" content="Visualize hyp/multihyp objects as a dots plot" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -130,37 +130,80 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate overlap similarity of two sets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/hyp_emap.R'><code>R/hyp_emap.R</code></a></small>
-    <div class="hidden name"><code>overlap_similarity.Rd</code></div>
+    <h1>Visualize hyp/multihyp objects as a dots plot</h1>
+    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/hyp_dots.R'><code>R/hyp_dots.R</code></a></small>
+    <div class="hidden name"><code>hyp_dots.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Calculate overlap similarity of two sets</p>
+    <p>Visualize hyp/multihyp objects as a dots plot</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>overlap_similarity</span>(<span class='no'>a</span>, <span class='no'>b</span>)</pre>
+    <pre class="usage"><span class='fu'>hyp_dots</span>(<span class='no'>hyp_obj</span>, <span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>abrv</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>sizes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"fdr"</span>,
+  <span class='st'>"pval"</span>), <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>multihyp_titles</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_plots</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>return_plots</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>a</th>
-      <td><p>A vector</p></td>
+      <th>hyp_obj</th>
+      <td><p>A hyp or multihyp object</p></td>
     </tr>
     <tr>
-      <th>b</th>
-      <td><p>A vector</p></td>
+      <th>top</th>
+      <td><p>Limit number of genesets shown</p></td>
+    </tr>
+    <tr>
+      <th>abrv</th>
+      <td><p>Abbreviation length of geneset labels</p></td>
+    </tr>
+    <tr>
+      <th>sizes</th>
+      <td><p>Size dots by geneset sizes</p></td>
+    </tr>
+    <tr>
+      <th>val</th>
+      <td><p>Choose significance value e.g. c("fdr", "pval")</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Plot title</p></td>
+    </tr>
+    <tr>
+      <th>multihyp_titles</th>
+      <td><p>Use false to disable plot titles for multihyp objects</p></td>
+    </tr>
+    <tr>
+      <th>show_plots</th>
+      <td><p>An option to show plots</p></td>
+    </tr>
+    <tr>
+      <th>return_plots</th>
+      <td><p>An option to return plots</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numerical value</p>
+    <p>A ggplot object</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>gsets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/readRDS'>readRDS</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"hypeR"</span>), <span class='st'>"hypdat.rds"</span>))$<span class='no'>gsets</span>
+
+<span class='no'>signature</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"IDH3B"</span>,<span class='st'>"DLST"</span>,<span class='st'>"PCK2"</span>,<span class='st'>"CS"</span>,<span class='st'>"PDHB"</span>,<span class='st'>"PCK1"</span>,<span class='st'>"PDHA1"</span>,<span class='st'>"LOC642502"</span>,
+               <span class='st'>"PDHA2"</span>,<span class='st'>"LOC283398"</span>,<span class='st'>"FH"</span>,<span class='st'>"SDHD"</span>,<span class='st'>"OGDH"</span>,<span class='st'>"SDHB"</span>,<span class='st'>"IDH3A"</span>,<span class='st'>"SDHC"</span>,
+               <span class='st'>"IDH2"</span>,<span class='st'>"IDH1"</span>,<span class='st'>"OGDHL"</span>,<span class='st'>"PC"</span>,<span class='st'>"SDHA"</span>,<span class='st'>"SUCLG1"</span>,<span class='st'>"SUCLA2"</span>,<span class='st'>"SUCLG2"</span>)
+
+<span class='co'># Perform hyper enrichment</span>
+<span class='no'>hyp_obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='hypeR.html'>hypeR</a></span>(<span class='no'>signature</span>, <span class='no'>gsets</span>, <span class='kw'>bg</span><span class='kw'>=</span><span class='fl'>2522</span>, <span class='kw'>fdr_cutoff</span><span class='kw'>=</span><span class='fl'>0.05</span>)
+
+<span class='co'># Visualize</span>
+<span class='fu'>hyp_dots</span>(<span class='no'>hyp_obj</span>, <span class='kw'>top</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>val</span><span class='kw'>=</span><span class='st'>"fdr"</span>)</div><div class='img'><img src='hyp_dots-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -168,7 +211,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

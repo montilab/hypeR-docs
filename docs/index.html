@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.10.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.10.3</span>
       </span>
     </div>
 
@@ -45,44 +45,41 @@
 <li>
   <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Tutorials
+    Docs
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/installation.html">Installation</a>
+      <a href="articles/docs/installation.html">Installation</a>
     </li>
     <li>
-      <a href="articles/basics.html">Basic Usage</a>
+      <a href="articles/docs/basics.html">Basic Usage</a>
     </li>
     <li>
-      <a href="articles/data.html">Downloading Data</a>
+      <a href="articles/docs/data.html">Downloading Data</a>
     </li>
     <li>
-      <a href="articles/visualize.html">Visualize Results</a>
+      <a href="articles/docs/visualize.html">Visualize Results</a>
     </li>
     <li>
-      <a href="articles/relational.html">Relational Genesets</a>
+      <a href="articles/docs/multihyp.html">Multiple Signatures</a>
     </li>
     <li>
-      <a href="articles/multihyp.html">Multiple Signatures</a>
-    </li>
-    <li>
-      <a href="articles/reporting.html">Generating Reports</a>
+      <a href="articles/docs/reporting.html">Generating Reports</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="reference/index.html">Reference</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/montilab/hypeR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -125,34 +122,35 @@
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hypeR)</a></code></pre></div>
-<div id="example-of-a-signature" class="section level4">
-<h4 class="hasAnchor">
-<a href="#example-of-a-signature" class="anchor"></a>Example of a signature</h4>
-<p>Here we define our signature of interest as a group of genes randomly sampled from the <em>estrogen-dependent gene expression</em> gset. A signature is simply a vector of symbols.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">signature &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/signatures.rds"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>))<span class="op">$</span>signature</a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(signature)</a></code></pre></div>
-<pre><code>#&gt; [1] "GTF2F1"    "HIST1H2AJ" "KANK1"     "STAG1"     "FKBP4"     "SMC1A"</code></pre>
 </div>
-<div id="example-of-a-geneset" class="section level4">
-<h4 class="hasAnchor">
-<a href="#example-of-a-geneset" class="anchor"></a>Example of a geneset</h4>
-<p>Here we use a genesets example from <a href="https://reactome.org/">REACTOME</a>. A geneset is simply a list of vectors, therefore, one can use any custom geneset in their analysis, as long as it is appropriately defined.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">gsets &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/gsets.rds"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>))<span class="op">$</span>REACTOME</a></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(gsets))</a></code></pre></div>
-<pre><code>#&gt; [1] "REACTOME_3_UTR_MEDIATED_TRANSLATIONAL_REGULATION"                        
-#&gt; [2] "REACTOME_A_TETRASACCHARIDE_LINKER_SEQUENCE_IS_REQUIRED_FOR_GAG_SYNTHESIS"
-#&gt; [3] "REACTOME_ABACAVIR_TRANSPORT_AND_METABOLISM"                              
-#&gt; [4] "REACTOME_ABC_FAMILY_PROTEINS_MEDIATED_TRANSPORT"                         
-#&gt; [5] "REACTOME_ABCA_TRANSPORTERS_IN_LIPID_HOMEOSTASIS"                         
-#&gt; [6] "REACTOME_ABORTIVE_ELONGATION_OF_HIV1_TRANSCRIPT_IN_THE_ABSENCE_OF_TAT"</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(gsets[[<span class="dv">1</span>]])</a></code></pre></div>
-<pre><code>#&gt; [1] "EIF1AX" "EIF2S1" "EIF2S2" "EIF2S3" "EIF3A"  "EIF3B"</code></pre>
+<div id="terminology" class="section level2">
+<h2 class="hasAnchor">
+<a href="#terminology" class="anchor"></a>Terminology</h2>
+<div id="signature" class="section level3">
+<h3 class="hasAnchor">
+<a href="#signature" class="anchor"></a>Signature</h3>
+<p><strong>hypeR</strong> employs multiple types of enrichment analyses (e.g. hypergeometric, kstest, gsea). Depending on the type, different kinds of signatures are expected. There are three types of signatures <code><a href="reference/hypeR.html">hypeR()</a></code> expects.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Simply a character vector of symbols (hypergeometric)</span></a>
+<a class="sourceLine" id="cb5-2" title="2">signature &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co"># A pre-ranked character vector of symbols (kstest)</span></a>
+<a class="sourceLine" id="cb5-5" title="5">ranked.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co"># A pre-ranked named numerical vector of symbols with ranking weights (gsea)</span></a>
+<a class="sourceLine" id="cb5-8" title="8">weighted.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>=<span class="fl">1.22</span>, <span class="st">"GENE2"</span>=<span class="fl">0.94</span>, <span class="st">"GENE3"</span>=<span class="fl">0.77</span>)</a></code></pre></div>
 </div>
+<div id="geneset" class="section level3">
+<h3 class="hasAnchor">
+<a href="#geneset" class="anchor"></a>Geneset</h3>
+<p>A geneset is simply a list of vectors, therefore, one can use any custom geneset in their analyses, as long as it’s appropriately defined.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">genesets &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"GSET1"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>),</a>
+<a class="sourceLine" id="cb6-2" title="2">                 <span class="st">"GSET2"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE4"</span>, <span class="st">"GENE5"</span>, <span class="st">"GENE6"</span>),</a>
+<a class="sourceLine" id="cb6-3" title="3">                 <span class="st">"GSET3"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span>))</a></code></pre></div>
 <div id="hyper-enrichment" class="section level4">
 <h4 class="hasAnchor">
 <a href="#hyper-enrichment" class="anchor"></a>Hyper enrichment</h4>
-<p>All workflows begin with performing hyper enrichment with <strong><em>hypeR</em></strong>. Often we are just interested in a single signature, as described above. In this case, <strong><em>hypeR</em></strong> will return a <strong><em>hyp</em></strong> object. This object contains relevant information to the enrichment results and is recognized by downstream methods.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="reference/hypeR.html">hypeR</a></span>(signature, gsets, <span class="dt">fdr=</span><span class="fl">0.05</span>)</a></code></pre></div>
+<p>All workflows begin with performing hyper enrichment with <code>hyper()</code>. Often we are just interested in a single signature, as described above. In this case, <code>hyper()</code> will return a <code>hyp</code> object. This object contains relevant information to the enrichment results and is recognized by downstream methods.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="reference/hypeR.html">hypeR</a></span>(signature, genesets)</a></code></pre></div>
 </div>
 <div id="downstream-methods" class="section level4">
 <h4 class="hasAnchor">
@@ -161,47 +159,48 @@
 <div id="downloading-genesets" class="section level5">
 <h5 class="hasAnchor">
 <a href="#downloading-genesets" class="anchor"></a>Downloading genesets</h5>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># Download genesets from msigdb</span></a>
-<a class="sourceLine" id="cb14-2" title="2">msigdb_path &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_download_all.html">msigdb_download_all</a></span>(<span class="dt">species=</span><span class="st">"Homo sapiens"</span>)</a>
-<a class="sourceLine" id="cb14-3" title="3"></a>
-<a class="sourceLine" id="cb14-4" title="4">BIOCARTA &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.BIOCARTA"</span>)</a>
-<a class="sourceLine" id="cb14-5" title="5">KEGG     &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.KEGG"</span>)</a>
-<a class="sourceLine" id="cb14-6" title="6">REACTOME &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.REACTOME"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Download genesets from msigdb</span></a>
+<a class="sourceLine" id="cb8-2" title="2">msigdb_path &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_download_all.html">msigdb_download_all</a></span>(<span class="dt">species=</span><span class="st">"Homo sapiens"</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4">BIOCARTA &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.BIOCARTA"</span>)</a>
+<a class="sourceLine" id="cb8-5" title="5">KEGG     &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.KEGG"</span>)</a>
+<a class="sourceLine" id="cb8-6" title="6">REACTOME &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.REACTOME"</span>)</a></code></pre></div>
 </div>
 <div id="visualize-results" class="section level5">
 <h5 class="hasAnchor">
 <a href="#visualize-results" class="anchor"></a>Visualize results</h5>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># Show interactive table</span></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="kw"><a href="reference/hyp_show.html">hyp_show</a></span>(hyp_obj)</a>
-<a class="sourceLine" id="cb15-3" title="3"></a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="co"># Plot bar plot</span></a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="kw"><a href="reference/hyp_plot.html">hyp_plot</a></span>(hyp_obj)</a>
-<a class="sourceLine" id="cb15-6" title="6"></a>
-<a class="sourceLine" id="cb15-7" title="7"><span class="co"># Plot enrichment map</span></a>
-<a class="sourceLine" id="cb15-8" title="8"><span class="kw"><a href="reference/hyp_emap.html">hyp_emap</a></span>(hyp_obj)</a>
-<a class="sourceLine" id="cb15-9" title="9"></a>
-<a class="sourceLine" id="cb15-10" title="10"><span class="co"># Plot hiearchy map</span></a>
-<a class="sourceLine" id="cb15-11" title="11"><span class="kw"><a href="reference/hyp_hmap.html">hyp_hmap</a></span>(hyp_obj)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Show interactive table</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw"><a href="reference/hyp_show.html">hyp_show</a></span>(hyp_obj)</a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co"># Plot dots plot</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="kw"><a href="reference/hyp_dots.html">hyp_dots</a></span>(hyp_obj)</a>
+<a class="sourceLine" id="cb9-6" title="6"></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co"># Plot enrichment map</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="kw"><a href="reference/hyp_emap.html">hyp_emap</a></span>(hyp_obj)</a>
+<a class="sourceLine" id="cb9-9" title="9"></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="co"># Plot hiearchy map</span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="kw"><a href="reference/hyp_hmap.html">hyp_hmap</a></span>(hyp_obj)</a></code></pre></div>
 </div>
 <div id="saving-results" class="section level5">
 <h5 class="hasAnchor">
 <a href="#saving-results" class="anchor"></a>Saving results</h5>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co"># Save to excel</span></a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="kw"><a href="reference/hyp_to_excel.html">hyp_to_excel</a></span>(hyp_obj, <span class="dt">file_path=</span><span class="st">"pathways.xlsx"</span>)</a>
-<a class="sourceLine" id="cb16-3" title="3"></a>
-<a class="sourceLine" id="cb16-4" title="4"><span class="co"># Save to table</span></a>
-<a class="sourceLine" id="cb16-5" title="5"><span class="kw"><a href="reference/hyp_to_table.html">hyp_to_table</a></span>(hyp_obj, <span class="dt">file_path=</span><span class="st">"pathways.txt"</span>)</a>
-<a class="sourceLine" id="cb16-6" title="6"></a>
-<a class="sourceLine" id="cb16-7" title="7"><span class="co"># Generate markdown report</span></a>
-<a class="sourceLine" id="cb16-8" title="8"><span class="kw"><a href="reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(lmultihyp_obj,</a>
-<a class="sourceLine" id="cb16-9" title="9">           <span class="dt">file_path=</span><span class="st">"hyper-enrichment.rmd"</span>,</a>
-<a class="sourceLine" id="cb16-10" title="10">           <span class="dt">title=</span><span class="st">"Hyper Enrichment (hypeR)"</span>,</a>
-<a class="sourceLine" id="cb16-11" title="11">           <span class="dt">subtitle=</span><span class="st">"YAP, TNF, and TAZ Knockout Experiments"</span>,</a>
-<a class="sourceLine" id="cb16-12" title="12">           <span class="dt">author=</span><span class="st">"Anthony Federico, Stefano Monti"</span>,</a>
-<a class="sourceLine" id="cb16-13" title="13">           <span class="dt">show_plots=</span>T,</a>
-<a class="sourceLine" id="cb16-14" title="14">           <span class="dt">show_emaps=</span>T,</a>
-<a class="sourceLine" id="cb16-15" title="15">           <span class="dt">show_hmaps=</span>T,</a>
-<a class="sourceLine" id="cb16-16" title="16">           <span class="dt">show_tables=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># Save to excel</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw"><a href="reference/hyp_to_excel.html">hyp_to_excel</a></span>(hyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.xlsx"</span>)</a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="co"># Save to table</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="kw"><a href="reference/hyp_to_table.html">hyp_to_table</a></span>(hyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.txt"</span>)</a>
+<a class="sourceLine" id="cb10-6" title="6"></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="co"># Generate markdown report</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="kw"><a href="reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(lmultihyp_obj,</a>
+<a class="sourceLine" id="cb10-9" title="9">           <span class="dt">file_path=</span><span class="st">"hyper-enrichment.rmd"</span>,</a>
+<a class="sourceLine" id="cb10-10" title="10">           <span class="dt">title=</span><span class="st">"Hyper Enrichment (hypeR)"</span>,</a>
+<a class="sourceLine" id="cb10-11" title="11">           <span class="dt">subtitle=</span><span class="st">"YAP, TNF, and TAZ Knockout Experiments"</span>,</a>
+<a class="sourceLine" id="cb10-12" title="12">           <span class="dt">author=</span><span class="st">"Anthony Federico, Stefano Monti"</span>,</a>
+<a class="sourceLine" id="cb10-13" title="13">           <span class="dt">show_plots=</span>T,</a>
+<a class="sourceLine" id="cb10-14" title="14">           <span class="dt">show_emaps=</span>T,</a>
+<a class="sourceLine" id="cb10-15" title="15">           <span class="dt">show_hmaps=</span>T,</a>
+<a class="sourceLine" id="cb10-16" title="16">           <span class="dt">show_tables=</span>T)</a></code></pre></div>
+</div>
 </div>
 </div>
 </div>

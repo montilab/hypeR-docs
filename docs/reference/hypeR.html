@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.10.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.10.3</span>
       </span>
     </div>
 
@@ -79,45 +79,42 @@
         <li>
   <a href="../index.html">Home</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Tutorials
+    Docs
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/installation.html">Installation</a>
+      <a href="../articles/docs/installation.html">Installation</a>
     </li>
     <li>
-      <a href="../articles/basics.html">Basic Usage</a>
+      <a href="../articles/docs/basics.html">Basic Usage</a>
     </li>
     <li>
-      <a href="../articles/data.html">Downloading Data</a>
+      <a href="../articles/docs/data.html">Downloading Data</a>
     </li>
     <li>
-      <a href="../articles/visualize.html">Visualize Results</a>
+      <a href="../articles/docs/visualize.html">Visualize Results</a>
     </li>
     <li>
-      <a href="../articles/relational.html">Relational Genesets</a>
+      <a href="../articles/docs/multihyp.html">Multiple Signatures</a>
     </li>
     <li>
-      <a href="../articles/multihyp.html">Multiple Signatures</a>
-    </li>
-    <li>
-      <a href="../articles/reporting.html">Generating Reports</a>
+      <a href="../articles/docs/reporting.html">Generating Reports</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/montilab/hypeR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -144,32 +141,28 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>hypeR</span>(<span class='no'>symbols</span>, <span class='no'>gsets</span>, <span class='kw'>gsets_relational</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>bg</span> <span class='kw'>=</span> <span class='fl'>23467</span>,
-  <span class='kw'>min_drawsize</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>pval_cutoff</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fdr_cutoff</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>hypeR</span>(<span class='no'>signature</span>, <span class='no'>gsets</span>, <span class='kw'>test</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"hypergeometric"</span>, <span class='st'>"kstest"</span>),
+  <span class='kw'>bg</span> <span class='kw'>=</span> <span class='fl'>23467</span>, <span class='kw'>pval_cutoff</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fdr_cutoff</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>weights_pwr</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>absolute</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>do_plots</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>symbols</th>
-      <td><p>A vector of gene symbols</p></td>
+      <th>signature</th>
+      <td><p>A vector of symbols</p></td>
     </tr>
     <tr>
       <th>gsets</th>
-      <td><p>A list of gene sets</p></td>
+      <td><p>A list of genesets or a relational genesets object</p></td>
     </tr>
     <tr>
-      <th>gsets_relational</th>
-      <td><p>Use true to inform gsets are relational</p></td>
+      <th>test</th>
+      <td><p>Choose an enrichment type e.g. c("hypergeometric", "kstest")</p></td>
     </tr>
     <tr>
       <th>bg</th>
       <td><p>Size or character vector of background population genes</p></td>
-    </tr>
-    <tr>
-      <th>min_drawsize</th>
-      <td><p>Min number of drawn items that must be among categories items</p></td>
     </tr>
     <tr>
       <th>pval_cutoff</th>
@@ -178,6 +171,18 @@
     <tr>
       <th>fdr_cutoff</th>
       <td><p>Filter results to be less than fdr cutoff</p></td>
+    </tr>
+    <tr>
+      <th>weights_pwr</th>
+      <td><p>Exponent for weights (Subramanian et al.)</p></td>
+    </tr>
+    <tr>
+      <th>absolute</th>
+      <td><p>Takes max-min score rather than the max deviation from null</p></td>
+    </tr>
+    <tr>
+      <th>do_plots</th>
+      <td><p>Use true to generate plots</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -191,17 +196,14 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Grab a list of curated gene sets</span>
-<span class='no'>gsets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/readRDS'>readRDS</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata/gsets.rds"</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"hypeR"</span>))
-<span class='no'>REACTOME</span> <span class='kw'>&lt;-</span> <span class='no'>gsets</span>$<span class='no'>REACTOME</span>
+    <pre class="examples"><div class='input'><span class='no'>gsets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/readRDS'>readRDS</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"hypeR"</span>), <span class='st'>"hypdat.rds"</span>))$<span class='no'>gsets</span>
 
-<span class='co'># Genes involed in tricarboxylic acid cycle</span>
-<span class='no'>symbols</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"IDH3B"</span>,<span class='st'>"DLST"</span>,<span class='st'>"PCK2"</span>,<span class='st'>"CS"</span>,<span class='st'>"PDHB"</span>,<span class='st'>"PCK1"</span>,<span class='st'>"PDHA1"</span>,<span class='st'>"LOC642502"</span>,
-             <span class='st'>"PDHA2"</span>,<span class='st'>"LOC283398"</span>,<span class='st'>"FH"</span>,<span class='st'>"SDHD"</span>,<span class='st'>"OGDH"</span>,<span class='st'>"SDHB"</span>,<span class='st'>"IDH3A"</span>,<span class='st'>"SDHC"</span>,
-             <span class='st'>"IDH2"</span>,<span class='st'>"IDH1"</span>,<span class='st'>"OGDHL"</span>,<span class='st'>"PC"</span>,<span class='st'>"SDHA"</span>,<span class='st'>"SUCLG1"</span>,<span class='st'>"SUCLA2"</span>,<span class='st'>"SUCLG2"</span>)
+<span class='no'>signature</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"IDH3B"</span>,<span class='st'>"DLST"</span>,<span class='st'>"PCK2"</span>,<span class='st'>"CS"</span>,<span class='st'>"PDHB"</span>,<span class='st'>"PCK1"</span>,<span class='st'>"PDHA1"</span>,<span class='st'>"LOC642502"</span>,
+               <span class='st'>"PDHA2"</span>,<span class='st'>"LOC283398"</span>,<span class='st'>"FH"</span>,<span class='st'>"SDHD"</span>,<span class='st'>"OGDH"</span>,<span class='st'>"SDHB"</span>,<span class='st'>"IDH3A"</span>,<span class='st'>"SDHC"</span>,
+               <span class='st'>"IDH2"</span>,<span class='st'>"IDH1"</span>,<span class='st'>"OGDHL"</span>,<span class='st'>"PC"</span>,<span class='st'>"SDHA"</span>,<span class='st'>"SUCLG1"</span>,<span class='st'>"SUCLA2"</span>,<span class='st'>"SUCLG2"</span>)
 
 <span class='co'># Perform hyper enrichment</span>
-<span class='no'>hyp_obj</span> <span class='kw'>&lt;-</span> <span class='fu'>hypeR</span>(<span class='no'>symbols</span>, <span class='no'>REACTOME</span>, <span class='kw'>bg</span><span class='kw'>=</span><span class='fl'>2522</span>, <span class='kw'>fdr_cutoff</span><span class='kw'>=</span><span class='fl'>0.05</span>)</div></pre>
+<span class='no'>hyp_obj</span> <span class='kw'>&lt;-</span> <span class='fu'>hypeR</span>(<span class='no'>signature</span>, <span class='no'>gsets</span>, <span class='kw'>bg</span><span class='kw'>=</span><span class='fl'>2522</span>, <span class='kw'>fdr_cutoff</span><span class='kw'>=</span><span class='fl'>0.05</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
