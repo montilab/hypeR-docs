@@ -4,6 +4,7 @@ pkgdown_sha: ~
 articles:
   basics: docs/basics.html
   data: docs/data.html
+  extending: docs/extending.html
   installation: docs/installation.html
   multihyp: docs/multihyp.html
   reporting: docs/reporting.html
