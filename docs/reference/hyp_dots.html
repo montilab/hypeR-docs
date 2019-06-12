@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.10.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
       </span>
     </div>
 
@@ -141,8 +141,9 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>hyp_dots</span>(<span class='no'>hyp_obj</span>, <span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>abrv</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>sizes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"fdr"</span>,
-  <span class='st'>"pval"</span>), <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>multihyp_titles</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_plots</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>hyp_dots</span>(<span class='no'>hyp_obj</span>, <span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>abrv</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>sizes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>pval_cutoff</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fdr_cutoff</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"fdr"</span>, <span class='st'>"pval"</span>),
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>multihyp_titles</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_plots</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>return_plots</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -163,6 +164,14 @@
     <tr>
       <th>sizes</th>
       <td><p>Size dots by geneset sizes</p></td>
+    </tr>
+    <tr>
+      <th>pval_cutoff</th>
+      <td><p>Filter results to be less than pval cutoff</p></td>
+    </tr>
+    <tr>
+      <th>fdr_cutoff</th>
+      <td><p>Filter results to be less than fdr cutoff</p></td>
     </tr>
     <tr>
       <th>val</th>
