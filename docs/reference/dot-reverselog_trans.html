@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fetch gsets from msigdb — msigdb_fetch • hypeR</title>
+<title>Custom reverse log transformation of continous ggplot axes — .reverselog_trans • hypeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,9 +37,9 @@
 
 
 
-<meta property="og:title" content="Fetch gsets from msigdb — msigdb_fetch" />
+<meta property="og:title" content="Custom reverse log transformation of continous ggplot axes — .reverselog_trans" />
 
-<meta property="og:description" content="Fetch gsets from msigdb" />
+<meta property="og:description" content="Custom reverse log transformation of continous ggplot axes" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -136,69 +136,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fetch gsets from msigdb</h1>
-    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/msigdb.R'><code>R/msigdb.R</code></a></small>
-    <div class="hidden name"><code>msigdb_fetch.Rd</code></div>
+    <h1>Custom reverse log transformation of continous ggplot axes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/hyp_dots.R'><code>R/hyp_dots.R</code></a></small>
+    <div class="hidden name"><code>dot-reverselog_trans.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Fetch gsets from msigdb</p>
+    <p>Custom reverse log transformation of continous ggplot axes</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>msigdb_fetch</span>(<span class='no'>msigdb_path</span>, <span class='kw'>symbol</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"C1"</span>, <span class='st'>"C2.CGP"</span>, <span class='st'>"C2.CP"</span>,
-  <span class='st'>"C2.CP.BIOCARTA"</span>, <span class='st'>"C2.CP.KEGG"</span>, <span class='st'>"C2.CP.REACTOME"</span>, <span class='st'>"C3.MIR"</span>, <span class='st'>"C3.TFT"</span>,
-  <span class='st'>"C4.CGN"</span>, <span class='st'>"C4.CM"</span>, <span class='st'>"C5.BP"</span>, <span class='st'>"C5.CC"</span>, <span class='st'>"C5.MF"</span>, <span class='st'>"C6"</span>, <span class='st'>"C7"</span>, <span class='st'>"H"</span>))</pre>
+    <pre class="usage"><span class='fu'>.reverselog_trans</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>exp</a></span>(<span class='fl'>1</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>msigdb_path</th>
-      <td><p>A list containing the gene set directory and version number of gene sets</p></td>
-    </tr>
-    <tr>
-      <th>symbol</th>
-      <td><p>A symbol corresponding to a msigdb gene set</p></td>
+      <th>base</th>
+      <td><p>Logarithm base</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of gene sets</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>msigdb_path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='msigdb_download_all.html'>msigdb_download_all</a></span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; v6.2.1
-#&gt; Downloading genesets to...
-#&gt; /var/folders/7j/bg701dss38lc2xq26vt_by240000gn/T//RtmpNf1qWZ
-#&gt; - C1 -&gt; 326 Gene Sets 
-#&gt; - C2.CGP -&gt; 3433 Gene Sets 
-#&gt; - C2.CP -&gt; 252 Gene Sets 
-#&gt; - C2.CP.BIOCARTA -&gt; 217 Gene Sets 
-#&gt; - C2.CP.KEGG -&gt; 186 Gene Sets 
-#&gt; - C2.CP.REACTOME -&gt; 674 Gene Sets 
-#&gt; - C3.MIR -&gt; 221 Gene Sets 
-#&gt; - C3.TFT -&gt; 615 Gene Sets 
-#&gt; - C4.CGN -&gt; 427 Gene Sets 
-#&gt; - C4.CM -&gt; 431 Gene Sets 
-#&gt; - C5.BP -&gt; 4436 Gene Sets 
-#&gt; - C5.CC -&gt; 580 Gene Sets 
-#&gt; - C5.MF -&gt; 901 Gene Sets 
-#&gt; - C6 -&gt; 189 Gene Sets 
-#&gt; - C7 -&gt; 4872 Gene Sets 
-#&gt; - H -&gt; 50 Gene Sets </div><div class='input'><span class='no'>REACTOME</span> <span class='kw'>&lt;-</span> <span class='fu'>msigdb_fetch</span>(<span class='no'>msigdb_path</span>, <span class='st'>"C2.CP.REACTOME"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>
