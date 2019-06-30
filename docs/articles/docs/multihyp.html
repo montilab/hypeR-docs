@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
       </span>
     </div>
 
@@ -63,6 +63,9 @@
     </li>
     <li>
       <a href="../../articles/docs/visualize.html">Visualize Results</a>
+    </li>
+    <li>
+      <a href="../../articles/docs/rgsets.html">Constructing Relational Genesets</a>
     </li>
     <li>
       <a href="../../articles/docs/multihyp.html">Multiple Signatures</a>
@@ -115,9 +118,11 @@
 <h3 class="hasAnchor">
 <a href="#multiple-signatures" class="anchor"></a>Multiple signatures</h3>
 <p>Other times we’re looking at multiple signatures that may have been defined in a single experiment. In this case, we can feed <code><a href="../../reference/hypeR.html">hypeR()</a></code> a named list of signatures and a <code>multihyp</code> object will be returned. This object is essentially just multiple <code>hyp</code> objects. However it is recognized and handled differently by downstream methods.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(hypdat)</a>
-<a class="sourceLine" id="cb1-2" title="2">wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</a>
-<a class="sourceLine" id="cb1-3" title="3">gsets &lt;-<span class="st"> </span>hypdat<span class="op">$</span>gsets</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3">wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</a>
+<a class="sourceLine" id="cb1-4" title="4">rgsets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_fetch.html">hyperdb_fetch</a></span>(<span class="dt">type=</span><span class="st">"rgsets"</span>, <span class="st">"REACTOME"</span>)</a>
+<a class="sourceLine" id="cb1-5" title="5">gsets &lt;-<span class="st"> </span>rgsets<span class="op">$</span>gsets</a></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">signatures &lt;-<span class="st"> </span>wgcna[[<span class="dv">1</span>]] </a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(signatures))</a></code></pre></div>
 <pre><code>#&gt; [1] "M0" "M1" "M2" "M3" "M4" "M5"</code></pre>

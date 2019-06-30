@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
       </span>
     </div>
 
@@ -63,6 +63,9 @@
     </li>
     <li>
       <a href="../../articles/docs/visualize.html">Visualize Results</a>
+    </li>
+    <li>
+      <a href="../../articles/docs/rgsets.html">Constructing Relational Genesets</a>
     </li>
     <li>
       <a href="../../articles/docs/multihyp.html">Multiple Signatures</a>
@@ -140,18 +143,16 @@
 <h3 class="hasAnchor">
 <a href="#example-data" class="anchor"></a>Example Data</h3>
 <p>In these tutorials, we will use example data. The example data includes an expression set object as well as pre-computed results from common workflows such as diffential expression and weighted gene co-expression analyses.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(hypdat)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</a></code></pre></div>
 <div id="defining-signatures-and-genesets" class="section level4">
 <h4 class="hasAnchor">
 <a href="#defining-signatures-and-genesets" class="anchor"></a>Defining Signatures and Genesets</h4>
-<p>Using a differential expression dataframe created with limma, we will extract a signature of upregulated genes for use with a hypergeometric test and rank genes descending by their differential expression level for use with a kstest. We’ll also import genesets from <a href="https://reactome.org/">REACTOME</a>.</p>
+<p>Using a differential expression dataframe created with limma, we will extract a signature of upregulated genes for use with a hypergeometric test and rank genes descending by their differential expression level for use with a kstest. We’ll also import genesets from <a href="https://www.kegg.jp">KEGG</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">limma &lt;-<span class="st"> </span>hypdat<span class="op">$</span>limma</a>
-<a class="sourceLine" id="cb4-2" title="2"></a>
-<a class="sourceLine" id="cb4-3" title="3">signature &lt;-<span class="st"> </span>limma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(t <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>fdr <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">use_series</span>(symbol)</a>
+<a class="sourceLine" id="cb4-2" title="2">signature &lt;-<span class="st"> </span>limma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(t <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>fdr <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">use_series</span>(symbol)</a>
+<a class="sourceLine" id="cb4-3" title="3">ranked.signature &lt;-<span class="st"> </span>limma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(t)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">use_series</span>(symbol)</a>
 <a class="sourceLine" id="cb4-4" title="4"></a>
-<a class="sourceLine" id="cb4-5" title="5">ranked.signature &lt;-<span class="st"> </span>limma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(t)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">use_series</span>(symbol)</a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7">gsets &lt;-<span class="st"> </span>hypdat<span class="op">$</span>gsets</a></code></pre></div>
+<a class="sourceLine" id="cb4-5" title="5">gsets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_fetch.html">hyperdb_fetch</a></span>(<span class="dt">type=</span><span class="st">"gsets"</span>, <span class="st">"KEGG_2019_Human"</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="basic-usage" class="section level3">
@@ -164,8 +165,8 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(signature, gsets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">bg=</span><span class="dv">50000</span>, <span class="dt">fdr_cutoff=</span><span class="fl">0.01</span>, <span class="dt">do_plots=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(hyp_obj)</a></code></pre></div>
 <pre><code>#&gt; hyp object: 
-#&gt;   data: 8 x 6
-#&gt;   plots: 8
+#&gt;   data: 67 x 6
+#&gt;   plots: 67
 #&gt;   args: signature
 #&gt;         gsets
 #&gt;         test
@@ -178,20 +179,13 @@
 #&gt;         verbose</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">hyp_df &lt;-<span class="st"> </span>hyp_obj<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>()</a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(hyp_df[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]), <span class="dt">row.names=</span><span class="ot">FALSE</span>)</a></code></pre></div>
-<pre><code>#&gt;                                                        label    pval
-#&gt;                                     Neutrophil degranulation 2.4e-08
-#&gt;               Activation of gene expression by SREBF (SREBP) 3.0e-08
-#&gt;                                                  TBC/RABGAPs 1.4e-06
-#&gt;                                      Recycling pathway of L1 6.0e-06
-#&gt;  Antigen processing: Ubiquitination &amp; Proteasome degradation 8.2e-06
-#&gt;                              PPARA activates gene expression 1.2e-05
-#&gt;      fdr
-#&gt;  2.3e-05
-#&gt;  2.3e-05
-#&gt;  7.4e-04
-#&gt;  2.3e-03
-#&gt;  2.5e-03
-#&gt;  3.0e-03</code></pre>
+<pre><code>#&gt;                           label    pval     fdr
+#&gt;                  Tight junction 1.2e-11 3.7e-09
+#&gt;            Salmonella infection 3.8e-09 5.8e-07
+#&gt;          MAPK signaling pathway 6.6e-09 6.8e-07
+#&gt;                     Endocytosis 9.9e-09 7.6e-07
+#&gt;  Neurotrophin signaling pathway 5.0e-08 3.1e-06
+#&gt;           Ras signaling pathway 7.2e-08 3.7e-06</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">hyp_obj<span class="op">$</span>plots[[<span class="dv">1</span>]]</a></code></pre></div>
 <p><img src="basics_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
@@ -201,8 +195,8 @@
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(ranked.signature, gsets, <span class="dt">test=</span><span class="st">"kstest"</span>, <span class="dt">fdr_cutoff=</span><span class="fl">0.01</span>, <span class="dt">do_plots=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(hyp_obj)</a></code></pre></div>
 <pre><code>#&gt; hyp object: 
-#&gt;   data: 62 x 6
-#&gt;   plots: 62
+#&gt;   data: 6 x 6
+#&gt;   plots: 6
 #&gt;   args: signature
 #&gt;         gsets
 #&gt;         test
@@ -215,13 +209,13 @@
 #&gt;         verbose</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">hyp_df &lt;-<span class="st"> </span>hyp_obj<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>()</a>
 <a class="sourceLine" id="cb14-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(hyp_df[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]), <span class="dt">row.names=</span><span class="ot">FALSE</span>)</a></code></pre></div>
-<pre><code>#&gt;                                                      label    pval     fdr
-#&gt;                                      MAPK6/MAPK4 signaling 3.1e-11 4.8e-08
-#&gt;                            Separation of Sister Chromatids 1.3e-08 8.3e-06
-#&gt;                 SCF-beta-TrCP mediated degradation of Emi1 1.6e-08 8.3e-06
-#&gt;                         NIK--&gt;noncanonical NF-kB signaling 3.8e-08 1.0e-05
-#&gt;  The role of GTSE1 in G2/M progression after G2 checkpoint 4.1e-08 1.0e-05
-#&gt;                AUF1 (hnRNP D0) binds and destabilizes mRNA 4.6e-08 1.0e-05</code></pre>
+<pre><code>#&gt;                           label    pval     fdr
+#&gt;                  Tight junction 1.4e-09 4.3e-07
+#&gt;                      Proteasome 1.7e-05 2.6e-03
+#&gt;            Viral carcinogenesis 4.1e-05 3.9e-03
+#&gt;  Sphingolipid signaling pathway 5.3e-05 3.9e-03
+#&gt;            Steroid biosynthesis 6.4e-05 3.9e-03
+#&gt;    Longevity regulating pathway 1.0e-04 5.1e-03</code></pre>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">hyp_obj<span class="op">$</span>plots[[<span class="dv">1</span>]]</a></code></pre></div>
 <p><img src="basics_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>

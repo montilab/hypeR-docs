@@ -8,6 +8,7 @@ articles:
   installation: docs/installation.html
   multihyp: docs/multihyp.html
   reporting: docs/reporting.html
+  rgsets: docs/rgsets.html
   shiny: docs/shiny.html
   visualize: docs/visualize.html
   hypeR: hypeR.html

@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
       </span>
     </div>
 
@@ -63,6 +63,9 @@
     </li>
     <li>
       <a href="../../articles/docs/visualize.html">Visualize Results</a>
+    </li>
+    <li>
+      <a href="../../articles/docs/rgsets.html">Constructing Relational Genesets</a>
     </li>
     <li>
       <a href="../../articles/docs/multihyp.html">Multiple Signatures</a>
@@ -116,9 +119,10 @@
 <a href="#multiple-experiments" class="anchor"></a>Multiple experiments</h3>
 <p>Sometimes, we are generating reports for multiple signatures across multiple experiments. Typically, the best way to manage this data is to process it all at once and generate a markdown report to analyze ourselves or share with collaborators.</p>
 <p>In the following example, we’re interested in exploring the signatures from a weighted gene co-expression analysis (WGCNA) of two different phenotypes. In <code>hypdat</code>, we take the resulting co-expression modules from WGCNA ran separately on gene expression data from carcinogenic and non-carcinogenic compounds. There are 15 modules of co-expressed genes for carcinogenic compounds and 16 modules of co-expressed genes for non-carcinogenic compounds. The <code><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd()</a></code> will help us process this data in a concise and reproducible manner that is readily shareable.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(hypdat)</a>
-<a class="sourceLine" id="cb1-2" title="2">wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(wgcna)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3">wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(wgcna)</a></code></pre></div>
 <pre><code>#&gt; [1] "NON-CARC"   "CARCINOGEN"</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(wgcna[[<span class="st">"NON-CARC"</span>]])</a></code></pre></div>
 <pre><code>#&gt;  [1] "M0"  "M1"  "M2"  "M3"  "M4"  "M5"  "M6"  "M9"  "M10" "M11" "M12"
@@ -126,7 +130,7 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(wgcna[[<span class="st">"CARCINOGEN"</span>]])</a></code></pre></div>
 <pre><code>#&gt;  [1] "M0"  "M1"  "M2"  "M3"  "M4"  "M6"  "M7"  "M8"  "M9"  "M13" "M15"
 #&gt; [12] "M16" "M18" "M19" "M23"</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">rgsets &lt;-<span class="st"> </span>hypdat<span class="op">$</span>rgsets</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">rgsets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_fetch.html">hyperdb_fetch</a></span>(<span class="dt">type=</span><span class="st">"rgsets"</span>, <span class="st">"REACTOME"</span>)</a></code></pre></div>
 </div>
 <div id="hyper-enrichment" class="section level3">
 <h3 class="hasAnchor">

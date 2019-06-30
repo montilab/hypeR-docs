@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
       </span>
     </div>
 
@@ -63,6 +63,9 @@
     </li>
     <li>
       <a href="../../articles/docs/visualize.html">Visualize Results</a>
+    </li>
+    <li>
+      <a href="../../articles/docs/rgsets.html">Constructing Relational Genesets</a>
     </li>
     <li>
       <a href="../../articles/docs/multihyp.html">Multiple Signatures</a>
@@ -157,7 +160,7 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">msigdb_path &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/msigdb_download_all.html">msigdb_download_all</a></span>(<span class="dt">species=</span><span class="st">"Homo sapiens"</span>)</a></code></pre></div>
 <pre><code>#&gt; v6.2.1
 #&gt; Downloading genesets to...
-#&gt; /var/folders/7j/bg701dss38lc2xq26vt_by240000gn/T//RtmpeptcUn
+#&gt; /var/folders/7j/bg701dss38lc2xq26vt_by240000gn/T//RtmplSsaXI
 #&gt; - C1 -&gt; 326 Gene Sets 
 #&gt; - C2.CGP -&gt; 3433 Gene Sets 
 #&gt; - C2.CP -&gt; 252 Gene Sets 
@@ -202,12 +205,13 @@
 <div id="downloading-and-loading-genesets-1" class="section level4">
 <h4 class="hasAnchor">
 <a href="#downloading-and-loading-genesets-1" class="anchor"></a>Downloading and loading genesets</h4>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">gsets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_fetch.html">hyperdb_fetch</a></span>(<span class="st">"Cancer_Cell_Line_Encyclopedia"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">gsets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_fetch.html">hyperdb_fetch</a></span>(<span class="dt">type=</span><span class="st">"gsets"</span>, <span class="st">"Cancer_Cell_Line_Encyclopedia"</span>)</a></code></pre></div>
 </div>
 <div id="available-genesets-1" class="section level4">
 <h4 class="hasAnchor">
 <a href="#available-genesets-1" class="anchor"></a>Available genesets</h4>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw"><a href="../../reference/hyperdb_info.html">hyperdb_info</a></span>(<span class="dt">quiet=</span><span class="ot">TRUE</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw"><a href="../../reference/hyperdb_info.html">hyperdb_info</a></span>(<span class="dt">type=</span><span class="st">"gsets"</span>, <span class="dt">quiet=</span><span class="ot">TRUE</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>]</a></code></pre></div>
+<pre><code>#&gt; Getting available gsets ...</code></pre>
 <pre><code>#&gt;  [1] "ARCHS4_Cell-lines"                
 #&gt;  [2] "ARCHS4_IDG_Coexp"                 
 #&gt;  [3] "ARCHS4_Kinases_Coexp"             
@@ -223,6 +227,13 @@
 #&gt; [13] "BioCarta_2015"                    
 #&gt; [14] "BioCarta_2016"                    
 #&gt; [15] "BioPlex_2017"</code></pre>
+</div>
+<div id="available-relational-genesets" class="section level4">
+<h4 class="hasAnchor">
+<a href="#available-relational-genesets" class="anchor"></a>Available relational genesets</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw"><a href="../../reference/hyperdb_info.html">hyperdb_info</a></span>(<span class="dt">type=</span><span class="st">"rgsets"</span>, <span class="dt">quiet=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>#&gt; Getting available rgsets ...</code></pre>
+<pre><code>#&gt; [1] "KEGG"     "REACTOME"</code></pre>
 </div>
 </div>
   </div>

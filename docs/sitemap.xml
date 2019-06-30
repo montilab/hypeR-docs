@@ -64,9 +64,6 @@
     <loc>https://github.com/montilab/hypeR/reference/hyp_to_table.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/hypdat.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/montilab/hypeR/reference/hypeR.html</loc>
   </url>
   <url>
@@ -122,6 +119,9 @@
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/reporting.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/articles/docs/rgsets.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/shiny.html</loc>
