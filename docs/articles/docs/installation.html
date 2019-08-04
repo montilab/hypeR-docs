@@ -114,12 +114,27 @@
 
     
     
+<p><strong>hypeR</strong> currently requires the latest version of R (&gt;= 3.6.0) to be installed directly from Github or Bioconductor. To install with R (&gt;= 3.5.0) see below. Use with R (&lt; 3.5.0) is not recommended.</p>
 <p>Install the development version of the package from Github.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)</span></code></pre></div>
 <p>Or install the development version of the package from Bioconductor.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">BiocManager<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"montilab/hypeR"</span>, <span class="dt">version=</span><span class="st">'devel'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>BiocManager<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"montilab/hypeR"</span>, <span class="dt">version=</span><span class="st">"devel"</span>)</span></code></pre></div>
+<p>Or install with Conda.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>conda create <span class="op">--</span>name hyper</span>
+<span id="cb3-2"><a href="#cb3-2"></a>source activate hyper</span>
+<span id="cb3-3"><a href="#cb3-3"></a>conda install <span class="op">-</span>c r r<span class="op">-</span>devtools</span>
+<span id="cb3-4"><a href="#cb3-4"></a>R</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(devtools)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)</span></code></pre></div>
+<p>Or install with previous versions of R.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>git clone https<span class="op">:</span><span class="er">//</span>github.com<span class="op">/</span>montilab<span class="op">/</span>hypeR</span>
+<span id="cb4-2"><a href="#cb4-2"></a>nano hypeR<span class="op">/</span>DESCRIPTION</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Change Line 8</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Depends: R (&gt;= 3.6.0) -&gt; Depends: R (&gt;= 3.5.0)</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>R</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"path/to/hypeR"</span>, <span class="dt">repos=</span><span class="ot">NULL</span>, <span class="dt">type=</span><span class="st">"source"</span>)</span></code></pre></div>
 <p>Load the package into an R session.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hypeR)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hypeR)</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

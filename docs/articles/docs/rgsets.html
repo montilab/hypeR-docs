@@ -120,74 +120,113 @@
 <p>When dealing with hundreds of genesets, it’s often useful to understand the relationships between them. This allows researchers to summarize many enriched pathways as more general biological processes. To do this, we rely on curated relationships defined between them. For example, <a href="https://reactome.org/">REACTOME</a> conveniently defines their genesets in a <a href="https://reactome.org/PathwayBrowser/">hiearchy of pathways</a>. This data can be formatted into a relational genesets object called <code>rgsets</code>.</p>
 <div id="data-sources" class="section level4">
 <h4 class="hasAnchor">
-<a href="#data-sources" class="anchor"></a>Data Sources</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># All data downloaded from https://reactome.org/download-data</span></a>
-<a class="sourceLine" id="cb1-2" title="2">gsets.url &lt;-<span class="st"> "https://reactome.org/download/current/ReactomePathways.gmt.zip"</span></a>
-<a class="sourceLine" id="cb1-3" title="3">nodes.url &lt;-<span class="st"> "https://reactome.org/download/current/ReactomePathways.txt"</span></a>
-<a class="sourceLine" id="cb1-4" title="4">edges.url &lt;-<span class="st"> "https://reactome.org/download/current/ReactomePathwaysRelation.txt"</span></a></code></pre></div>
+<a href="#data-sources" class="anchor"></a>Data sources</h4>
+<p>Raw data for gsets, nodes, and edges can be directly downloaded.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># All data downloaded from https://reactome.org/download-data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>gsets.url &lt;-<span class="st"> "https://reactome.org/download/current/ReactomePathways.gmt.zip"</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>nodes.url &lt;-<span class="st"> "https://reactome.org/download/current/ReactomePathways.txt"</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>edges.url &lt;-<span class="st"> "https://reactome.org/download/current/ReactomePathwaysRelation.txt"</span></span></code></pre></div>
 </div>
 <div id="loading-data" class="section level4">
 <h4 class="hasAnchor">
-<a href="#loading-data" class="anchor"></a>Loading Data</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># Gsets</span></a>
-<a class="sourceLine" id="cb2-2" title="2">gsets.tmp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>(<span class="dt">fileext=</span><span class="st">".gmt.zip"</span>)</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/download.file">download.file</a></span>(gsets.url, <span class="dt">destfile =</span> gsets.tmp, <span class="dt">mode =</span> <span class="st">"wb"</span>)</a>
-<a class="sourceLine" id="cb2-4" title="4">gsets.raw &lt;-<span class="st"> </span>gsets.tmp <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/unzip">unzip</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="st">             </span><span class="kw">read.gmt</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(<span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb2-8" title="8">                 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/chartr">toupper</a></span>(x[x <span class="op">!=</span><span class="st"> "Reactome Pathway"</span>])</a>
-<a class="sourceLine" id="cb2-9" title="9">             })</a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co"># Nodes</span></a>
-<a class="sourceLine" id="cb2-11" title="11">nodes.raw &lt;-<span class="st"> </span>nodes.url <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/read.table">read.delim</a></span>(<span class="dt">sep=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, </a>
-<a class="sourceLine" id="cb2-13" title="13">                        <span class="dt">header=</span><span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb2-14" title="14">                        <span class="dt">fill=</span><span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb2-15" title="15">                        <span class="dt">col.names=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"id"</span>, <span class="st">"label"</span>, <span class="st">"species"</span>), </a>
-<a class="sourceLine" id="cb2-16" title="16">                        <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="co"># Edges</span></a>
-<a class="sourceLine" id="cb2-18" title="18">edges.raw &lt;-<span class="st"> </span>edges.url <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-19" title="19"><span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/read.table">read.delim</a></span>(<span class="dt">sep=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, </a>
-<a class="sourceLine" id="cb2-20" title="20">                        <span class="dt">header=</span><span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb2-21" title="21">                        <span class="dt">fill=</span><span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb2-22" title="22">                        <span class="dt">col.names=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"from"</span>, <span class="st">"to"</span>),</a>
-<a class="sourceLine" id="cb2-23" title="23">                        <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<a href="#loading-data" class="anchor"></a>Loading data</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Gsets</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>gsets.tmp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>(<span class="dt">fileext=</span><span class="st">".gmt.zip"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/download.file">download.file</a></span>(gsets.url, <span class="dt">destfile =</span> gsets.tmp, <span class="dt">mode =</span> <span class="st">"wb"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>gsets.raw &lt;-<span class="st"> </span>gsets.tmp <span class="op">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/unzip">unzip</a></span>() <span class="op">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="st">             </span><span class="kw">read.gmt</span>() <span class="op">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(<span class="cf">function</span>(x) {</span>
+<span id="cb2-8"><a href="#cb2-8"></a>                 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/chartr">toupper</a></span>(x[x <span class="op">!=</span><span class="st"> "Reactome Pathway"</span>])</span>
+<span id="cb2-9"><a href="#cb2-9"></a>             })</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># Nodes</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>nodes.raw &lt;-<span class="st"> </span>nodes.url <span class="op">%&gt;%</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/read.table">read.delim</a></span>(<span class="dt">sep=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, </span>
+<span id="cb2-13"><a href="#cb2-13"></a>                        <span class="dt">header=</span><span class="ot">FALSE</span>, </span>
+<span id="cb2-14"><a href="#cb2-14"></a>                        <span class="dt">fill=</span><span class="ot">TRUE</span>, </span>
+<span id="cb2-15"><a href="#cb2-15"></a>                        <span class="dt">col.names=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"id"</span>, <span class="st">"label"</span>, <span class="st">"species"</span>), </span>
+<span id="cb2-16"><a href="#cb2-16"></a>                        <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co"># Edges</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>edges.raw &lt;-<span class="st"> </span>edges.url <span class="op">%&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/read.table">read.delim</a></span>(<span class="dt">sep=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, </span>
+<span id="cb2-20"><a href="#cb2-20"></a>                        <span class="dt">header=</span><span class="ot">FALSE</span>, </span>
+<span id="cb2-21"><a href="#cb2-21"></a>                        <span class="dt">fill=</span><span class="ot">TRUE</span>, </span>
+<span id="cb2-22"><a href="#cb2-22"></a>                        <span class="dt">col.names=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"from"</span>, <span class="st">"to"</span>),</span>
+<span id="cb2-23"><a href="#cb2-23"></a>                        <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="organizing-a-hierarchy" class="section level4">
 <h4 class="hasAnchor">
-<a href="#organizing-a-hierarchy" class="anchor"></a>Organizing a Hierarchy</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Species-specific nodes</span></a>
-<a class="sourceLine" id="cb3-2" title="2">nodes &lt;-<span class="st"> </span>nodes.raw <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>( label <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(gsets.raw) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>( species <span class="op">==</span><span class="st"> "Homo sapiens"</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/duplicated">duplicated</a></span>(id) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="st">         </span><span class="kw">set_rownames</span>( .<span class="op">$</span>id ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="st">         </span>{ .[, <span class="st">"label"</span>, drop=<span class="ot">FALSE</span>] }</a>
-<a class="sourceLine" id="cb3-8" title="8"></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co"># Species-specific edges</span></a>
-<a class="sourceLine" id="cb3-10" title="10">edges &lt;-<span class="st"> </span>edges.raw <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>( from <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(nodes) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>( to <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(nodes) )</a>
-<a class="sourceLine" id="cb3-13" title="13"></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co"># Leaf genesets</span></a>
-<a class="sourceLine" id="cb3-15" title="15">gsets &lt;-<span class="st"> </span>nodes <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="st">         </span>.[<span class="op">!</span><span class="st"> </span>. <span class="op">%in%</span><span class="st"> </span>edges<span class="op">$</span>from] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-18" title="18"><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>( <span class="cf">function</span>(x) nodes[x, <span class="st">"label"</span>] ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-19" title="19"><span class="st">         </span>gsets.raw[.]</a></code></pre></div>
+<a href="#organizing-a-hierarchy" class="anchor"></a>Organizing a hierarchy</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Species-specific nodes</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>nodes &lt;-<span class="st"> </span>nodes.raw <span class="op">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>( label <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(gsets.raw) ) <span class="op">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>( species <span class="op">==</span><span class="st"> "Homo sapiens"</span> ) <span class="op">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/duplicated">duplicated</a></span>(id) ) <span class="op">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="st">         </span><span class="kw">set_rownames</span>( .<span class="op">$</span>id ) <span class="op">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="st">         </span>{ .[, <span class="st">"label"</span>, drop=<span class="ot">FALSE</span>] }</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># Species-specific edges</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>edges &lt;-<span class="st"> </span>edges.raw <span class="op">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>( from <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(nodes) ) <span class="op">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>( to <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(nodes) )</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co"># Leaf genesets</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>gsets &lt;-<span class="st"> </span>nodes <span class="op">%&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>() <span class="op">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="st">         </span>.[<span class="op">!</span><span class="st"> </span>. <span class="op">%in%</span><span class="st"> </span>edges<span class="op">$</span>from] <span class="op">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="st">         </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>( <span class="cf">function</span>(x) nodes[x, <span class="st">"label"</span>] ) <span class="op">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="st">         </span>gsets.raw[.]</span></code></pre></div>
+<div id="nodes" class="section level5">
+<h5 class="hasAnchor">
+<a href="#nodes" class="anchor"></a>nodes</h5>
+<p>A single-column data frame of labels where the rownames are unique identifiers. Leaf node labels should have an associated geneset, while internal nodes do not have to. The only genesets tested, will be those in the list of genesets.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(nodes)</span></code></pre></div>
+<pre><code>                                                                        label
+R-HSA-164843                                           2-LTR circle formation
+R-HSA-73843                        5-Phosphoribose 1-diphosphate biosynthesis
+R-HSA-1971475 A tetrasaccharide linker sequence is required for GAG synthesis
+R-HSA-5619084                                       ABC transporter disorders
+R-HSA-1369062                           ABC transporters in lipid homeostasis
+R-HSA-382556                           ABC-family proteins mediated transport</code></pre>
+</div>
+<div id="edges" class="section level5">
+<h5 class="hasAnchor">
+<a href="#edges" class="anchor"></a>edges</h5>
+<p>A dataframe with two columns of identifiers, indicating directed edges between nodes in the hierarchy.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(edges)</span></code></pre></div>
+<pre><code>          from            to
+1 R-HSA-109581  R-HSA-109606
+2 R-HSA-109581  R-HSA-169911
+3 R-HSA-109581 R-HSA-5357769
+4 R-HSA-109581   R-HSA-75153
+5 R-HSA-109582  R-HSA-140877
+6 R-HSA-109582  R-HSA-202733</code></pre>
+</div>
+<div id="gsets" class="section level5">
+<h5 class="hasAnchor">
+<a href="#gsets" class="anchor"></a>gsets</h5>
+<p>A list of character vectors, named by the geneset labels. Typically, genesets will be at the leaves of the hierarchy, while not required.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(gsets))</span></code></pre></div>
+<pre><code>[1] "2-LTR circle formation"                                         
+[2] "5-Phosphoribose 1-diphosphate biosynthesis"                     
+[3] "A tetrasaccharide linker sequence is required for GAG synthesis"
+[4] "ABC transporters in lipid homeostasis"                          
+[5] "ABO blood group biosynthesis"                                   
+[6] "ADP signalling through P2Y purinoceptor 1"                      </code></pre>
+</div>
 </div>
 <div id="using-the-rgsets-object" class="section level4">
 <h4 class="hasAnchor">
 <a href="#using-the-rgsets-object" class="anchor"></a>Using the <code>rgsets</code> object</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">rgsets &lt;-<span class="st"> </span>hypeR<span class="op">::</span>rgsets<span class="op">$</span><span class="kw">new</span>(gsets, nodes, edges)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>rgsets &lt;-<span class="st"> </span>hypeR<span class="op">::</span>rgsets<span class="op">$</span><span class="kw">new</span>(gsets, nodes, edges)</span></code></pre></div>
 </div>
 <div id="visualize" class="section level4">
 <h4 class="hasAnchor">
 <a href="#visualize" class="anchor"></a>Visualize</h4>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(<span class="dt">mar=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</a>
-<a class="sourceLine" id="cb5-2" title="2">g &lt;-<span class="st"> </span><span class="kw">graph_from_edgelist</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(rgsets<span class="op">$</span>edges))</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(g, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">vertex.size=</span><span class="dv">1</span>, <span class="dt">edge.arrow.size=</span><span class="dv">0</span>)</a></code></pre></div>
-<p><img src="rgsets_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(<span class="dt">mar=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb11-2"><a href="#cb11-2"></a>g &lt;-<span class="st"> </span><span class="kw">graph_from_edgelist</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(rgsets<span class="op">$</span>edges))</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(g, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">vertex.size=</span><span class="dv">1</span>, <span class="dt">edge.arrow.size=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="rgsets_files/figure-html/unnamed-chunk-9-1.png" width="700" style="display: block; margin: auto;"></p>
 </div>
 </div>
   </div>

@@ -117,18 +117,37 @@
 <a href="#documentation" class="anchor"></a>Documentation</h2>
 <p>Please visit <a href="https://montilab.github.io/hypeR-docs/" class="uri">https://montilab.github.io/hypeR-docs/</a></p>
 </div>
+<div id="requirements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#requirements" class="anchor"></a>Requirements</h2>
+<p><strong>hypeR</strong> currently requires the latest version of R (&gt;= 3.6.0) to be installed directly from Github or Bioconductor. To install with R (&gt;= 3.5.0) see below. Use with R (&lt; 3.5.0) is not recommended.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the development version of the package from Github.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)</span></code></pre></div>
 <p>Or install the development version of the package from Bioconductor.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">BiocManager<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"montilab/hypeR"</span>, <span class="dt">version=</span><span class="st">"devel"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>BiocManager<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"montilab/hypeR"</span>, <span class="dt">version=</span><span class="st">"devel"</span>)</span></code></pre></div>
+<p>Or install with Conda.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">conda</span> create --name hyper</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="bu">source</span> activate hyper</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">conda</span> install -c r r-devtools</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="ex">R</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="ex">library</span>(devtools)</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="ex">devtools</span>::install_github(<span class="st">"montilab/hypeR"</span>)</span></code></pre></div>
+<p>Or install with previous versions of R.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">git</span> clone https://github.com/montilab/hypeR</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">nano</span> hypeR/DESCRIPTION</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Change Line 8</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Depends: R (&gt;= 3.6.0) -&gt; Depends: R (&gt;= 3.5.0)</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="ex">R</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="ex">install.packages</span>(<span class="st">"path/to/hypeR"</span>, repos=NULL, type=<span class="st">"source"</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hypeR)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hypeR)</span></code></pre></div>
 </div>
 <div id="terminology" class="section level2">
 <h2 class="hasAnchor">
@@ -137,27 +156,27 @@
 <h3 class="hasAnchor">
 <a href="#signature" class="anchor"></a>Signature</h3>
 <p><strong>hypeR</strong> employs multiple types of enrichment analyses (e.g. hypergeometric, kstest, gsea). Depending on the type, different kinds of signatures are expected. There are three types of signatures <code><a href="reference/hypeR.html">hypeR()</a></code> expects.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># Simply a character vector of symbols (hypergeometric)</span></a>
-<a class="sourceLine" id="cb4-2" title="2">signature &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</a>
-<a class="sourceLine" id="cb4-3" title="3"></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="co"># A pre-ranked character vector of symbols (kstest)</span></a>
-<a class="sourceLine" id="cb4-5" title="5">ranked.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="co"># A pre-ranked named numerical vector of symbols with ranking weights (gsea)</span></a>
-<a class="sourceLine" id="cb4-8" title="8">weighted.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>=<span class="fl">1.22</span>, <span class="st">"GENE2"</span>=<span class="fl">0.94</span>, <span class="st">"GENE3"</span>=<span class="fl">0.77</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Simply a character vector of symbols (hypergeometric)</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>signature &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># A ranked character vector of symbols (kstest)</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>ranked.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># A ranked named numerical vector of symbols with ranking weights (gsea)</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>weighted.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>=<span class="fl">1.22</span>, <span class="st">"GENE2"</span>=<span class="fl">0.94</span>, <span class="st">"GENE3"</span>=<span class="fl">0.77</span>)</span></code></pre></div>
 </div>
 <div id="geneset" class="section level3">
 <h3 class="hasAnchor">
 <a href="#geneset" class="anchor"></a>Geneset</h3>
 <p>A geneset is simply a list of vectors, therefore, one can use any custom geneset in their analyses, as long as it’s appropriately defined.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">genesets &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"GSET1"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>),</a>
-<a class="sourceLine" id="cb5-2" title="2">                 <span class="st">"GSET2"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE4"</span>, <span class="st">"GENE5"</span>, <span class="st">"GENE6"</span>),</a>
-<a class="sourceLine" id="cb5-3" title="3">                 <span class="st">"GSET3"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>genesets &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"GSET1"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>),</span>
+<span id="cb7-2"><a href="#cb7-2"></a>                 <span class="st">"GSET2"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE4"</span>, <span class="st">"GENE5"</span>, <span class="st">"GENE6"</span>),</span>
+<span id="cb7-3"><a href="#cb7-3"></a>                 <span class="st">"GSET3"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span>))</span></code></pre></div>
 <div id="hyper-enrichment" class="section level4">
 <h4 class="hasAnchor">
 <a href="#hyper-enrichment" class="anchor"></a>Hyper enrichment</h4>
 <p>All workflows begin with performing hyper enrichment with <code>hyper()</code>. Often we are just interested in a single signature, as described above. In this case, <code>hyper()</code> will return a <code>hyp</code> object. This object contains relevant information to the enrichment results and is recognized by downstream methods.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="reference/hypeR.html">hypeR</a></span>(signature, genesets)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="reference/hypeR.html">hypeR</a></span>(signature, genesets)</span></code></pre></div>
 </div>
 <div id="downstream-methods" class="section level4">
 <h4 class="hasAnchor">
@@ -166,50 +185,68 @@
 <div id="downloading-genesets" class="section level5">
 <h5 class="hasAnchor">
 <a href="#downloading-genesets" class="anchor"></a>Downloading genesets</h5>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Download genesets from msigdb</span></a>
-<a class="sourceLine" id="cb7-2" title="2">msigdb_path &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_download_all.html">msigdb_download_all</a></span>(<span class="dt">species=</span><span class="st">"Homo sapiens"</span>)</a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4">BIOCARTA &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.BIOCARTA"</span>)</a>
-<a class="sourceLine" id="cb7-5" title="5">KEGG     &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.KEGG"</span>)</a>
-<a class="sourceLine" id="cb7-6" title="6">REACTOME &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.REACTOME"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Download genesets from msigdb</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>msigdb_path &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_download_all.html">msigdb_download_all</a></span>(<span class="dt">species=</span><span class="st">"Homo sapiens"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>BIOCARTA &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.BIOCARTA"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>KEGG     &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.KEGG"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>REACTOME &lt;-<span class="st"> </span><span class="kw"><a href="reference/msigdb_fetch.html">msigdb_fetch</a></span>(msigdb_path, <span class="st">"C2.CP.REACTOME"</span>)</span></code></pre></div>
 </div>
 <div id="visualize-results" class="section level5">
 <h5 class="hasAnchor">
 <a href="#visualize-results" class="anchor"></a>Visualize results</h5>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Show interactive table</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="reference/hyp_show.html">hyp_show</a></span>(hyp_obj)</a>
-<a class="sourceLine" id="cb8-3" title="3"></a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="co"># Plot dots plot</span></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="kw"><a href="reference/hyp_dots.html">hyp_dots</a></span>(hyp_obj)</a>
-<a class="sourceLine" id="cb8-6" title="6"></a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="co"># Plot enrichment map</span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="kw"><a href="reference/hyp_emap.html">hyp_emap</a></span>(hyp_obj)</a>
-<a class="sourceLine" id="cb8-9" title="9"></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="co"># Plot hiearchy map</span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="kw"><a href="reference/hyp_hmap.html">hyp_hmap</a></span>(hyp_obj)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Show interactive table</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw"><a href="reference/hyp_show.html">hyp_show</a></span>(hyp_obj)</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Plot dots plot</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="kw"><a href="reference/hyp_dots.html">hyp_dots</a></span>(hyp_obj)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co"># Plot enrichment map</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="kw"><a href="reference/hyp_emap.html">hyp_emap</a></span>(hyp_obj)</span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="co"># Plot hiearchy map</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="kw"><a href="reference/hyp_hmap.html">hyp_hmap</a></span>(hyp_obj)</span></code></pre></div>
 </div>
 <div id="saving-results" class="section level5">
 <h5 class="hasAnchor">
 <a href="#saving-results" class="anchor"></a>Saving results</h5>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Save to excel</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="kw"><a href="reference/hyp_to_excel.html">hyp_to_excel</a></span>(hyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.xlsx"</span>)</a>
-<a class="sourceLine" id="cb9-3" title="3"></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="co"># Save to table</span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="kw"><a href="reference/hyp_to_table.html">hyp_to_table</a></span>(hyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.txt"</span>)</a>
-<a class="sourceLine" id="cb9-6" title="6"></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="co"># Generate markdown report</span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="kw"><a href="reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(lmultihyp_obj,</a>
-<a class="sourceLine" id="cb9-9" title="9">           <span class="dt">file_path=</span><span class="st">"hyper-enrichment.rmd"</span>,</a>
-<a class="sourceLine" id="cb9-10" title="10">           <span class="dt">title=</span><span class="st">"Hyper Enrichment (hypeR)"</span>,</a>
-<a class="sourceLine" id="cb9-11" title="11">           <span class="dt">subtitle=</span><span class="st">"YAP, TNF, and TAZ Knockout Experiments"</span>,</a>
-<a class="sourceLine" id="cb9-12" title="12">           <span class="dt">author=</span><span class="st">"Anthony Federico, Stefano Monti"</span>,</a>
-<a class="sourceLine" id="cb9-13" title="13">           <span class="dt">show_plots=</span>T,</a>
-<a class="sourceLine" id="cb9-14" title="14">           <span class="dt">show_emaps=</span>T,</a>
-<a class="sourceLine" id="cb9-15" title="15">           <span class="dt">show_hmaps=</span>T,</a>
-<a class="sourceLine" id="cb9-16" title="16">           <span class="dt">show_tables=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Save to excel</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw"><a href="reference/hyp_to_excel.html">hyp_to_excel</a></span>(hyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.xlsx"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># Save to table</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="kw"><a href="reference/hyp_to_table.html">hyp_to_table</a></span>(hyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.txt"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6"></a></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co"># Generate markdown report</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="kw"><a href="reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(lmultihyp_obj,</span>
+<span id="cb11-9"><a href="#cb11-9"></a>           <span class="dt">file_path=</span><span class="st">"hyper-enrichment.rmd"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10"></a>           <span class="dt">title=</span><span class="st">"Hyper Enrichment (hypeR)"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11"></a>           <span class="dt">subtitle=</span><span class="st">"YAP, TNF, and TAZ Knockout Experiments"</span>,</span>
+<span id="cb11-12"><a href="#cb11-12"></a>           <span class="dt">author=</span><span class="st">"Anthony Federico, Stefano Monti"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13"></a>           <span class="dt">show_dots=</span>T,</span>
+<span id="cb11-14"><a href="#cb11-14"></a>           <span class="dt">show_emaps=</span>T,</span>
+<span id="cb11-15"><a href="#cb11-15"></a>           <span class="dt">show_hmaps=</span>T,</span>
+<span id="cb11-16"><a href="#cb11-16"></a>           <span class="dt">show_tables=</span>T)</span></code></pre></div>
 </div>
 </div>
 </div>
+</div>
+<div id="related-repositories" class="section level2">
+<h2 class="hasAnchor">
+<a href="#related-repositories" class="anchor"></a>Related Repositories</h2>
+<ul>
+<li>
+<a href="https://github.com/montilab/hypeR-db">hypeR-db</a> <em>A repository for commonly used open source genesets used by hypeR</em>
+</li>
+<li>
+<a href="https://github.com/montilab/hypeR-shiny">hypeR-shiny</a> <em>An example shiny application using hypeR</em>
+</li>
+<li>
+<a href="https://github.com/montilab/hypeR-docs">hypeR-docs</a> <em>Landing site for hosting documentation for hypeR</em>
+</li>
+<li>
+<a href="https://github.com/montilab/hypeR-workshop">hypeR-workshop</a> <em>Materials for a hypeR tutorial workshop</em>
+</li>
+</ul>
 </div>
 </div>
   </div>

@@ -118,50 +118,64 @@
 <h3 class="hasAnchor">
 <a href="#multiple-signatures" class="anchor"></a>Multiple signatures</h3>
 <p>Other times we’re looking at multiple signatures that may have been defined in a single experiment. In this case, we can feed <code><a href="../../reference/hypeR.html">hypeR()</a></code> a named list of signatures and a <code>multihyp</code> object will be returned. This object is essentially just multiple <code>hyp</code> objects. However it is recognized and handled differently by downstream methods.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3">wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</a>
-<a class="sourceLine" id="cb1-4" title="4">rgsets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_fetch.html">hyperdb_fetch</a></span>(<span class="dt">type=</span><span class="st">"rgsets"</span>, <span class="st">"REACTOME"</span>)</a>
-<a class="sourceLine" id="cb1-5" title="5">gsets &lt;-<span class="st"> </span>rgsets<span class="op">$</span>gsets</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">signatures &lt;-<span class="st"> </span>wgcna[[<span class="dv">1</span>]] </a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(signatures))</a></code></pre></div>
-<pre><code>#&gt; [1] "M0" "M1" "M2" "M3" "M4" "M5"</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(signatures[[<span class="dv">1</span>]])</a></code></pre></div>
-<pre><code>#&gt; [1] "C9orf156" "GRIN3A"   "HES3"     "HTR1B"    "PVALB"    "PCSK2"</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</span>
+<span id="cb1-4"><a href="#cb1-4"></a>rgsets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_fetch.html">hyperdb_fetch</a></span>(<span class="dt">type=</span><span class="st">"rgsets"</span>, <span class="st">"REACTOME"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>gsets &lt;-<span class="st"> </span>rgsets<span class="op">$</span>gsets</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>signatures &lt;-<span class="st"> </span>wgcna[[<span class="dv">1</span>]] </span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(signatures)</span></code></pre></div>
+<pre><code>List of 16
+ $ M0 : chr [1:1490] "C9orf156" "GRIN3A" "HES3" "HTR1B" ...
+ $ M1 : chr [1:1852] "OPRK1" "AVP" "NEURL2" "STOX2" ...
+ $ M2 : chr [1:1390] "ZBTB2" "ADPRHL2" "UQCR11" "UNK" ...
+ $ M3 : chr [1:559] "RALY" "MED11" "MANBAL" "PM20D2" ...
+ $ M4 : chr [1:1309] "C1QTNF7" "CYP4F12" "SOCS2" "PRSS2" ...
+ $ M5 : chr [1:408] "MCUR1" "SOS2" "UBR5" "H3F3B" ...
+ $ M6 : chr [1:447] "MT-ND2" "MT-ND1" "AQP8" "MT-ND3" ...
+ $ M9 : chr [1:420] "MPLKIP" "SLC22A7" "CFD" "GYPC" ...
+ $ M10: chr [1:255] "POLR2B" "KIF18B" "SIRT5" "CENPK" ...
+ $ M11: chr [1:252] "ATRN" "ZCCHC7" "ERLIN1" "SLC44A4" ...
+ $ M12: chr [1:441] "CDK20" "TLN1" "LIPT2" "MTA1" ...
+ $ M13: chr [1:418] "SPIC" "ZNF317" "CRYZ" "SEPHS1" ...
+ $ M16: chr [1:223] "TREX1" "S100A16" "RNF138" "BRF2" ...
+ $ M23: chr [1:105] "ISYNA1" "SPCS1" "DDOST" "SPCS2" ...
+ $ M30: chr [1:59] "ZSCAN21" "COMMD2" "ORAI3" "MRPL16" ...
+ $ M32: chr [1:54] "HLA-G" "CMPK2" "SP110" "UBA7" ...</code></pre>
 </div>
 <div id="hyper-enrichment" class="section level3">
 <h3 class="hasAnchor">
 <a href="#hyper-enrichment" class="anchor"></a>Hyper enrichment</h3>
-<p>All workflows begin with performing hyper enrichment with <code><a href="../../reference/hypeR.html">hypeR()</a></code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">multihyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(signatures, gsets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">bg=</span><span class="dv">50000</span>, <span class="dt">fdr_cutoff=</span><span class="fl">0.01</span>, <span class="dt">do_plots=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p>All workflows begin with performing enrichment with <code><a href="../../reference/hypeR.html">hypeR()</a></code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>multihyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(signatures, gsets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">bg=</span><span class="dv">50000</span>, <span class="dt">fdr_cutoff=</span><span class="fl">0.01</span>, <span class="dt">do_plots=</span><span class="ot">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="save-results-to-excel" class="section level3">
 <h3 class="hasAnchor">
 <a href="#save-results-to-excel" class="anchor"></a>Save results to excel</h3>
 <p>When saving a <code>multihyp</code> object to excel, each signature is exported to its own tab.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="../../reference/hyp_to_excel.html">hyp_to_excel</a></span>(multihyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.xlsx"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="../../reference/hyp_to_excel.html">hyp_to_excel</a></span>(multihyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.xlsx"</span>)</span></code></pre></div>
 </div>
 <div id="save-results-to-table" class="section level3">
 <h3 class="hasAnchor">
 <a href="#save-results-to-table" class="anchor"></a>Save results to table</h3>
 <p>When saving a <code>multihyp</code> object to a table, each signature is exported as its own table in a single directory.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="../../reference/hyp_to_table.html">hyp_to_table</a></span>(multihyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.txt"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="../../reference/hyp_to_table.html">hyp_to_table</a></span>(multihyp_obj, <span class="dt">file_path=</span><span class="st">"hyper.txt"</span>)</span></code></pre></div>
 </div>
 <div id="visualizations" class="section level3">
 <h3 class="hasAnchor">
 <a href="#visualizations" class="anchor"></a>Visualizations</h3>
 <p>When plotting a <code>multihyp</code> object, each signatures is plotted and returned separately. The same goes for <code><a href="../../reference/hyp_dots.html">hyp_dots()</a></code>, <code><a href="../../reference/hyp_emap.html">hyp_emap()</a></code>, and <code><a href="../../reference/hyp_hmap.html">hyp_hmap()</a></code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyp_dots.html">hyp_dots</a></span>(multihyp_obj, <span class="dt">show_plots=</span><span class="ot">FALSE</span>, <span class="dt">return_plots=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(p)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
-<pre><code>#&gt; [1] "M0" "M1" "M2"</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">p[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
-<pre><code>#&gt; $M0</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>p &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyp_dots.html">hyp_dots</a></span>(multihyp_obj, <span class="dt">show_plots=</span><span class="ot">FALSE</span>, <span class="dt">return_plots=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(p)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>[1] "M0" "M1" "M2"</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>p[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>$M0</code></pre>
 <p><img src="multihyp_files/figure-html/unnamed-chunk-9-1.png" width="840" style="display: block; margin: auto;"></p>
-<pre><code>#&gt; 
-#&gt; $M1</code></pre>
+<pre><code>
+$M1</code></pre>
 <p><img src="multihyp_files/figure-html/unnamed-chunk-9-2.png" width="840" style="display: block; margin: auto;"></p>
-<pre><code>#&gt; 
-#&gt; $M2</code></pre>
+<pre><code>
+$M2</code></pre>
 <p><img src="multihyp_files/figure-html/unnamed-chunk-9-3.png" width="840" style="display: block; margin: auto;"></p>
 </div>
   </div>
