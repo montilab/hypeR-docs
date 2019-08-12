@@ -11,6 +11,7 @@ articles:
   rgsets: docs/rgsets.html
   shiny: docs/shiny.html
   visualize: docs/visualize.html
+  workflow: examples/workflow.html
   hypeR: hypeR.html
 urls:
   reference: https://github.com/montilab/hypeR/reference

@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.9</span>
       </span>
     </div>
 
@@ -78,6 +78,18 @@
     </li>
     <li>
       <a href="../../articles/docs/extending.html">Extending hypeR</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Examples
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../../articles/examples/workflow.html">Co-Expression Modules</a>
     </li>
   </ul>
 </li>
@@ -160,7 +172,7 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>msigdb_path &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/msigdb_download_all.html">msigdb_download_all</a></span>(<span class="dt">species=</span><span class="st">"Homo sapiens"</span>)</span></code></pre></div>
 <pre><code>v6.2.1
 Downloading genesets to...
-/var/folders/7j/bg701dss38lc2xq26vt_by240000gn/T//RtmpfvRB4z
+/var/folders/7j/bg701dss38lc2xq26vt_by240000gn/T//Rtmp1u8Zam
 - C1 -&gt; 326 Gene Sets 
 - C2.CGP -&gt; 3433 Gene Sets 
 - C2.CP -&gt; 252 Gene Sets 
@@ -189,8 +201,8 @@ Downloading genesets to...
 <a href="#defining-custom-genesets" class="anchor"></a>Defining custom genesets</h3>
 <p>As mentioned previously, one can use custom genesets with <strong>hypeR</strong>. In this example, we download one of the many publicly available genesets hosted by <a href="https://amp.pharm.mssm.edu/Enrichr/">Enrichr</a>. Once downloaded, one performs enrichment as normal.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>url =<span class="st"> "http://amp.pharm.mssm.edu/Enrichr/geneSetLibrary?mode=text&amp;libraryName=Cancer_Cell_Line_Encyclopedia"</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>r &lt;-<span class="st"> </span>httr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/httr/topics/GET">GET</a></span>(url)</span>
-<span id="cb12-3"><a href="#cb12-3"></a>text &lt;-<span class="st"> </span>httr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/httr/topics/content">content</a></span>(r, <span class="st">"text"</span>, <span class="dt">encoding=</span><span class="st">"ISO-8859-1"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>r &lt;-<span class="st"> </span>httr<span class="op">::</span><span class="kw"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span>(url)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>text &lt;-<span class="st"> </span>httr<span class="op">::</span><span class="kw"><a href="https://httr.r-lib.org/reference/content.html">content</a></span>(r, <span class="st">"text"</span>, <span class="dt">encoding=</span><span class="st">"ISO-8859-1"</span>)</span>
 <span id="cb12-4"><a href="#cb12-4"></a>text.split &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/strsplit">strsplit</a></span>(text, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)[[<span class="dv">1</span>]]</span>
 <span id="cb12-5"><a href="#cb12-5"></a>gsets &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(text.split, <span class="cf">function</span>(x) {</span>
 <span id="cb12-6"><a href="#cb12-6"></a>    genes &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/strsplit">strsplit</a></span>(x, <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)[[<span class="dv">1</span>]]</span>
