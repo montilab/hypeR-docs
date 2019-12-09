@@ -13,6 +13,9 @@
     <loc>https://github.com/montilab/hypeR/reference/dot-enrichment_map.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-find_members.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-format_str.html</loc>
   </url>
   <url>
@@ -50,9 +53,6 @@
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/enrichr_gsets.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/reference/find_members.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/ggempty.html</loc>

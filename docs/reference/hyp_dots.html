@@ -180,7 +180,7 @@
     </tr>
     <tr>
       <th>val</th>
-      <td><p>Choose significance value e.g. c("fdr", "pval")</p></td>
+      <td><p>Choose significance value for plot e.g. c("fdr", "pval")</p></td>
     </tr>
     <tr>
       <th>title</th>
@@ -199,11 +199,9 @@
                <span class='st'>"PDHA2"</span>,<span class='st'>"LOC283398"</span>,<span class='st'>"FH"</span>,<span class='st'>"SDHD"</span>,<span class='st'>"OGDH"</span>,<span class='st'>"SDHB"</span>,<span class='st'>"IDH3A"</span>,<span class='st'>"SDHC"</span>,
                <span class='st'>"IDH2"</span>,<span class='st'>"IDH1"</span>,<span class='st'>"OGDHL"</span>,<span class='st'>"PC"</span>,<span class='st'>"SDHA"</span>,<span class='st'>"SUCLG1"</span>,<span class='st'>"SUCLA2"</span>,<span class='st'>"SUCLG2"</span>)
 
-<span class='co'># Perform hyper enrichment</span>
 <span class='no'>hyp_obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='hypeR.html'>hypeR</a></span>(<span class='no'>signature</span>, <span class='no'>genesets</span>, <span class='kw'>background</span><span class='kw'>=</span><span class='fl'>2522</span>)
 
-<span class='co'># Visualize</span>
-<span class='fu'>hyp_dots</span>(<span class='no'>hyp_obj</span>, <span class='kw'>top</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>val</span><span class='kw'>=</span><span class='st'>"fdr"</span>)</div><div class='img'><img src='hyp_dots-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>hyp_dots</span>(<span class='no'>hyp_obj</span>, <span class='kw'>val</span><span class='kw'>=</span><span class='st'>"fdr"</span>)</div><div class='img'><img src='hyp_dots-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

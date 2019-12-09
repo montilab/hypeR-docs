@@ -171,9 +171,6 @@
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>None</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>genesets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='msigdb_gsets.html'>msigdb_gsets</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='st'>"C2"</span>, <span class='st'>"CP:KEGG"</span>)
@@ -182,17 +179,14 @@
                <span class='st'>"PDHA2"</span>,<span class='st'>"LOC283398"</span>,<span class='st'>"FH"</span>,<span class='st'>"SDHD"</span>,<span class='st'>"OGDH"</span>,<span class='st'>"SDHB"</span>,<span class='st'>"IDH3A"</span>,<span class='st'>"SDHC"</span>,
                <span class='st'>"IDH2"</span>,<span class='st'>"IDH1"</span>,<span class='st'>"OGDHL"</span>,<span class='st'>"PC"</span>,<span class='st'>"SDHA"</span>,<span class='st'>"SUCLG1"</span>,<span class='st'>"SUCLA2"</span>,<span class='st'>"SUCLG2"</span>)
 
-<span class='co'># Perform hyper enrichment</span>
 <span class='no'>hyp_obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='hypeR.html'>hypeR</a></span>(<span class='no'>signature</span>, <span class='no'>genesets</span>, <span class='kw'>background</span><span class='kw'>=</span><span class='fl'>2522</span>)
 
-<span class='co'># Export</span>
 <span class='fu'>hyp_to_excel</span>(<span class='no'>hyp_obj</span>, <span class='kw'>file_path</span><span class='kw'>=</span><span class='st'>"pathways.xlsx"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

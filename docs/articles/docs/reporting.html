@@ -112,12 +112,12 @@
     
 <div id="multiple-experiments" class="section level3">
 <h3 class="hasAnchor">
-<a href="#multiple-experiments" class="anchor"></a>Multiple experiments</h3>
-<p>Sometimes, we are generating reports for multiple signatures across multiple experiments. Typically, the best way to manage this data is to process it all at once and generate a markdown report to analyze ourselves or share with collaborators.</p>
-<p>In the following example, we’re interested in exploring the signatures from a <a href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/">Weighted Gene Co-expression Analysis</a> of two different phenotypes. In <code>hypdat</code>, we take the resulting co-expression modules from WGCNA ran separately on gene expression data from carcinogenic and non-carcinogenic compounds. There are 15 modules of co-expressed genes for carcinogenic compounds and 16 modules of co-expressed genes for non-carcinogenic compounds. The <code><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd()</a></code> will help us process this data in a concise and reproducible manner that is readily shareable.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2"></a>wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(wgcna)</span></code></pre></div>
+<a href="#multiple-experiments" class="anchor"></a>Multiple Experiments</h3>
+<p>Often researchers need to annotate multiple signatures across multiple experiments. Typically, the best way to manage this data is to process it all at once and generate a markdown report to analyze and share with collaborators.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</span></code></pre></div>
+<p>In the following example, we’re interested in exploring the signatures from a <a href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/">Weighted Gene Co-expression Analysis</a> of two different phenotypes. In <code>hypdat</code>, we take the resulting co-expression modules from WGCNA ran separately on gene expression data from carcinogenic and non-carcinogenic compounds. There are 15 modules of co-expressed genes for carcinogenic compounds and 16 modules of co-expressed genes for non-carcinogenic compounds. Using <code><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd()</a></code> will help us process this data in a concise and reproducible manner that is readily shareable.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>signatures &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(signatures)</span></code></pre></div>
 <pre><code>List of 2
  $ NON-CARC  :List of 16
   ..$ M0 : chr [1:1490] "C9orf156" "GRIN3A" "HES3" "HTR1B" ...
@@ -152,21 +152,20 @@
   ..$ M18: chr [1:146] "KIF18B" "PRSS2" "CENPK" "ADARB2" ...
   ..$ M19: chr [1:141] "SOCS2" "HSDL2" "CBLB" "CMTM8" ...
   ..$ M23: chr [1:89] "INPP5A" "SEZ6L2" "C9orf172" "KIF5B" ...</code></pre>
-</div>
-<div id="hyper-enrichment" class="section level3">
-<h3 class="hasAnchor">
-<a href="#hyper-enrichment" class="anchor"></a>Hyper enrichment</h3>
 <p>Because we have a nested list of signatures, we use <code>hyper()</code> with the <code>lapply</code> function. This results in a list of <code>multihyp</code> objects, which can be directly passed to <code><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd()</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>genesets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_rgsets.html">hyperdb_rgsets</a></span>(<span class="st">"REACTOME"</span>, <span class="st">"70.0"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>lmultihyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(wgcna, hypeR, genesets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">background=</span><span class="dv">50000</span>, <span class="dt">fdr=</span><span class="fl">0.01</span>, <span class="dt">plotting=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>lmultihyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(signatures, hypeR, genesets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">background=</span><span class="dv">50000</span>, <span class="dt">fdr=</span><span class="fl">0.01</span>)</span></code></pre></div>
 </div>
-<div id="markdown-reports" class="section level3">
+<div id="generating-markdown-reports" class="section level3">
 <h3 class="hasAnchor">
-<a href="#markdown-reports" class="anchor"></a>Markdown reports</h3>
-<p><code><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd()</a></code> will accept multiple formats, including a single <code>hyp</code> or <code>multihyp</code> object as well as a list of either, including a list of <code>hyp</code> or <code>multihyp</code> objects together. When a list of <code>multihyp</code> objects are passed for example, each experiment will become its own section, while each signature becomes its own tab within that section. Lists of keyword arguments can be passed for <code><a href="../../reference/hyp_dots.html">hyp_dots()</a></code>, <code><a href="../../reference/hyp_emap.html">hyp_emap()</a></code>, and <code><a href="../../reference/hyp_hmap.html">hyp_hmap()</a></code>, allowing customization of their functionality per report.</p>
+<a href="#generating-markdown-reports" class="anchor"></a>Generating Markdown Reports</h3>
+<p><code><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd()</a></code> will accept multiple formats, including a single <code>hyp</code> or <code>multihyp</code> object as well as a list of either, including a list of <code>hyp</code> or <code>multihyp</code> objects together.</p>
+<p>When a list of <code>multihyp</code> objects are passed for example, each experiment will become its own section, while each signature becomes its own tab within that section.</p>
+<p>Lists of keyword arguments can be passed for <code><a href="../../reference/hyp_dots.html">hyp_dots()</a></code>, <code><a href="../../reference/hyp_emap.html">hyp_emap()</a></code>, and <code><a href="../../reference/hyp_hmap.html">hyp_hmap()</a></code>, allowing customization of their functionality per report. See <code><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd()</a></code> for details.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(lmultihyp_obj,</span>
-<span id="cb5-2"><a href="#cb5-2"></a>           <span class="dt">file_path=</span><span class="st">"hyper-enrichment.rmd"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>           <span class="dt">title=</span><span class="st">"Hyper Enrichment (hypeR)"</span>,</span>
+<span id="cb5-2"><a href="#cb5-2"></a>           <span class="dt">file_path=</span><span class="st">"hypeR.rmd"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3"></a>           <span class="dt">title=</span><span class="st">"hypeR Report"</span>,</span>
 <span id="cb5-4"><a href="#cb5-4"></a>           <span class="dt">subtitle=</span><span class="st">"Weighted Gene Co-expression Analysis"</span>,</span>
 <span id="cb5-5"><a href="#cb5-5"></a>           <span class="dt">author=</span><span class="st">"Anthony Federico, Stefano Monti"</span>,</span>
 <span id="cb5-6"><a href="#cb5-6"></a>           <span class="dt">show_dots=</span>T,</span>

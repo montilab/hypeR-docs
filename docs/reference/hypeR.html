@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform hyper enrichment — hypeR • hypeR</title>
+<title>Calculate enrichment of one or more signatures — hypeR • hypeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Perform hyper enrichment — hypeR" />
-<meta property="og:description" content="Perform hyper enrichment" />
+<meta property="og:title" content="Calculate enrichment of one or more signatures — hypeR" />
+<meta property="og:description" content="Calculate enrichment of one or more signatures" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -139,13 +139,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform hyper enrichment</h1>
+    <h1>Calculate enrichment of one or more signatures</h1>
     <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/hype.R'><code>R/hype.R</code></a></small>
     <div class="hidden name"><code>hypeR.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Perform hyper enrichment</p>
+    <p>Calculate enrichment of one or more signatures</p>
     </div>
 
     <pre class="usage"><span class='fu'>hypeR</span>(<span class='no'>signature</span>, <span class='no'>genesets</span>, <span class='kw'>test</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hypergeometric"</span>, <span class='st'>"kstest"</span>),
@@ -173,11 +173,11 @@
     </tr>
     <tr>
       <th>power</th>
-      <td><p>Exponent for weights (Subramanian et al.)</p></td>
+      <td><p>Exponent for weights (kstest only)</p></td>
     </tr>
     <tr>
       <th>absolute</th>
-      <td><p>Takes max-min score rather than the max deviation from null</p></td>
+      <td><p>Takes max-min score rather than the max deviation from null (kstest only)</p></td>
     </tr>
     <tr>
       <th>pval</th>
@@ -193,7 +193,7 @@
     </tr>
     <tr>
       <th>quiet</th>
-      <td><p>Use false to suppress logs</p></td>
+      <td><p>Use true to suppress logs and warnings</p></td>
     </tr>
     </table>
 
@@ -208,7 +208,6 @@
                <span class='st'>"PDHA2"</span>,<span class='st'>"LOC283398"</span>,<span class='st'>"FH"</span>,<span class='st'>"SDHD"</span>,<span class='st'>"OGDH"</span>,<span class='st'>"SDHB"</span>,<span class='st'>"IDH3A"</span>,<span class='st'>"SDHC"</span>,
                <span class='st'>"IDH2"</span>,<span class='st'>"IDH1"</span>,<span class='st'>"OGDHL"</span>,<span class='st'>"PC"</span>,<span class='st'>"SDHA"</span>,<span class='st'>"SUCLG1"</span>,<span class='st'>"SUCLA2"</span>,<span class='st'>"SUCLG2"</span>)
 
-<span class='co'># Perform hyper enrichment</span>
 <span class='no'>hyp_obj</span> <span class='kw'>&lt;-</span> <span class='fu'>hypeR</span>(<span class='no'>signature</span>, <span class='no'>genesets</span>, <span class='kw'>background</span><span class='kw'>=</span><span class='fl'>2522</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

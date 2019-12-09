@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • hypeR</title>
+<title>Find geneset members — .find_members • hypeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Find geneset members — .find_members" />
+<meta property="og:description" content="Find geneset members" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -61,7 +63,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -135,192 +137,52 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Find geneset members</h1>
+    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>dot-find_members.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Find geneset members</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>.find_members</span>(<span class='no'>id</span>, <span class='no'>genesets</span>, <span class='no'>nodes</span>, <span class='no'>edges</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-workflow-methods" class="hasAnchor"><a href="#section-workflow-methods" class="anchor"></a>Workflow Methods</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="hypeR.html">hypeR()</a></code> </p>
-        </td>
-        <td><p>Calculate enrichment of one or more signatures</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyp_show.html">hyp_show()</a></code> </p>
-        </td>
-        <td><p>Convert a hyp object to a reactable table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyp_dots.html">hyp_dots()</a></code> </p>
-        </td>
-        <td><p>Visualize hyp/multihyp objects as a dots plot</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyp_emap.html">hyp_emap()</a></code> </p>
-        </td>
-        <td><p>Visualize hyp/multihyp objects as an enrichment map</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyp_hmap.html">hyp_hmap()</a></code> </p>
-        </td>
-        <td><p>Visualize hyp/multihyp objects as a hiearchy map</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyp_to_excel.html">hyp_to_excel()</a></code> </p>
-        </td>
-        <td><p>Export hyp/multihyp object to excel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyp_to_table.html">hyp_to_table()</a></code> </p>
-        </td>
-        <td><p>Export hyp/multihyp object to table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyp_to_rmd.html">hyp_to_rmd()</a></code> </p>
-        </td>
-        <td><p>Export hyp object to rmarkdown</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-data-methods" class="hasAnchor"><a href="#section-data-methods" class="anchor"></a>Data Methods</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="msigdb_version.html">msigdb_version()</a></code> </p>
-        </td>
-        <td><p>Get msigdbr package version number</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msigdb_species.html">msigdb_species()</a></code> </p>
-        </td>
-        <td><p>Get msigdbr available species</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msigdb_available.html">msigdb_available()</a></code> </p>
-        </td>
-        <td><p>Get msigdbr available genesets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msigdb_info.html">msigdb_info()</a></code> </p>
-        </td>
-        <td><p>Print msigdb gsets information</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msigdb_download.html">msigdb_download()</a></code> </p>
-        </td>
-        <td><p>Download data from msigdb in the form of a named list</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msigdb_gsets.html">msigdb_gsets()</a></code> </p>
-        </td>
-        <td><p>Download data from msigdb in the form of a gsets object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="enrichr_available.html">enrichr_available()</a></code> </p>
-        </td>
-        <td><p>Get enrichr available genesets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="enrichr_download.html">enrichr_download()</a></code> </p>
-        </td>
-        <td><p>Download data from enrichr in the form of a named list</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="enrichr_gsets.html">enrichr_gsets()</a></code> </p>
-        </td>
-        <td><p>Download data from enrichr in the form of a gsets object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyperdb_info.html">hyperdb_info()</a></code> </p>
-        </td>
-        <td><p>Print hypeR-db rgsets information</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hyperdb_rgsets.html">hyperdb_rgsets()</a></code> </p>
-        </td>
-        <td><p>Download data from hyperdb in the form of a rgsets object</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-objects" class="hasAnchor"><a href="#section-objects" class="anchor"></a>Objects</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="hyp.html">hyp</a></code> </p>
-        </td>
-        <td><p>A hyp object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="multihyp.html">multihyp</a></code> </p>
-        </td>
-        <td><p>A multihyp object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gsets.html">gsets</a></code> </p>
-        </td>
-        <td><p>A genesets object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rgsets.html">rgsets</a></code> </p>
-        </td>
-        <td><p>A relational genesets object</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p>A vector of ids</p></td>
+    </tr>
+    <tr>
+      <th>genesets</th>
+      <td><p>A list of genesets (see <code>rgsets</code>)</p></td>
+    </tr>
+    <tr>
+      <th>nodes</th>
+      <td><p>A data frame of labeled nodes (see <code>rgsets</code>)</p></td>
+    </tr>
+    <tr>
+      <th>edges</th>
+      <td><p>A data frame of directed edges (see <code>rgsets</code>)</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A vector of ids</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-workflow-methods">Workflow Methods</a></li>
-      <li><a href="#section-data-methods">Data Methods</a></li>
-      <li><a href="#section-objects">Objects</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
+
   </div>
 </div>
 

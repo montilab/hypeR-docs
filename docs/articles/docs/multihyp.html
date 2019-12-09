@@ -110,11 +110,12 @@
 
     
     
-<p>Often computational biologists must process, interpret, and share large amounts of biological data. A common example is interpreting gene co-expression modules across one or more phenotype, resulting in potentially hundreds of signatures to annotate. Here we have signatures of gene co-expression modules developed from carcinogenic and non-carcinogenic pertubation experiments. In this case, we can feed <code><a href="../../reference/hypeR.html">hypeR()</a></code> a named list of signatures and a <code>multihyp</code> object will be returned. This object is essentially just multiple <code>hyp</code> objects. However it is recognized and handled differently by downstream methods.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2"></a>wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>signatures &lt;-<span class="st"> </span>wgcna[[<span class="dv">1</span>]]</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(signatures)</span></code></pre></div>
+<p>Often computational biologists must process, interpret, and share large amounts of biological data. A common example is interpreting gene co-expression modules across one or more phenotype, resulting in potentially hundreds of signatures to annotate. Here we have signatures of gene co-expression modules, generated with WGCNA, for two distinct phenotypes. In this case, we can feed <code><a href="../../reference/hypeR.html">hypeR()</a></code> a named list of signatures and a <code>multihyp</code> object will be returned. This object is essentially just multiple <code>hyp</code> objects. However it is recognized and handled differently by downstream methods.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</span></code></pre></div>
+<p>We start by annotating signatures for the first phenotype..</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>wgcna &lt;-<span class="st"> </span>hypdat<span class="op">$</span>wgcna</span>
+<span id="cb2-2"><a href="#cb2-2"></a>signatures &lt;-<span class="st"> </span>wgcna[[<span class="dv">1</span>]]</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(signatures)</span></code></pre></div>
 <pre><code>List of 16
  $ M0 : chr [1:1490] "C9orf156" "GRIN3A" "HES3" "HTR1B" ...
  $ M1 : chr [1:1852] "OPRK1" "AVP" "NEURL2" "STOX2" ...
@@ -132,8 +133,10 @@
  $ M23: chr [1:105] "ISYNA1" "SPCS1" "DDOST" "SPCS2" ...
  $ M30: chr [1:59] "ZSCAN21" "COMMD2" "ORAI3" "MRPL16" ...
  $ M32: chr [1:54] "HLA-G" "CMPK2" "SP110" "UBA7" ...</code></pre>
+<p>The signatures will be processed together…</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>genesets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span>(<span class="st">"Homo sapiens"</span>, <span class="st">"C2"</span>, <span class="st">"CP:KEGG"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>multihyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(signatures, genesets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">background=</span><span class="dv">50000</span>, <span class="dt">fdr=</span><span class="fl">0.01</span>, <span class="dt">plotting=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>multihyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(signatures, genesets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">background=</span><span class="dv">50000</span>, <span class="dt">fdr=</span><span class="fl">0.01</span>)</span></code></pre></div>
 <pre><code>M0
 M1
 M2
@@ -150,24 +153,66 @@ M16
 M23
 M30
 M32</code></pre>
+<div id="a-multihyp-object" class="section level3">
+<h3 class="hasAnchor">
+<a href="#a-multihyp-object" class="anchor"></a>A <code>multihyp</code> Object</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(multihyp_obj)</span></code></pre></div>
+<pre><code>(multihyp) 
+  (hyp) M0
+        49 x 8
+  (hyp) M1
+        51 x 8
+  (hyp) M2
+        35 x 8
+  (hyp) M3
+        6 x 8
+  (hyp) M4
+        98 x 8
+  (hyp) M5
+        2 x 8
+  (hyp) M6
+        25 x 8
+  (hyp) M9
+        34 x 8
+  (hyp) M10
+        13 x 8
+  (hyp) M11
+        7 x 8
+  (hyp) M12
+        21 x 8
+  (hyp) M13
+        30 x 8
+  (hyp) M16
+        3 x 8
+  (hyp) M23
+        5 x 8
+  (hyp) M30
+        0 x 8
+  (hyp) M32
+        2 x 8</code></pre>
 <p>A <code>multihyp</code> object can be passed to any downstream method, with some altered behavior.</p>
-<p>When saving a <code>multihyp</code> object to excel, each signature is exported to its own tab.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="../../reference/hyp_to_excel.html">hyp_to_excel</a></span>(multihyp_obj, <span class="dt">file_path=</span><span class="st">"hypeR.xlsx"</span>)</span></code></pre></div>
-<p>When saving a <code>multihyp</code> object to a table, each signature is exported as its own table in a single directory.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="../../reference/hyp_to_table.html">hyp_to_table</a></span>(multihyp_obj, <span class="dt">file_path=</span><span class="st">"hypeR"</span>)</span></code></pre></div>
-<p>When plotting a <code>multihyp</code> object, each signatures is plotted and returned separately. The same goes for <code><a href="../../reference/hyp_dots.html">hyp_dots()</a></code>, <code><a href="../../reference/hyp_emap.html">hyp_emap()</a></code>, and <code><a href="../../reference/hyp_hmap.html">hyp_hmap()</a></code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>p &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyp_dots.html">hyp_dots</a></span>(multihyp_obj)</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(p)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span></code></pre></div>
-<pre><code>[1] "M0" "M1" "M2"</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>p[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span></code></pre></div>
+<div id="altered-methods" class="section level4">
+<h4 class="hasAnchor">
+<a href="#altered-methods" class="anchor"></a>Altered Methods</h4>
+<p>With <code>hyp_to_excel</code> each signature is exported to its own sheet…</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="../../reference/hyp_to_excel.html">hyp_to_excel</a></span>(multihyp_obj, <span class="dt">file_path=</span><span class="st">"hypeR.xlsx"</span>)</span></code></pre></div>
+<p>With <code>hyp_to_table</code> each signature is exported as its own table in a single directory…</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw"><a href="../../reference/hyp_to_table.html">hyp_to_table</a></span>(multihyp_obj, <span class="dt">file_path=</span><span class="st">"hypeR"</span>)</span></code></pre></div>
+<p>With <code>hyp_to_rmd</code> each signature is displayed under its own tab…</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="../../reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(lmultihyp_obj, <span class="dt">file_path=</span><span class="st">"hypeR.rmd"</span>,</span></code></pre></div>
+<p>With <code><a href="../../reference/hyp_dots.html">hyp_dots()</a></code>, <code><a href="../../reference/hyp_emap.html">hyp_emap()</a></code>, and <code><a href="../../reference/hyp_hmap.html">hyp_hmap()</a></code> each signatures is plotted and returned separately…</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>p &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyp_dots.html">hyp_dots</a></span>(multihyp_obj)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>p[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>$M0</code></pre>
-<p><img src="multihyp_files/figure-html/unnamed-chunk-9-1.png" width="840" style="display: block; margin: auto;"></p>
+<p><img src="multihyp_files/figure-html/unnamed-chunk-10-1.png" width="840" style="display: block; margin: auto;"></p>
 <pre><code>
 $M1</code></pre>
-<p><img src="multihyp_files/figure-html/unnamed-chunk-9-2.png" width="840" style="display: block; margin: auto;"></p>
+<p><img src="multihyp_files/figure-html/unnamed-chunk-10-2.png" width="840" style="display: block; margin: auto;"></p>
 <pre><code>
 $M2</code></pre>
-<p><img src="multihyp_files/figure-html/unnamed-chunk-9-3.png" width="840" style="display: block; margin: auto;"></p>
+<p><img src="multihyp_files/figure-html/unnamed-chunk-10-3.png" width="840" style="display: block; margin: auto;"></p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
