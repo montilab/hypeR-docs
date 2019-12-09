@@ -4,10 +4,16 @@
     <loc>https://github.com/montilab/hypeR/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-check_overlap.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-dots_plot.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-enrichment_map.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-format_str.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-hiearchy_map.html</loc>
@@ -16,19 +22,37 @@
     <loc>https://github.com/montilab/hypeR/reference/dot-hyper_enrichment.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-jaccard_similarity.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-ks_enrichment.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-kstest.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-overlap_similarity.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-reverselog_trans.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/find_members.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/dot-string_args.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/format_str.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/enrichr_available.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/enrichr_connect.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/enrichr_download.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/enrichr_gsets.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/find_members.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/ggempty.html</loc>
@@ -38,6 +62,9 @@
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/ggvenn.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/gsets.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp.html</loc>
@@ -67,31 +94,34 @@
     <loc>https://github.com/montilab/hypeR/reference/hypeR.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/hyperdb_fetch.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/montilab/hypeR/reference/hyperdb_info.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/jaccard_similarity.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/hyperdb_rgsets.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/msigdb_download_all.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/msigdb_available.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/msigdb_download_one.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/msigdb_check_species.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/msigdb_fetch.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/msigdb_download.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/msigdb_gsets.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/msigdb_info.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/multihyp.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/msigdb_species.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/overlap_similarity.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/msigdb_version.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/multihyp.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/pvector.html</loc>
@@ -100,16 +130,10 @@
     <loc>https://github.com/montilab/hypeR/reference/rgsets.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/string_args.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/basics.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/data.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/articles/docs/extending.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/installation.html</loc>
@@ -121,18 +145,9 @@
     <loc>https://github.com/montilab/hypeR/articles/docs/reporting.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/articles/docs/rgsets.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/shiny.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/visualize.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/articles/examples/workflow.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/articles/hypeR.html</loc>
   </url>
 </urlset>

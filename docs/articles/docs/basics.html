@@ -13,8 +13,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
 <script src="../../pkgdown.js"></script><meta property="og:title" content="Basic Usage">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -36,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -59,13 +60,10 @@
       <a href="../../articles/docs/basics.html">Basic Usage</a>
     </li>
     <li>
-      <a href="../../articles/docs/data.html">Downloading Data</a>
-    </li>
-    <li>
       <a href="../../articles/docs/visualize.html">Visualize Results</a>
     </li>
     <li>
-      <a href="../../articles/docs/rgsets.html">Constructing Relational Genesets</a>
+      <a href="../../articles/docs/data.html">Downloading Genesets</a>
     </li>
     <li>
       <a href="../../articles/docs/multihyp.html">Multiple Signatures</a>
@@ -75,21 +73,6 @@
     </li>
     <li>
       <a href="../../articles/docs/shiny.html">Shiny Applications</a>
-    </li>
-    <li>
-      <a href="../../articles/docs/extending.html">Extending hypeR</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Examples
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../../articles/examples/workflow.html">Co-Expression Modules</a>
     </li>
   </ul>
 </li>
@@ -113,6 +96,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -135,31 +119,31 @@
 <a href="#signature" class="anchor"></a>Signature</h4>
 <p>There are multiple types of enrichment analyses (e.g. hypergeometric, kstest, gsea) one can perform. Depending on the type, different kinds of signatures are expected. There are three types of signatures <code><a href="../../reference/hypeR.html">hypeR()</a></code> expects.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Simply a character vector of symbols (hypergeometric)</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>signature &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>signature &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># A ranked character vector of symbols (kstest)</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>ranked.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># A pre-ranked character vector of symbols (kstest)</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>ranked.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)</span>
 <span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># A ranked named numerical vector of symbols with ranking weights (gsea)</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>weighted.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>=<span class="fl">1.22</span>, <span class="st">"GENE2"</span>=<span class="fl">0.94</span>, <span class="st">"GENE3"</span>=<span class="fl">0.77</span>)</span></code></pre></div>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># A pre-ranked named numerical vector of symbols with ranking weights (gsea)</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>weighted.signature &lt;-<span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>=<span class="fl">1.22</span>, <span class="st">"GENE2"</span>=<span class="fl">0.94</span>, <span class="st">"GENE3"</span>=<span class="fl">0.77</span>)</span></code></pre></div>
 </div>
 <div id="geneset" class="section level4">
 <h4 class="hasAnchor">
 <a href="#geneset" class="anchor"></a>Geneset</h4>
 <p>A geneset is simply a list of vectors, therefore, one can use any custom geneset in their analyses, as long as it’s appropriately defined. There is also what is called relational genesets, whereby genesets are organized into a hiearchy. See <a href="https://montilab.github.io/hypeR-docs/articles/docs/visualize.html">Relational Genesets</a> for more information.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>genesets &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"GSET1"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>),</span>
-<span id="cb2-2"><a href="#cb2-2"></a>                 <span class="st">"GSET2"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE4"</span>, <span class="st">"GENE5"</span>, <span class="st">"GENE6"</span>),</span>
-<span id="cb2-3"><a href="#cb2-3"></a>                 <span class="st">"GSET3"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>genesets &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"GSET1"</span> =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>),</span>
+<span id="cb2-2"><a href="#cb2-2"></a>                 <span class="st">"GSET2"</span> =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE4"</span>, <span class="st">"GENE5"</span>, <span class="st">"GENE6"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3"></a>                 <span class="st">"GSET3"</span> =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="example-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#example-data" class="anchor"></a>Example data</h3>
 <p>In these tutorials, we will use example data. The example data includes an expression set object as well as pre-computed results from common workflows such as diffential expression and weighted gene co-expression analyses.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>hypdat &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="dt">package=</span><span class="st">"hypeR"</span>), <span class="st">"hypdat.rds"</span>))</span></code></pre></div>
 <p>Using a differential expression dataframe created with limma, we will extract a signature of upregulated genes for use with a hypergeometric test and rank genes descending by their differential expression level for use with a kstest.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>limma &lt;-<span class="st"> </span>hypdat<span class="op">$</span>limma</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(limma[,<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"logFC"</span>, <span class="st">"t"</span>, <span class="st">"pval"</span>, <span class="st">"fdr"</span>)])</span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(limma[,<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"logFC"</span>, <span class="st">"t"</span>, <span class="st">"pval"</span>, <span class="st">"fdr"</span>)])</span></code></pre></div>
 <pre><code>           logFC        t         pval          fdr
 LMAN2L 0.2546534 6.588801 1.434477e-09 3.833358e-06
 SHKBP1 0.3685350 6.556606 1.677921e-09 3.833358e-06
@@ -168,7 +152,7 @@ AJUBA  0.3819731 6.260276 6.994201e-09 6.785887e-06
 TJP1   0.2879929 6.259840 7.008765e-09 6.785887e-06
 TMCC3  0.6889354 6.109391 1.430693e-08 1.154330e-05</code></pre>
 <p>We’ll also import the latest genesets from <a href="https://www.kegg.jp">Kyoto Encyclopedia of Genes and Genomes</a> using another set of functions provided by <strong>hypeR</strong> for downloading and loading hundreds of open source genesets. See <a href="https://montilab.github.io/hypeR-docs/articles/docs/data.html">Downloading Data</a> for more information.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>gsets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hyperdb_fetch.html">hyperdb_fetch</a></span>(<span class="dt">type=</span><span class="st">"gsets"</span>, <span class="st">"KEGG_2019_Human"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>genesets &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span>(<span class="st">"Homo sapiens"</span>, <span class="st">"C2"</span>, <span class="st">"CP:KEGG"</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level3">
 <h3 class="hasAnchor">
@@ -178,12 +162,12 @@ TMCC3  0.6889354 6.109391 1.430693e-08 1.154330e-05</code></pre>
 <h4 class="hasAnchor">
 <a href="#signature-1" class="anchor"></a>Signature</h4>
 <p>The most basic signature is an unranked vector of genes. This could be a differential expression signature, module of co-expressed genes, etc. As an example, we use the differential expression dataframe to filter genes that are upregulated (t &gt; 0) and are sufficiently significant (fdr &lt; 0.001), then extract the gene symbol column as a vector.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>signature &lt;-<span class="st"> </span>limma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(t <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>fdr <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">use_series</span>(symbol)</span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(signature)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>signature &lt;-<span class="st"> </span>limma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(t <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>fdr <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">use_series</span>(symbol)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(signature)</span></code></pre></div>
 <pre><code>[1] 213</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(signature)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(signature)</span></code></pre></div>
 <pre><code>[1] "LMAN2L" "SHKBP1" "SPHK2"  "AJUBA"  "TJP1"   "TMCC3" </code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(signature, gsets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">bg=</span><span class="dv">50000</span>, <span class="dt">fdr_cutoff=</span><span class="fl">0.01</span>, <span class="dt">do_plots=</span><span class="ot">TRUE</span>)</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(signature, genesets, <span class="dt">test=</span><span class="st">"hypergeometric"</span>, <span class="dt">background=</span><span class="dv">50000</span>, <span class="dt">fdr=</span><span class="fl">0.01</span>, <span class="dt">plotting=</span><span class="ot">TRUE</span>)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>hyp_obj<span class="op">$</span>plots[[<span class="dv">1</span>]]</span></code></pre></div>
 <p><img src="basics_files/figure-html/unnamed-chunk-9-1.png" width="700" style="display: block; margin: auto;"></p>
 </div>
@@ -192,11 +176,11 @@ TMCC3  0.6889354 6.109391 1.430693e-08 1.154330e-05</code></pre>
 <a href="#ranked-signature" class="anchor"></a>Ranked Signature</h4>
 <p>Rather than setting a specific cutoff to define a differential expression signature, one could rank genes by their expression and provide the entire ranked vector as signature. From the differential expression dataframe, we order genes descending so upregulated genes are near the top, then extract the gene symbol column as a vector.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>ranked.signature &lt;-<span class="st"> </span>limma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(t)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">use_series</span>(symbol)</span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(ranked.signature)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(ranked.signature)</span></code></pre></div>
 <pre><code>[1] 9682</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(ranked.signature)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(ranked.signature)</span></code></pre></div>
 <pre><code>[1] "LMAN2L" "SHKBP1" "SPHK2"  "AJUBA"  "TJP1"   "TMCC3" </code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(ranked.signature, gsets, <span class="dt">test=</span><span class="st">"kstest"</span>, <span class="dt">fdr_cutoff=</span><span class="fl">0.05</span>, <span class="dt">do_plots=</span><span class="ot">TRUE</span>)</span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(ranked.signature, genesets, <span class="dt">test=</span><span class="st">"kstest"</span>, <span class="dt">fdr=</span><span class="fl">0.05</span>, <span class="dt">plotting=</span><span class="ot">TRUE</span>)</span>
 <span id="cb18-2"><a href="#cb18-2"></a>hyp_obj<span class="op">$</span>plots[[<span class="dv">1</span>]]</span></code></pre></div>
 <p><img src="basics_files/figure-html/unnamed-chunk-12-1.png" width="700" style="display: block; margin: auto;"></p>
 </div>
@@ -205,12 +189,12 @@ TMCC3  0.6889354 6.109391 1.430693e-08 1.154330e-05</code></pre>
 <a href="#weighted-signature" class="anchor"></a>Weighted Signature</h4>
 <p>In addition to providing a ranked signature, one could also add weights by including the t-statistic of the differential expression. From the differential expression dataframe, we order genes descending so upregulated genes are near the top, then extract and deframe the gene symbol and t-statistic columns as a named vector of weights.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>weighted.signature &lt;-<span class="st"> </span>limma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(t)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(symbol, t) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">deframe</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(weighted.signature)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(weighted.signature)</span></code></pre></div>
 <pre><code>[1] 9682</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(weighted.signature)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(weighted.signature)</span></code></pre></div>
 <pre><code>  LMAN2L   SHKBP1    SPHK2    AJUBA     TJP1    TMCC3 
 6.588801 6.556606 6.368517 6.260276 6.259840 6.109391 </code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(weighted.signature, gsets, <span class="dt">test=</span><span class="st">"kstest"</span>, <span class="dt">fdr_cutoff=</span><span class="fl">0.05</span>, <span class="dt">do_plots=</span><span class="ot">TRUE</span>)</span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>hyp_obj &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/hypeR.html">hypeR</a></span>(weighted.signature, genesets, <span class="dt">test=</span><span class="st">"kstest"</span>, <span class="dt">fdr=</span><span class="fl">0.05</span>, <span class="dt">plotting=</span><span class="ot">TRUE</span>)</span>
 <span id="cb24-2"><a href="#cb24-2"></a>hyp_obj<span class="op">$</span>plots[[<span class="dv">1</span>]]</span></code></pre></div>
 <p><img src="basics_files/figure-html/unnamed-chunk-15-1.png" width="700" style="display: block; margin: auto;"></p>
 </div>
@@ -218,33 +202,52 @@ TMCC3  0.6889354 6.109391 1.430693e-08 1.154330e-05</code></pre>
 <h4 class="hasAnchor">
 <a href="#the-hyp-object" class="anchor"></a>The <code>hyp</code> object</h4>
 <p>A <code>hyp</code> object contains all information relevant to the enrichment analysis, including a dataframe of results, enrichment plots for each geneset tested, as well as the arguments used to perform the analysis. All downstream functions used for analysis, visualization, and reporting recognize <code>hyp</code> objects and utilize their data. Adopting an object oriented framework brings modularity to hypeR, enabling flexible workflows.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(hyp_obj)</span></code></pre></div>
-<pre><code>hyp object: 
-  data: 29 x 6
-  plots: 29
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(hyp_obj)</span></code></pre></div>
+<pre><code>(hyp) 
+
+  data: 
+                                 label    pval    fdr signature geneset
+                       KEGG_PROTEASOME 1.7e-05 0.0032      9682      46
+             KEGG_STEROID_BIOSYNTHESIS 6.4e-05 0.0060      9682      17
+                KEGG_PANCREATIC_CANCER 1.8e-04 0.0098      9682      70
+   KEGG_NEUROTROPHIN_SIGNALING_PATHWAY 2.1e-04 0.0098      9682     126
+ KEGG_FC_GAMMA_R_MEDIATED_PHAGOCYTOSIS 4.8e-04 0.0180      9682      96
+             KEGG_RENAL_CELL_CARCINOMA 6.6e-04 0.0200      9682      70
+ overlap score
+      28  0.44
+      12  0.63
+      49  0.30
+      87  0.22
+      62  0.25
+      47  0.28
+
+  plots: 11 Figures
+
   args: signature
-        gsets
+        genesets
         test
-        bg
-        pval_cutoff
-        fdr_cutoff
-        weights_pwr
+        background
+        power
         absolute
-        do_plots
-        verbose</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>hyp_df &lt;-<span class="st"> </span>hyp_obj<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>()</span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(hyp_df[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]), <span class="dt">row.names=</span><span class="ot">FALSE</span>)</span></code></pre></div>
-<pre><code>                          label    pval     fdr
-                 Tight junction 1.4e-09 4.3e-07
-                     Proteasome 1.7e-05 2.6e-03
-           Viral carcinogenesis 4.1e-05 3.9e-03
- Sphingolipid signaling pathway 5.3e-05 3.9e-03
-           Steroid biosynthesis 6.4e-05 3.9e-03
-   Longevity regulating pathway 1.0e-04 5.1e-03</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(hyp_obj<span class="op">$</span>plots)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span></code></pre></div>
-<pre><code>[1] "Tight junction"                 "Proteasome"                    
-[3] "Viral carcinogenesis"           "Sphingolipid signaling pathway"
-[5] "Steroid biosynthesis"          </code></pre>
+        pval
+        fdr
+        plotting
+        quiet</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>hyp_df &lt;-<span class="st"> </span>hyp_obj<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>()</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(hyp_df[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]), <span class="dt">row.names=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<pre><code>                                 label    pval    fdr
+                       KEGG_PROTEASOME 1.7e-05 0.0032
+             KEGG_STEROID_BIOSYNTHESIS 6.4e-05 0.0060
+                KEGG_PANCREATIC_CANCER 1.8e-04 0.0098
+   KEGG_NEUROTROPHIN_SIGNALING_PATHWAY 2.1e-04 0.0098
+ KEGG_FC_GAMMA_R_MEDIATED_PHAGOCYTOSIS 4.8e-04 0.0180
+             KEGG_RENAL_CELL_CARCINOMA 6.6e-04 0.0200</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(hyp_obj<span class="op">$</span>plots)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span></code></pre></div>
+<pre><code>[1] "KEGG_PROTEASOME"                      
+[2] "KEGG_STEROID_BIOSYNTHESIS"            
+[3] "KEGG_PANCREATIC_CANCER"               
+[4] "KEGG_NEUROTROPHIN_SIGNALING_PATHWAY"  
+[5] "KEGG_FC_GAMMA_R_MEDIATED_PHAGOCYTOSIS"</code></pre>
 </div>
 <div id="the-hyp-methods" class="section level4">
 <h4 class="hasAnchor">
@@ -269,22 +272,26 @@ TMCC3  0.6889354 6.109391 1.430693e-08 1.154330e-05</code></pre>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
       </div>
 
 </div>
 
 
+
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/anfederico">Anthony Federico</a>, <a href="https://github.com/montilab">Stefano Monti</a>.</p>
+  <p>Developed by <a href="https://github.com/anfederico">Anthony Federico</a>, <a href="https://github.com/tetomonti">Stefano Monti</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
