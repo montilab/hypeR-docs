@@ -76,7 +76,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -121,6 +121,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="../news/index.html">Change Log</a>
+</li>
+<li>
   <a href="https://github.com/montilab/hypeR">
     <span class="fa fa-github"></span>
      
@@ -148,15 +151,26 @@
     <p>Export hyp object to rmarkdown</p>
     </div>
 
-    <pre class="usage"><span class='fu'>hyp_to_rmd</span>(<span class='no'>hyp_obj</span>, <span class='no'>file_path</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Workflow Report"</span>,
-  <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>author</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Results"</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>show_dots</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_emaps</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_hmaps</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>show_tables</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>hyp_dots_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>),
-  <span class='kw'>hyp_emap_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>25</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>, <span class='kw'>similarity_metric</span> <span class='kw'>=</span>
-  <span class='st'>"jaccard_similarity"</span>, <span class='kw'>similarity_cutoff</span> <span class='kw'>=</span> <span class='fl'>0.2</span>),
+    <pre class="usage"><span class='fu'>hyp_to_rmd</span>(
+  <span class='no'>hyp_obj</span>,
+  <span class='no'>file_path</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Workflow Report"</span>,
+  <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>author</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Results"</span>,
+  <span class='kw'>version</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>show_dots</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>show_emaps</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>show_hmaps</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>show_tables</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>hyp_dots_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>),
+  <span class='kw'>hyp_emap_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>25</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>, <span class='kw'>similarity_metric</span> <span class='kw'>=</span> <span class='st'>"jaccard_similarity"</span>,
+    <span class='kw'>similarity_cutoff</span> <span class='kw'>=</span> <span class='fl'>0.2</span>),
   <span class='kw'>hyp_hmap_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>25</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>),
-  <span class='kw'>custom_rmd_config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>custom_pre_content</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>custom_post_content</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>custom_rmd_config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>custom_pre_content</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>custom_post_content</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

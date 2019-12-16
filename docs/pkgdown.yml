@@ -9,6 +9,7 @@ articles:
   reporting: docs/reporting.html
   shiny: docs/shiny.html
   visualize: docs/visualize.html
+  hypeR: hypeR.html
 urls:
   reference: https://github.com/montilab/hypeR/reference
   article: https://github.com/montilab/hypeR/articles
