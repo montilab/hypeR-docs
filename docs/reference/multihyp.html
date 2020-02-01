@@ -77,7 +77,7 @@ A multihyp object" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.1</span>
       </span>
     </div>
 
@@ -155,28 +155,18 @@ A multihyp object" />
 
 
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-
-    
-
-<dl class='dl-horizontal'>
-  <dt>data</dt><dd><p>A list of <code>hyp</code> objects</p></dd>
-
-</dl>
-
-    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
-
-    
-
-
-<p><code><a href='https://rdrr.io/r/base/print.html'>print(multihyp)</a></code> shows some information about the object data</p>
-<p><code>multihyp$as.list()</code> returns a list of <code>hyp</code> objects as dataframes.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 
     
 
 
 <p><code>hyp</code></p>
+    <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
+
+    <p><div class="r6-fields"></p><dl class='dl-horizontal'>
+<dt><code>data</code></dt><dd><p>A list of hyp objects</p></dd>
+
+</dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
@@ -190,22 +180,30 @@ A multihyp object" />
 </ul>
 <p><hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-
-<h3>Usage</h3>
+<p>Create a multihyp object</p><h3>Usage</h3>
 <p><div class="r"></p><pre>multihyp$new(data)</pre><p></div></p>
 
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl class='dl-horizontal'>
+<dt><code>data</code></dt><dd><p>A list of hyp objects</p></dd>
+
+</dl><p></div></p>
+<h3>Returns</h3>
+<p>A new multihyp object</p>
 <p><hr>
 <a id="method-print"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
-
-<h3>Usage</h3>
+<p>Print multihyp obect</p><h3>Usage</h3>
 <p><div class="r"></p><pre>multihyp$print(...)</pre><p></div></p>
 
+<h3>Returns</h3>
+<p>NULL</p>
 <p><hr>
 <a id="method-as.list"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/list.html'>as.list()</a></code></h3>
-
-<h3>Usage</h3>
+<p>Print multihyp obect</p><h3>Usage</h3>
 <p><div class="r"></p><pre>multihyp$as.list(...)</pre><p></div></p>
 
+<h3>Returns</h3>
+<p>A list of hyp objects as dataframes</p>
 <p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
@@ -229,9 +227,8 @@ A multihyp object" />
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#methods">Methods</a></li>
       <li><a href="#see-also">See Also</a></li>
+      <li><a href="#public-fields">Public fields</a></li>
       <li><a href="#methods">Methods</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

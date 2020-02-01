@@ -1,5 +1,14 @@
-# Generated with hypeR v1.3.0
-# Using the following genesets: C2.CP:KEGG v7.0.1
+#hypeR	v1.3.1
+#Signature Head	IDH3B,DLST,PCK2,CS,PDHB,PCK1
+#Signature Size	24
+#Signature Type	symbols
+#Genesets	C2.CP:KEGG v7.0.1
+#Background	2522
+#P-Value	1
+#FDR	1
+#Test	hypergeometric
+#Power	1
+#Absolute	FALSE
 label	pval	fdr	signature	geneset	overlap	background	hits
 KEGG_CITRATE_CYCLE_TCA_CYCLE	9.9e-45	1.8e-42	24	31	22	2522	CS,DLST,FH,IDH1,IDH2,IDH3A,IDH3B,OGDH,OGDHL,PC,PCK1,PCK2,PDHA1,PDHA2,PDHB,SDHA,SDHB,SDHC,SDHD,SUCLA2,SUCLG1,SUCLG2
 KEGG_PYRUVATE_METABOLISM	1.2e-06	0.00011	24	40	6	2522	PC,PCK1,PCK2,PDHA1,PDHA2,PDHB

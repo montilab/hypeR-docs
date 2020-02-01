@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print msigdb gsets information — msigdb_info • hypeR</title>
+<title>Plot top enriched genesets across multiple signatures — .dots_multi_plot • hypeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Print msigdb gsets information — msigdb_info" />
-<meta property="og:description" content="Print msigdb gsets information" />
+<meta property="og:title" content="Plot top enriched genesets across multiple signatures — .dots_multi_plot" />
+<meta property="og:description" content="Plot top enriched genesets across multiple signatures" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -142,67 +142,73 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print msigdb gsets information</h1>
-    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/db_msig.R'><code>R/db_msig.R</code></a></small>
-    <div class="hidden name"><code>msigdb_info.Rd</code></div>
+    <h1>Plot top enriched genesets across multiple signatures</h1>
+    <small class="dont-index">Source: <a href='https://github.com/montilab/hypeR/blob/master/R/hyp_dots.R'><code>R/hyp_dots.R</code></a></small>
+    <div class="hidden name"><code>dot-dots_multi_plot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Print msigdb gsets information</p>
+    <p>Plot top enriched genesets across multiple signatures</p>
     </div>
 
-    <pre class="usage"><span class='fu'>msigdb_info</span>()</pre>
+    <pre class="usage"><span class='fu'>.dots_multi_plot</span>(
+  <span class='no'>multihyp_data</span>,
+  <span class='kw'>top</span> <span class='kw'>=</span> <span class='fl'>20</span>,
+  <span class='kw'>abrv</span> <span class='kw'>=</span> <span class='fl'>50</span>,
+  <span class='kw'>sizes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>pval_cutoff</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>fdr_cutoff</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"fdr"</span>, <span class='st'>"pval"</span>),
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>multihyp_data</th>
+      <td><p>A list of hyp objects</p></td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td><p>Limit number of genesets shown</p></td>
+    </tr>
+    <tr>
+      <th>abrv</th>
+      <td><p>Abbreviation length of genesetlabels</p></td>
+    </tr>
+    <tr>
+      <th>sizes</th>
+      <td><p>Size dots by geneset sizes</p></td>
+    </tr>
+    <tr>
+      <th>pval_cutoff</th>
+      <td><p>Filter results to be less than pval cutoff</p></td>
+    </tr>
+    <tr>
+      <th>fdr_cutoff</th>
+      <td><p>Filter results to be less than fdr cutoff</p></td>
+    </tr>
+    <tr>
+      <th>val</th>
+      <td><p>Choose significance value e.g. c("fdr", "pval")</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Plot title</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>msigdb_info</span>()</div><div class='output co'>#&gt; |------------------------------------------------------------------|
-#&gt; | Via: R package msigdbr                                    v7.0.1 |
-#&gt; |------------------------------------------------------------------|
-#&gt; | Available Species                                                |
-#&gt; |------------------------------------------------------------------|
-#&gt; | Homo sapiens                                                     |
-#&gt; | Mus musculus                                                     |
-#&gt; | Drosophila melanogaster                                          |
-#&gt; | Gallus gallus                                                    |
-#&gt; | Saccharomyces cerevisiae                                         |
-#&gt; | Bos taurus                                                       |
-#&gt; | Caenorhabditis elegans                                           |
-#&gt; | Canis lupus familiaris                                           |
-#&gt; | Danio rerio                                                      |
-#&gt; | Rattus norvegicus                                                |
-#&gt; | Sus scrofa                                                       |
-#&gt; |------------------------------------------------------------------|
-#&gt; | Available Genesets                                               |
-#&gt; |------------------------------------------------------------------|
-#&gt; | Category Subcategory | Description                               |
-#&gt; |------------------------------------------------------------------|
-#&gt; | C1                   | Positional                                |
-#&gt; | C2 CGP               | Chemical and Genetic Perturbations        |
-#&gt; | C2 CP                | Canonical Pathways                        |
-#&gt; | C2 CP:BIOCARTA       | Canonical BIOCARTA                        |
-#&gt; | C2 CP:KEGG           | Canonical KEGG                            |
-#&gt; | C2 CP:PID            | Canonical PID                             |
-#&gt; | C2 CP:REACTOME       | Canonical REACTOME                        |
-#&gt; | C3 MIR               | Motif miRNA Targets                       |
-#&gt; | C3 TFT               | Motif Transcription Factor Targets        |
-#&gt; | C4 CGN               | Cancer Gene Neighborhoods                 |
-#&gt; | C4 CM                | Cancer Modules                            |
-#&gt; | C5 BP                | GO Biological Process                     |
-#&gt; | C5 CC                | GO Cellular Component                     |
-#&gt; | C5 MF                | GO Molecular Function                     |
-#&gt; | C6                   | Oncogenic Signatures                      |
-#&gt; | C7                   | Immunologic Signatures                    |
-#&gt; | H                    | Hallmark                                  |
-#&gt; |------------------------------------------------------------------|
-#&gt; | Source: http://software.broadinstitute.org/gsea/msigdb           |
-#&gt; |------------------------------------------------------------------|</div><div class='input'>
-</div></pre>
+    <p>A ggplot object</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#examples">Examples</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>
