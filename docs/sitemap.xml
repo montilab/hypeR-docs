@@ -64,6 +64,12 @@
     <loc>https://github.com/montilab/hypeR/reference/enrichr_urls.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/genesets_Server.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/genesets_UI.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/ggempty.html</loc>
   </url>
   <url>
@@ -92,9 +98,6 @@
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp_to_excel.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/montilab/hypeR/reference/hyp_to_report.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp_to_rmd.html</loc>

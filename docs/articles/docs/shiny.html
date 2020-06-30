@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
       </span>
     </div>
 
@@ -72,6 +72,9 @@
     <li>
       <a href="../../articles/docs/reporting.html">Generating Reports</a>
     </li>
+    <li>
+      <a href="../../articles/docs/shiny.html">Shiny Modules</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -98,7 +101,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="shiny_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using hypeR in Shiny Applications</h1>
@@ -111,26 +114,93 @@
 
     
     
-<div id="example-application" class="section level3">
-<h3 class="hasAnchor">
-<a href="#example-application" class="anchor"></a>Example application</h3>
-<p>All <strong>hypeR</strong> methods are compatible with R Shiny and can be incorporated into a variety of applications. For users looking to adopt <strong>hypeR</strong> in their own projects, we have created an example project using various <strong>hypeR</strong> methods in Shiny. If you are looking to use <strong>hypeR</strong> in your own applications and need help or have questions on the implementation, please feel free to reach out to us!.</p>
-<div id="live-demo" class="section level4">
-<h4 class="hasAnchor">
-<a href="#live-demo" class="anchor"></a>Live demo</h4>
-<p><a href="https://anfederico.shinyapps.io/hypeR-shiny" class="uri">https://anfederico.shinyapps.io/hypeR-shiny</a></p>
+<div id="shiny-modules" class="section level1">
+<h1 class="hasAnchor">
+<a href="#shiny-modules" class="anchor"></a>Shiny Modules</h1>
+<p>All <strong>hypeR</strong> methods output objects that are compatible with R Shiny and can be incorporated into a variety of applications (e.g. <code><a href="../../reference/hyp_dots.html">hyp_dots()</a></code> returns a <code>ggplot</code> object). The most difficult challenge in incorporating geneset enrichment tasks in Shiny applications is the geneselect selection / fetching itself. To help with this, <strong>hypeR</strong> includes module functions that abstract away the geneset selection code.</p>
+<div id="what-are-shiny-modules" class="section level2">
+<h2 class="hasAnchor">
+<a href="#what-are-shiny-modules" class="anchor"></a>What Are Shiny Modules?</h2>
+<p>Shiny modules are functions that generato Shiny UI / Server code. They are composable elements that can be used within and interface with existing applications. For more information, check out the <a href="https://shiny.rstudio.com/articles/modules.html">latest documentation</a>.</p>
 </div>
-<div id="code-example" class="section level4">
-<h4 class="hasAnchor">
-<a href="#code-example" class="anchor"></a>Code example</h4>
-<p><a href="https://github.com/montilab/hypeR-shiny" class="uri">https://github.com/montilab/hypeR-shiny</a></p>
+<div id="example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example" class="anchor"></a>Example</h2>
+<p>For those familiar with Shiny, you will have accompanying modules for the ui and server sections of your application. These modules are <code><a href="../../reference/genesets_UI.html">hypeR::genesets_UI()</a></code> and <code><a href="../../reference/genesets_Server.html">hypeR::genesets_Server()</a></code> respectively.</p>
+<div id="ui" class="section level3">
+<h3 class="hasAnchor">
+<a href="#ui" class="anchor"></a>UI</h3>
+<p>Here we create a simple interface where we use the genesets selection module. Through that module, users can select genesets available through <strong>hypeR</strong> and the application will load those genesets into a <em>reactive variable</em> (more on this later). We add additional code to take a user-defined gene signature and produce an enrichment plot which represents components specific to your Shiny application. This can be anything!</p>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu">fluidPage</span>(
+        <span class="fu">sidebarLayout</span>(
+            <span class="fu">sidebarPanel</span>(
+                <span class="co"># Put your geneset selector module anywhere</span>
+                <span class="kw pkg">hypeR</span><span class="kw ns">::</span><span class="fu"><a href="../../reference/genesets_UI.html">genesets_UI</a></span>(<span class="st">"genesets"</span>),
+
+                <span class="co"># Add components specific to your application</span>
+                <span class="fu">textAreaInput</span>(<span class="st">"signature"</span>,
+                              <span class="kw">label</span><span class="kw">=</span><span class="st">"Signature"</span>,
+                              <span class="kw">rows</span><span class="kw">=</span><span class="fl">5</span>,
+                              <span class="kw">placeholder</span><span class="kw">=</span><span class="st">"GENE1,GENE2,GENE3"</span>,
+                              <span class="kw">resize</span><span class="kw">=</span><span class="st">"vertical"</span>),
+
+                <span class="fu">actionButton</span>(<span class="st">"enrichment"</span>, <span class="st">"Enrichment"</span>)
+            ),
+            <span class="fu">mainPanel</span>(
+                <span class="co"># Enrichment plot</span>
+                <span class="fu">plotOutput</span>(<span class="st">"plot"</span>)
+            )
+        )
+    )</pre></body></html></div>
+</div>
+<div id="server" class="section level3">
+<h3 class="hasAnchor">
+<a href="#server" class="anchor"></a>Server</h3>
+<p>Now we need to create the server code that is responsible for all the backend work. Again, we provide an associated module function for the server code. The serve code returns a <em>reactive variable</em> containing the fetched genesets that were selected. <strong>Selection changes will update this variable and propogate to downstream functions</strong>. Importantly, this variable holding the genesets can be accessed by any part of your application now, enabling you to make applications completely customizable while still utilizing this feature. As an example, our custom function is producing a simple enrichment plot.</p>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
+    <span class="co"># Retrieve selected genesets as a reactive variable</span>
+    <span class="co"># Selection changes will update this variable and propogate to downstream functions</span>
+    <span class="no">genesets</span> <span class="kw">&lt;-</span> <span class="kw pkg">hypeR</span><span class="kw ns">::</span><span class="fu"><a href="../../reference/genesets_Server.html">genesets_Server</a></span>(<span class="st">"genesets"</span>)
+
+    <span class="co"># Your custom downstream functions</span>
+    <span class="no">reactive_plot</span> <span class="kw">&lt;-</span> <span class="fu">eventReactive</span>(<span class="no">input</span>$<span class="no">enrichment</span>, {
+
+        <span class="co"># Here are the fetched genesets</span>
+        <span class="no">gsets</span> <span class="kw">&lt;-</span> <span class="fu">genesets</span>()
+
+        <span class="co"># Process the signature into a character vector</span>
+        <span class="no">signature</span> <span class="kw">&lt;-</span> <span class="no">input</span>$<span class="no">signature</span> <span class="kw">%&gt;%</span>
+                     <span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span>(<span class="kw">pattern</span><span class="kw">=</span><span class="st">","</span>, <span class="kw">simplify</span><span class="kw">=</span><span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
+                     <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span>()
+
+        <span class="co"># Run hypeR</span>
+        <span class="no">hyp</span> <span class="kw">&lt;-</span> <span class="kw pkg">hypeR</span><span class="kw ns">::</span><span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span>(<span class="no">signature</span>, <span class="no">gsets</span>, <span class="kw">test</span><span class="kw">=</span><span class="st">"hypergeometric"</span>)
+        <span class="no">p</span> <span class="kw">&lt;-</span> <span class="kw pkg">hypeR</span><span class="kw ns">::</span><span class="fu"><a href="../../reference/hyp_dots.html">hyp_dots</a></span>(<span class="no">hyp</span>, <span class="kw">top</span><span class="kw">=</span><span class="fl">10</span>, <span class="kw">fdr</span><span class="kw">=</span><span class="fl">0.25</span>)
+
+        <span class="co"># These are just ggplot objects you could customize</span>
+        <span class="no">p</span> + <span class="fu">theme</span>(<span class="kw">axis.text</span><span class="kw">=</span><span class="fu">element_text</span>(<span class="kw">size</span><span class="kw">=</span><span class="fl">12</span>, <span class="kw">face</span><span class="kw">=</span><span class="st">"bold"</span>))
+    })
+
+    <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>({
+        <span class="fu">reactive_plot</span>()
+    })
+}</pre></body></html></div>
+</div>
+</div>
+<div id="preview" class="section level2">
+<h2 class="hasAnchor">
+<a href="#preview" class="anchor"></a>Preview</h2>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu">shinyApp</span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
+<p><img src="../../../../../Dropbox%20(BOSTON%20UNIVERSITY)/Github/hypeR/inst/vignettes/shiny-ex.png" width="1279" style="display: block; margin: auto;"></p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
