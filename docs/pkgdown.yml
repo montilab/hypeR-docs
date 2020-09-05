@@ -10,7 +10,7 @@ articles:
   shiny: docs/shiny.html
   visualize: docs/visualize.html
   hypeR: hypeR.html
-last_built: 2020-06-30T18:23Z
+last_built: 2020-09-05T01:37Z
 urls:
   reference: https://github.com/montilab/hypeR/reference
   article: https://github.com/montilab/hypeR/articles
