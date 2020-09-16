@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.3</span>
       </span>
     </div>
 
@@ -116,25 +116,31 @@
     
 <p>We recommend the latest version of R (&gt;= 4.0.0) but <strong>hypeR</strong> currently requires R (&gt;= 3.6.0) to be installed directly from Github or Bioconductor. To install with R (&gt;= 3.5.0) see below. Use with R (&lt; 3.5.0) is not recommended.</p>
 <p>Install the development version of the package from Github.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)
+</pre></div>
 <p>Or install the development version of the package from Bioconductor.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"montilab/hypeR"</span>, <span class="kw">version</span><span class="kw">=</span><span class="st">"devel"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">BiocManager</span>::<span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"montilab/hypeR"</span>, version=<span class="st">"devel"</span>)
+</pre></div>
 <p>Or install with Conda.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r">conda create --name hyper
-source activate hyper
-conda install -c r r-devtools
-R
-library(devtools)
-devtools::install_github("montilab/hypeR")</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>conda create <span class="op">--</span>name hyper</span>
+<span id="cb3-2"><a href="#cb3-2"></a>source activate hyper</span>
+<span id="cb3-3"><a href="#cb3-3"></a>conda install <span class="op">-</span>c r r<span class="op">-</span>devtools</span>
+<span id="cb3-4"><a href="#cb3-4"></a>R</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">library</span>(devtools)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"montilab/hypeR"</span>)</span></code></pre></div>
 <p>Or install with previous versions of R.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">git clone https://github.com/montilab/hypeR
-nano hypeR/DESCRIPTION
-# Change Line 8
-# Depends: R (&gt;= 3.6.0) -&gt; Depends: R (&gt;= 3.5.0)
-R
-install.packages("path/to/hypeR", repos=NULL, type="source")</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>git clone https<span class="op">:</span><span class="er">//</span>github.com<span class="op">/</span>montilab<span class="op">/</span>hypeR</span>
+<span id="cb4-2"><a href="#cb4-2"></a>nano hypeR<span class="op">/</span>DESCRIPTION</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Change Line 8</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Depends: R (&gt;= 3.6.0) -&gt; Depends: R (&gt;= 3.5.0)</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>R</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">install.packages</span>(<span class="st">"path/to/hypeR"</span>, <span class="dt">repos=</span><span class="ot">NULL</span>, <span class="dt">type=</span><span class="st">"source"</span>)</span></code></pre></div>
 <p>Load the package into an R session.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">hypeR</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/montilab/hypeR">hypeR</a></span>)
+</pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -150,7 +156,7 @@ install.packages("path/to/hypeR", repos=NULL, type="source")</pre></body></html>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

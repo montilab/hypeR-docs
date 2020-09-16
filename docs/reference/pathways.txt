@@ -1,4 +1,4 @@
-#hypeR	v1.5.2
+#hypeR	v1.5.3
 #Signature Head	IDH3B,DLST,PCK2,CS,PDHB,PCK1
 #Signature Size	24
 #Signature Type	symbols

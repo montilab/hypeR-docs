@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.3</span>
       </span>
     </div>
 
@@ -157,9 +157,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>enrichr_gsets</span>(
-  <span class='no'>genesets</span>,
-  <span class='kw'>db</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Enrichr"</span>, <span class='st'>"YeastEnrichr"</span>, <span class='st'>"FlyEnrichr"</span>, <span class='st'>"WormEnrichr"</span>, <span class='st'>"FishEnrichr"</span>),
-  <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>genesets</span>,
+  db = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Enrichr"</span>, <span class='st'>"YeastEnrichr"</span>, <span class='st'>"FlyEnrichr"</span>, <span class='st'>"WormEnrichr"</span>, <span class='st'>"FishEnrichr"</span>),
+  clean = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -184,7 +184,9 @@
     <p>A gsets object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ATLAS</span> <span class='kw'>&lt;-</span> <span class='fu'>enrichr_gsets</span>(<span class='st'>"Human_Gene_Atlas"</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>ATLAS</span> <span class='op'>&lt;-</span> <span class='fu'>enrichr_gsets</span>(<span class='st'>"Human_Gene_Atlas"</span>)
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -200,7 +202,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

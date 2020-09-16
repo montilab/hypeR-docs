@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.3</span>
       </span>
     </div>
 
@@ -122,9 +122,13 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the development version of the package from Github.</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"montilab/hypeR"</span>)
+</pre></div>
 <p>Or install the development version of the package from Bioconductor.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"montilab/hypeR"</span>, <span class="kw">version</span><span class="kw">=</span><span class="st">"devel"</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">BiocManager</span>::<span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"montilab/hypeR"</span>, version=<span class="st">"devel"</span>)
+</pre></div>
 <p>Or install with Conda.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">conda</span> create --name hyper</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="bu">source</span> activate hyper</span>
@@ -143,12 +147,16 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">hypeR</span>)</pre></div>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">wgcna</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/montilab/hypeR">hypeR</a></span>)
+</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">wgcna</span>)
 
 <span class="co"># Process many signatures</span>
-<span class="no">signatures</span> <span class="kw">&lt;-</span> <span class="no">wgcna</span><span class="kw">[[</span><span class="fl">1</span>]]
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="no">signatures</span>)</pre></div>
+<span class="kw">signatures</span> <span class="op">&lt;-</span> <span class="kw">wgcna</span>[[<span class="fl">1</span>]]
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="kw">signatures</span>)
+</pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; List of 21</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;  $ turquoise   : chr [1:1902] "CLEC3A" "KCNJ3" "SCGB2A2" "SERPINA6" ...</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;  $ blue        : chr [1:1525] "GSTM1" "BMPR1B" "BMPR1B-DT" "PYDC1" ...</span></span>
@@ -171,9 +179,11 @@
 <span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt;  $ midnightblue: chr [1:92] "LRRC26" "ARHGDIG" "TGFBR3L" "HS6ST1P1" ...</span></span>
 <span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt;  $ grey60      : chr [1:71] "KRT8P48" "KRT8P42" "KRT8P11" "CRIP1P4" ...</span></span>
 <span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt;  $ salmon      : chr [1:151] "UBA52P3" "NPM1P33" "MYL6P5" "RPL29P30" ...</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="co"># Access to hundreds of genesets</span>
-<span class="no">genesets</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/msigdb_gsets.html">msigdb_gsets</a></span>(<span class="st">"Homo sapiens"</span>, <span class="st">"C2"</span>, <span class="st">"CP:KEGG"</span>, <span class="kw">clean</span><span class="kw">=</span><span class="fl">TRUE</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">genesets</span>)</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="co"># Access to hundreds of genesets</span>
+<span class="kw">genesets</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/msigdb_gsets.html">msigdb_gsets</a></span>(<span class="st">"Homo sapiens"</span>, <span class="st">"C2"</span>, <span class="st">"CP:KEGG"</span>, clean=<span class="fl">TRUE</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">genesets</span>)
+</pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#&gt; C2.CP:KEGG v7.1.1 </span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt; Abc Transporters (44)</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; Acute Myeloid Leukemia (57)</span></span>
@@ -181,8 +191,12 @@
 <span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; Adipocytokine Signaling Pathway (67)</span></span>
 <span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; Alanine Aspartate And Glutamate Metabolism (32)</span></span>
 <span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; Aldosterone Regulated Sodium Reabsorption (42)</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="no">mhyp</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/hypeR.html">hypeR</a></span>(<span class="no">signatures</span>, <span class="no">genesets</span>, <span class="kw">test</span><span class="kw">=</span><span class="st">"hypergeometric"</span>, <span class="kw">background</span><span class="kw">=</span><span class="fl">30000</span>)</pre></div>
-<div class="sourceCode" id="cb11"><pre class="r"><span class="fu"><a href="reference/hyp_dots.html">hyp_dots</a></span>(<span class="no">mhyp</span>, <span class="kw">merge</span><span class="kw">=</span><span class="fl">TRUE</span>, <span class="kw">fdr</span><span class="kw">=</span><span class="fl">0.05</span>, <span class="kw">title</span><span class="kw">=</span><span class="st">"Co-expression Modules"</span>)</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="kw">mhyp</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hypeR.html">hypeR</a></span>(<span class="kw">signatures</span>, <span class="kw">genesets</span>, test=<span class="st">"hypergeometric"</span>, background=<span class="fl">30000</span>)
+</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="fu"><a href="reference/hyp_dots.html">hyp_dots</a></span>(<span class="kw">mhyp</span>, merge=<span class="fl">TRUE</span>, fdr=<span class="fl">0.05</span>, title=<span class="st">"Co-expression Modules"</span>)
+</pre></div>
 <p><img src="README_files/figure-gfm/unnamed-chunk-5-1.png" style="display: block; margin: auto;"></p>
 </div>
 <div id="terminology" class="section level2">
@@ -192,27 +206,33 @@
 <h3 class="hasAnchor">
 <a href="#signature" class="anchor"></a>Signature</h3>
 <p><strong>hypeR</strong> employs multiple types of enrichment analyses (e.g. hypergeometric, kstest, gsea). Depending on the type, different kinds of signatures are expected. There are three types of signatures <code><a href="reference/hypeR.html">hypeR()</a></code> expects.</p>
-<div class="sourceCode" id="cb12"><pre class="r"><span class="co"># Simply a character vector of symbols (hypergeometric)</span>
-<span class="no">signature</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="co"># Simply a character vector of symbols (hypergeometric)</span>
+<span class="kw">signature</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>)
 
 <span class="co"># A ranked character vector of symbols (kstest)</span>
-<span class="no">ranked.signature</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE2"</span>, <span class="st">"GENE1"</span>, <span class="st">"GENE3"</span>)
+<span class="kw">ranked.signature</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE2"</span>, <span class="st">"GENE1"</span>, <span class="st">"GENE3"</span>)
 
 <span class="co"># A ranked named numerical vector of symbols with ranking weights (gsea)</span>
-<span class="no">weighted.signature</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE2"</span><span class="kw">=</span><span class="fl">1.22</span>, <span class="st">"GENE1"</span><span class="kw">=</span><span class="fl">0.94</span>, <span class="st">"GENE3"</span><span class="kw">=</span><span class="fl">0.77</span>)</pre></div>
+<span class="kw">weighted.signature</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE2"</span>=<span class="fl">1.22</span>, <span class="st">"GENE1"</span>=<span class="fl">0.94</span>, <span class="st">"GENE3"</span>=<span class="fl">0.77</span>)
+</pre></div>
 </div>
 <div id="geneset" class="section level3">
 <h3 class="hasAnchor">
 <a href="#geneset" class="anchor"></a>Geneset</h3>
 <p>A geneset is simply a list of vectors, therefore, one can use any custom geneset in their analyses, as long as it’s appropriately defined.</p>
-<div class="sourceCode" id="cb13"><pre class="r"><span class="no">genesets</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"GSET1"</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>),
-                 <span class="st">"GSET2"</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE4"</span>, <span class="st">"GENE5"</span>, <span class="st">"GENE6"</span>),
-                 <span class="st">"GSET3"</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span>))</pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="kw">genesets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"GSET1"</span> = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>),
+                 <span class="st">"GSET2"</span> = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE4"</span>, <span class="st">"GENE5"</span>, <span class="st">"GENE6"</span>),
+                 <span class="st">"GSET3"</span> = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span>))
+</pre></div>
 <div id="hyper-enrichment" class="section level4">
 <h4 class="hasAnchor">
 <a href="#hyper-enrichment" class="anchor"></a>Hyper enrichment</h4>
 <p>All workflows begin with performing hyper enrichment with <code>hyper()</code>. Often we are just interested in a single signature, as described above. In this case, <code>hyper()</code> will return a <code>hyp</code> object. This object contains relevant information to the enrichment results and is recognized by downstream methods.</p>
-<div class="sourceCode" id="cb14"><pre class="r"><span class="no">hyp_obj</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/hypeR.html">hypeR</a></span>(<span class="no">signature</span>, <span class="no">genesets</span>)</pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit">
+<span class="kw">hyp_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hypeR.html">hypeR</a></span>(<span class="kw">signature</span>, <span class="kw">genesets</span>)
+</pre></div>
 </div>
 <div id="downstream-methods" class="section level4">
 <h4 class="hasAnchor">
@@ -221,40 +241,46 @@
 <div id="downloading-genesets" class="section level5">
 <h5 class="hasAnchor">
 <a href="#downloading-genesets" class="anchor"></a>Downloading genesets</h5>
-<div class="sourceCode" id="cb15"><pre class="r"><span class="no">BIOCARTA</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/msigdb_gsets.html">msigdb_gsets</a></span>(<span class="kw">species</span><span class="kw">=</span><span class="st">"Homo sapiens"</span>, <span class="kw">category</span><span class="kw">=</span><span class="st">"C2"</span>, <span class="kw">subcategory</span><span class="kw">=</span><span class="st">"CP:BIOCARTA"</span>)
-<span class="no">KEGG</span>     <span class="kw">&lt;-</span> <span class="fu"><a href="reference/msigdb_gsets.html">msigdb_gsets</a></span>(<span class="kw">species</span><span class="kw">=</span><span class="st">"Homo sapiens"</span>, <span class="kw">category</span><span class="kw">=</span><span class="st">"C2"</span>, <span class="kw">subcategory</span><span class="kw">=</span><span class="st">"CP:KEGG"</span>)
-<span class="no">REACTOME</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/msigdb_gsets.html">msigdb_gsets</a></span>(<span class="kw">species</span><span class="kw">=</span><span class="st">"Homo sapiens"</span>, <span class="kw">category</span><span class="kw">=</span><span class="st">"C2"</span>, <span class="kw">subcategory</span><span class="kw">=</span><span class="st">"CP:REACTOME"</span>)</pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit">
+<span class="kw">BIOCARTA</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/msigdb_gsets.html">msigdb_gsets</a></span>(species=<span class="st">"Homo sapiens"</span>, category=<span class="st">"C2"</span>, subcategory=<span class="st">"CP:BIOCARTA"</span>)
+<span class="kw">KEGG</span>     <span class="op">&lt;-</span> <span class="fu"><a href="reference/msigdb_gsets.html">msigdb_gsets</a></span>(species=<span class="st">"Homo sapiens"</span>, category=<span class="st">"C2"</span>, subcategory=<span class="st">"CP:KEGG"</span>)
+<span class="kw">REACTOME</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/msigdb_gsets.html">msigdb_gsets</a></span>(species=<span class="st">"Homo sapiens"</span>, category=<span class="st">"C2"</span>, subcategory=<span class="st">"CP:REACTOME"</span>)
+</pre></div>
 </div>
 <div id="visualize-results" class="section level5">
 <h5 class="hasAnchor">
 <a href="#visualize-results" class="anchor"></a>Visualize results</h5>
-<div class="sourceCode" id="cb16"><pre class="r"><span class="co"># Show interactive table</span>
-<span class="fu"><a href="reference/hyp_show.html">hyp_show</a></span>(<span class="no">hyp_obj</span>)
+<div class="sourceCode" id="cb16"><pre class="downlit">
+<span class="co"># Show interactive table</span>
+<span class="fu"><a href="reference/hyp_show.html">hyp_show</a></span>(<span class="kw">hyp_obj</span>)
 
 <span class="co"># Plot dots plot</span>
-<span class="fu"><a href="reference/hyp_dots.html">hyp_dots</a></span>(<span class="no">hyp_obj</span>)
+<span class="fu"><a href="reference/hyp_dots.html">hyp_dots</a></span>(<span class="kw">hyp_obj</span>)
 
 <span class="co"># Plot enrichment map</span>
-<span class="fu"><a href="reference/hyp_emap.html">hyp_emap</a></span>(<span class="no">hyp_obj</span>)
+<span class="fu"><a href="reference/hyp_emap.html">hyp_emap</a></span>(<span class="kw">hyp_obj</span>)
 
 <span class="co"># Plot hiearchy map</span>
-<span class="fu"><a href="reference/hyp_hmap.html">hyp_hmap</a></span>(<span class="no">hyp_obj</span>)</pre></div>
+<span class="fu"><a href="reference/hyp_hmap.html">hyp_hmap</a></span>(<span class="kw">hyp_obj</span>)
+</pre></div>
 </div>
 <div id="saving-results" class="section level5">
 <h5 class="hasAnchor">
 <a href="#saving-results" class="anchor"></a>Saving results</h5>
-<div class="sourceCode" id="cb17"><pre class="r"><span class="co"># Save to excel</span>
-<span class="fu"><a href="reference/hyp_to_excel.html">hyp_to_excel</a></span>(<span class="no">hyp_obj</span>, <span class="kw">file_path</span><span class="kw">=</span><span class="st">"hypeR.xlsx"</span>)
+<div class="sourceCode" id="cb17"><pre class="downlit">
+<span class="co"># Save to excel</span>
+<span class="fu"><a href="reference/hyp_to_excel.html">hyp_to_excel</a></span>(<span class="kw">hyp_obj</span>, file_path=<span class="st">"hypeR.xlsx"</span>)
 
 <span class="co"># Save to table</span>
-<span class="fu"><a href="reference/hyp_to_table.html">hyp_to_table</a></span>(<span class="no">hyp_obj</span>, <span class="kw">file_path</span><span class="kw">=</span><span class="st">"hypeR.txt"</span>)
+<span class="fu"><a href="reference/hyp_to_table.html">hyp_to_table</a></span>(<span class="kw">hyp_obj</span>, file_path=<span class="st">"hypeR.txt"</span>)
 
 <span class="co"># Generate markdown report</span>
-<span class="fu"><a href="reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(<span class="no">hyp_obj</span>,
-           <span class="kw">file_path</span><span class="kw">=</span><span class="st">"hypeR.rmd"</span>,
-           <span class="kw">title</span><span class="kw">=</span><span class="st">"Hyper Enrichment (hypeR)"</span>,
-           <span class="kw">subtitle</span><span class="kw">=</span><span class="st">"YAP, TNF, and TAZ Knockout Experiments"</span>,
-           <span class="kw">author</span><span class="kw">=</span><span class="st">"Anthony Federico, Stefano Monti"</span>)</pre></div>
+<span class="fu"><a href="reference/hyp_to_rmd.html">hyp_to_rmd</a></span>(<span class="kw">hyp_obj</span>,
+           file_path=<span class="st">"hypeR.rmd"</span>,
+           title=<span class="st">"Hyper Enrichment (hypeR)"</span>,
+           subtitle=<span class="st">"YAP, TNF, and TAZ Knockout Experiments"</span>,
+           author=<span class="st">"Anthony Federico, Stefano Monti"</span>)
+</pre></div>
 </div>
 </div>
 </div>
@@ -280,7 +306,9 @@
 <div id="cite" class="section level2">
 <h2 class="hasAnchor">
 <a href="#cite" class="anchor"></a>Cite</h2>
-<div class="sourceCode" id="cb18"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span>(<span class="st">"hypeR"</span>)</pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span>(<span class="st">"hypeR"</span>)
+</pre></div>
 <div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#&gt; </span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="co">#&gt; To cite hypeR in publications use:</span></span>
 <span id="cb19-3"><a href="#cb19-3"></a><span class="co">#&gt; </span></span>
@@ -348,7 +376,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

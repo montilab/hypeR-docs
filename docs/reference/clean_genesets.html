@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.3</span>
       </span>
     </div>
 
@@ -156,7 +156,7 @@
     <p>Clean labels of genesets</p>
     </div>
 
-    <pre class="usage"><span class='fu'>clean_genesets</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>clean_genesets</span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,9 +169,10 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>HALLMARK</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='msigdb_download.html'>msigdb_download</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='st'>"H"</span>, <span class='st'>""</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>HALLMARK</span>) <span class='kw'>&lt;-</span> <span class='fu'>clean_genesets</span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>HALLMARK</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>HALLMARK</span>))</div><div class='output co'>#&gt; [1] "Adipogenesis"        "Allograft Rejection" "Androgen Response"  
+    <pre class="examples"><div class='input'><span class='kw'>HALLMARK</span> <span class='op'>&lt;-</span> <span class='fu'><a href='msigdb_download.html'>msigdb_download</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='st'>"H"</span>, <span class='st'>""</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>HALLMARK</span>) <span class='op'>&lt;-</span> <span class='fu'>clean_genesets</span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>HALLMARK</span>))
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>HALLMARK</span>))
+</div><div class='output co'>#&gt; [1] "Adipogenesis"        "Allograft Rejection" "Androgen Response"  
 #&gt; [4] "Angiogenesis"        "Apical Junction"     "Apical Surface"     </div><div class='input'>
 </div></pre>
   </div>
@@ -189,7 +190,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
