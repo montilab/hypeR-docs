@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
       </span>
     </div>
 
@@ -130,7 +130,7 @@
 </li>
 <li>
   <a href="https://github.com/montilab/hypeR">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -156,7 +156,7 @@
     <p>Export hyp/multihyp object to excel</p>
     </div>
 
-    <pre class="usage"><span class='fu'>hyp_to_excel</span>(<span class='kw'>hyp_obj</span>, <span class='kw'>file_path</span>, cols = <span class='kw'>NULL</span>, versioning = <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>hyp_to_excel</span><span class='op'>(</span><span class='va'>hyp_obj</span>, <span class='va'>file_path</span>, cols <span class='op'>=</span> <span class='cn'>NULL</span>, versioning <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,15 +181,15 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>genesets</span> <span class='op'>&lt;-</span> <span class='fu'><a href='msigdb_gsets.html'>msigdb_gsets</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='st'>"C2"</span>, <span class='st'>"CP:KEGG"</span>)
+    <pre class="examples"><div class='input'><span class='va'>genesets</span> <span class='op'>&lt;-</span> <span class='fu'><a href='msigdb_gsets.html'>msigdb_gsets</a></span><span class='op'>(</span><span class='st'>"Homo sapiens"</span>, <span class='st'>"C2"</span>, <span class='st'>"CP:KEGG"</span><span class='op'>)</span>
 
-<span class='kw'>signature</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"IDH3B"</span>,<span class='st'>"DLST"</span>,<span class='st'>"PCK2"</span>,<span class='st'>"CS"</span>,<span class='st'>"PDHB"</span>,<span class='st'>"PCK1"</span>,<span class='st'>"PDHA1"</span>,<span class='st'>"LOC642502"</span>,
+<span class='va'>signature</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"IDH3B"</span>,<span class='st'>"DLST"</span>,<span class='st'>"PCK2"</span>,<span class='st'>"CS"</span>,<span class='st'>"PDHB"</span>,<span class='st'>"PCK1"</span>,<span class='st'>"PDHA1"</span>,<span class='st'>"LOC642502"</span>,
                <span class='st'>"PDHA2"</span>,<span class='st'>"LOC283398"</span>,<span class='st'>"FH"</span>,<span class='st'>"SDHD"</span>,<span class='st'>"OGDH"</span>,<span class='st'>"SDHB"</span>,<span class='st'>"IDH3A"</span>,<span class='st'>"SDHC"</span>,
-               <span class='st'>"IDH2"</span>,<span class='st'>"IDH1"</span>,<span class='st'>"OGDHL"</span>,<span class='st'>"PC"</span>,<span class='st'>"SDHA"</span>,<span class='st'>"SUCLG1"</span>,<span class='st'>"SUCLA2"</span>,<span class='st'>"SUCLG2"</span>)
+               <span class='st'>"IDH2"</span>,<span class='st'>"IDH1"</span>,<span class='st'>"OGDHL"</span>,<span class='st'>"PC"</span>,<span class='st'>"SDHA"</span>,<span class='st'>"SUCLG1"</span>,<span class='st'>"SUCLA2"</span>,<span class='st'>"SUCLG2"</span><span class='op'>)</span>
 
-<span class='kw'>hyp_obj</span> <span class='op'>&lt;-</span> <span class='fu'><a href='hypeR.html'>hypeR</a></span>(<span class='kw'>signature</span>, <span class='kw'>genesets</span>, background=<span class='fl'>2522</span>)
+<span class='va'>hyp_obj</span> <span class='op'>&lt;-</span> <span class='fu'><a href='hypeR.html'>hypeR</a></span><span class='op'>(</span><span class='va'>signature</span>, <span class='va'>genesets</span>, background<span class='op'>=</span><span class='fl'>2522</span><span class='op'>)</span>
 
-<span class='fu'>hyp_to_excel</span>(<span class='kw'>hyp_obj</span>, file_path=<span class='st'>"pathways.xlsx"</span>)
+<span class='fu'>hyp_to_excel</span><span class='op'>(</span><span class='va'>hyp_obj</span>, file_path<span class='op'>=</span><span class='st'>"pathways.xlsx"</span><span class='op'>)</span>
 
 </div></pre>
   </div>
@@ -207,7 +207,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

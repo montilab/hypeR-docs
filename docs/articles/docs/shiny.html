@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
 </li>
 <li>
   <a href="https://github.com/montilab/hypeR">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -131,72 +131,69 @@
 <h3 class="hasAnchor">
 <a href="#ui" class="anchor"></a>UI</h3>
 <p>Here we create a simple interface where we use the genesets selection module. Through that module, users can select genesets available through <strong>hypeR</strong> and the application will load those genesets into a <em>reactive variable</em> (more on this later). We add additional code to take a user-defined gene signature and produce an enrichment plot which represents components specific to your Shiny application. This can be anything!</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">ui</span> <span class="op">&lt;-</span> <span class="fu">fluidPage</span>(
-        <span class="fu">sidebarLayout</span>(
-            <span class="fu">sidebarPanel</span>(
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu">fluidPage</span><span class="op">(</span>
+        <span class="fu">sidebarLayout</span><span class="op">(</span>
+            <span class="fu">sidebarPanel</span><span class="op">(</span>
                 <span class="co"># Put your geneset selector module anywhere</span>
-                <span class="kw">hypeR</span>::<span class="fu"><a href="../../reference/genesets_UI.html">genesets_UI</a></span>(<span class="st">"genesets"</span>),
+                <span class="fu">hypeR</span><span class="fu">::</span><span class="fu"><a href="../../reference/genesets_UI.html">genesets_UI</a></span><span class="op">(</span><span class="st">"genesets"</span><span class="op">)</span>,
                 
                 <span class="co"># Add components specific to your application</span>
-                <span class="fu">textAreaInput</span>(<span class="st">"signature"</span>, 
-                              label=<span class="st">"Signature"</span>, 
-                              rows=<span class="fl">5</span>,
-                              placeholder=<span class="st">"GENE1,GENE2,GENE3"</span>, 
-                              resize=<span class="st">"vertical"</span>),
+                <span class="fu">textAreaInput</span><span class="op">(</span><span class="st">"signature"</span>, 
+                              label<span class="op">=</span><span class="st">"Signature"</span>, 
+                              rows<span class="op">=</span><span class="fl">5</span>,
+                              placeholder<span class="op">=</span><span class="st">"GENE1,GENE2,GENE3"</span>, 
+                              resize<span class="op">=</span><span class="st">"vertical"</span><span class="op">)</span>,
                 
-                <span class="fu">actionButton</span>(<span class="st">"enrichment"</span>, <span class="st">"Enrichment"</span>)
-            ),
-            <span class="fu">mainPanel</span>(
+                <span class="fu">actionButton</span><span class="op">(</span><span class="st">"enrichment"</span>, <span class="st">"Enrichment"</span><span class="op">)</span>
+            <span class="op">)</span>,
+            <span class="fu">mainPanel</span><span class="op">(</span>
                 <span class="co"># Enrichment plot</span>
-                <span class="fu">plotOutput</span>(<span class="st">"plot"</span>)
-            )
-        )
-    )
-</pre></div>
+                <span class="fu">plotOutput</span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span>
+            <span class="op">)</span>
+        <span class="op">)</span>
+    <span class="op">)</span></code></pre></div>
 </div>
 <div id="server" class="section level3">
 <h3 class="hasAnchor">
 <a href="#server" class="anchor"></a>Server</h3>
 <p>Now we need to create the server code that is responsible for all the backend work. Again, we provide an associated module function for the server code. The serve code returns a <em>reactive variable</em> containing the fetched genesets that were selected. <strong>Selection changes will update this variable and propogate to downstream functions</strong>. Importantly, this variable holding the genesets can be accessed by any part of your application now, enabling you to make applications completely customizable while still utilizing this feature. As an example, our custom function is producing a simple enrichment plot.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">server</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">input</span>, <span class="kw">output</span>, <span class="kw">session</span>) {
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># Retrieve selected genesets as a reactive variable</span>
     <span class="co"># Selection changes will update this variable and propogate to downstream functions</span>
-    <span class="kw">genesets</span> <span class="op">&lt;-</span> <span class="kw">hypeR</span>::<span class="fu"><a href="../../reference/genesets_Server.html">genesets_Server</a></span>(<span class="st">"genesets"</span>)
+    <span class="va">genesets</span> <span class="op">&lt;-</span> <span class="fu">hypeR</span><span class="fu">::</span><span class="fu"><a href="../../reference/genesets_Server.html">genesets_Server</a></span><span class="op">(</span><span class="st">"genesets"</span><span class="op">)</span>
     
     <span class="co"># Your custom downstream functions</span>
-    <span class="kw">reactive_plot</span> <span class="op">&lt;-</span> <span class="fu">eventReactive</span>(<span class="kw">input</span><span class="op">$</span><span class="kw">enrichment</span>, {
+    <span class="va">reactive_plot</span> <span class="op">&lt;-</span> <span class="fu">eventReactive</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">enrichment</span>, <span class="op">{</span>
         
         <span class="co"># Here are the fetched genesets</span>
-        <span class="kw">gsets</span> <span class="op">&lt;-</span> <span class="fu">genesets</span>()
+        <span class="va">gsets</span> <span class="op">&lt;-</span> <span class="fu">genesets</span><span class="op">(</span><span class="op">)</span>
         
         <span class="co"># Process the signature into a character vector</span>
-        <span class="kw">signature</span> <span class="op">&lt;-</span> <span class="kw">input</span><span class="op">$</span><span class="kw">signature</span> <span class="op">%&gt;%</span>
-                     <span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span>(pattern=<span class="st">","</span>, simplify=<span class="fl">TRUE</span>) <span class="op">%&gt;%</span>
-                     <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span>()
+        <span class="va">signature</span> <span class="op">&lt;-</span> <span class="va">input</span><span class="op">$</span><span class="va">signature</span> <span class="op">%&gt;%</span>
+                     <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span>pattern<span class="op">=</span><span class="st">","</span>, simplify<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                     <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="op">)</span>
         
         <span class="co"># Run hypeR</span>
-        <span class="kw">hyp</span> <span class="op">&lt;-</span> <span class="kw">hypeR</span>::<span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span>(<span class="kw">signature</span>, <span class="kw">gsets</span>, test=<span class="st">"hypergeometric"</span>)
-        <span class="kw">p</span> <span class="op">&lt;-</span> <span class="kw">hypeR</span>::<span class="fu"><a href="../../reference/hyp_dots.html">hyp_dots</a></span>(<span class="kw">hyp</span>, top=<span class="fl">10</span>, fdr=<span class="fl">0.25</span>)
+        <span class="va">hyp</span> <span class="op">&lt;-</span> <span class="fu">hypeR</span><span class="fu">::</span><span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span><span class="op">(</span><span class="va">signature</span>, <span class="va">gsets</span>, test<span class="op">=</span><span class="st">"hypergeometric"</span><span class="op">)</span>
+        <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">hypeR</span><span class="fu">::</span><span class="fu"><a href="../../reference/hyp_dots.html">hyp_dots</a></span><span class="op">(</span><span class="va">hyp</span>, top<span class="op">=</span><span class="fl">10</span>, fdr<span class="op">=</span><span class="fl">0.25</span><span class="op">)</span>
         
         <span class="co"># These are just ggplot objects you could customize</span>
-        <span class="kw">p</span> <span class="op">+</span> <span class="fu">theme</span>(axis.text=<span class="fu">element_text</span>(size=<span class="fl">12</span>, face=<span class="st">"bold"</span>))
-    })
+        <span class="va">p</span> <span class="op">+</span> <span class="fu">theme</span><span class="op">(</span>axis.text<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>size<span class="op">=</span><span class="fl">12</span>, face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">)</span>
+    <span class="op">}</span><span class="op">)</span>
     
-    <span class="kw">output</span><span class="op">$</span><span class="kw">plot</span> <span class="op">&lt;-</span> <span class="fu">renderPlot</span>({
-        <span class="fu">reactive_plot</span>()
-    })
-}
-</pre></div>
+    <span class="va">output</span><span class="op">$</span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu">renderPlot</span><span class="op">(</span><span class="op">{</span>
+        <span class="fu">reactive_plot</span><span class="op">(</span><span class="op">)</span>
+    <span class="op">}</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 </div>
 </div>
 <div id="run" class="section level2">
 <h2 class="hasAnchor">
 <a href="#run" class="anchor"></a>Run</h2>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu">shinyApp</span>(<span class="kw">ui</span>, <span class="kw">server</span>)
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">shinyApp</span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
@@ -216,7 +213,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

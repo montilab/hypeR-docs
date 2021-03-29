@@ -25,10 +25,16 @@
     <loc>https://github.com/montilab/hypeR/reference/dot-format_str.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-github_rds.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-hiearchy_map.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-hyper_enrichment.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-hyperdb_url.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-jaccard_similarity.html</loc>
@@ -109,7 +115,10 @@
     <loc>https://github.com/montilab/hypeR/reference/hypeR.html</loc>
   </url>
   <url>
-    <loc>https://github.com/montilab/hypeR/reference/hyperdb_info.html</loc>
+    <loc>https://github.com/montilab/hypeR/reference/hyperdb_available.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/reference/hyperdb_gsets.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/reference/hyperdb_rgsets.html</loc>

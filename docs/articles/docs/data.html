@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
 </li>
 <li>
   <a href="https://github.com/montilab/hypeR">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -101,7 +101,7 @@
 
       
 
-      </header><script src="data_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="data_files/core-js-2.5.3/shim.min.js"></script><script src="data_files/react-16.12.0/react.min.js"></script><script src="data_files/react-16.12.0/react-dom.min.js"></script><script src="data_files/reactwidget-1.0.0/react-tools.js"></script><script src="data_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="data_files/reactable-binding-0.2.1/reactable.js"></script><div class="row">
+      </header><script src="data_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="data_files/core-js-2.5.3/shim.min.js"></script><script src="data_files/react-17.0.0/react.min.js"></script><script src="data_files/react-17.0.0/react-dom.min.js"></script><script src="data_files/reactwidget-1.0.0/react-tools.js"></script><script src="data_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="data_files/reactable-binding-0.2.3/reactable.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Downloading Genesets</h1>
@@ -118,35 +118,31 @@
 <h1 class="hasAnchor">
 <a href="#object-oriented-genesets" class="anchor"></a>Object Oriented Genesets</h1>
 <p>Genesets are simply a named list of character vectors which can be directly passed to <code>hyper()</code>. Alternatively, one can pass a <code>gsets</code> object, which can retain the name and version of the genesets one uses. This versioning will be included when exporting results or generating reports, which will ensure your results are reproducible.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">genesets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"GSET1"</span> = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span>),
-                 <span class="st">"GSET2"</span> = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE4"</span>, <span class="st">"GENE6"</span>),
-                 <span class="st">"GSET3"</span> = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span>))
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">genesets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"GSET1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"GENE1"</span>, <span class="st">"GENE2"</span>, <span class="st">"GENE3"</span><span class="op">)</span>,
+                 <span class="st">"GSET2"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"GENE4"</span>, <span class="st">"GENE6"</span><span class="op">)</span>,
+                 <span class="st">"GSET3"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"GENE7"</span>, <span class="st">"GENE8"</span>, <span class="st">"GENE9"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Creating a <code>gsets</code> object is easy…</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">genesets</span> <span class="op">&lt;-</span> <span class="kw">gsets</span><span class="op">$</span><span class="fu">new</span>(<span class="kw">genesets</span>, name=<span class="st">"Example Genesets"</span>, version=<span class="st">"v1.0"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">genesets</span>)
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">genesets</span> <span class="op">&lt;-</span> <span class="va"><a href="../../reference/gsets.html">gsets</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">genesets</span>, name<span class="op">=</span><span class="st">"Example Genesets"</span>, version<span class="op">=</span><span class="st">"v1.0"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">genesets</span><span class="op">)</span></code></pre></div>
 <pre><code>Example Genesets v1.0 
 GSET1 (3)
 GSET2 (2)
 GSET3 (3)</code></pre>
 <p>And can be passed directly to <code>hyper()</code>…</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span>(<span class="kw">signature</span>, <span class="kw">genesets</span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span><span class="op">(</span><span class="va">signature</span>, <span class="va">genesets</span><span class="op">)</span></code></pre></div>
 <p>To aid in workflow efficiency, <strong>hypeR</strong> enables users to download genesets, wrapped as <code>gsets</code> objects, from multiple data sources.</p>
 </div>
 <div id="downloading-msigdb-genesets" class="section level1">
 <h1 class="hasAnchor">
 <a href="#downloading-msigdb-genesets" class="anchor"></a>Downloading <strong>msigdb</strong> Genesets</h1>
 <p>Most researchers will find the genesets hosted by <a href="https://software.broadinstitute.org/gsea/msigdb/collections.jsp">msigdb</a> are adequate to perform geneset enrichment analysis. There are various types of genesets available across multiple species.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../../reference/msigdb_info.html">msigdb_info</a></span>()
-</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/msigdb_info.html">msigdb_info</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>|------------------------------------------------------------------|
-| Via: R package msigdbr                                    v7.1.1 |
+| Via: R package msigdbr                                    v7.2.1 |
 |------------------------------------------------------------------|
 | Available Species                                                |
 |------------------------------------------------------------------|
@@ -187,11 +183,10 @@ GSET3 (3)</code></pre>
 | Source: http://software.broadinstitute.org/gsea/msigdb           |
 |------------------------------------------------------------------|</code></pre>
 <p>Here we download the Hallmarks genesets…</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="kw">HALLMARK</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span>(species=<span class="st">"Homo sapiens"</span>, category=<span class="st">"H"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">HALLMARK</span>)
-</pre></div>
-<pre><code>H v7.1.1 
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">HALLMARK</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span><span class="op">(</span>species<span class="op">=</span><span class="st">"Homo sapiens"</span>, category<span class="op">=</span><span class="st">"H"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">HALLMARK</span><span class="op">)</span></code></pre></div>
+<pre><code>H v7.2.1 
 HALLMARK_ADIPOGENESIS (200)
 HALLMARK_ALLOGRAFT_REJECTION (200)
 HALLMARK_ANDROGEN_RESPONSE (100)
@@ -199,11 +194,10 @@ HALLMARK_ANGIOGENESIS (36)
 HALLMARK_APICAL_JUNCTION (200)
 HALLMARK_APICAL_SURFACE (44)</code></pre>
 <p>We can also clean them up by removing the first leading common substring…</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="kw">HALLMARK</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span>(species=<span class="st">"Homo sapiens"</span>, category=<span class="st">"H"</span>, clean=<span class="fl">TRUE</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">HALLMARK</span>)
-</pre></div>
-<pre><code>H v7.1.1 
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">HALLMARK</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span><span class="op">(</span>species<span class="op">=</span><span class="st">"Homo sapiens"</span>, category<span class="op">=</span><span class="st">"H"</span>, clean<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">HALLMARK</span><span class="op">)</span></code></pre></div>
+<pre><code>H v7.2.1 
 Adipogenesis (200)
 Allograft Rejection (200)
 Androgen Response (100)
@@ -211,30 +205,26 @@ Angiogenesis (36)
 Apical Junction (200)
 Apical Surface (44)</code></pre>
 <p>This can be passed directly to <code><a href="../../reference/hypeR.html">hypeR()</a></code>…</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span>(<span class="kw">signature</span>, genesets=<span class="kw">HALLMARK</span>)
-</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span><span class="op">(</span><span class="va">signature</span>, genesets<span class="op">=</span><span class="va">HALLMARK</span><span class="op">)</span></code></pre></div>
 <p>Other commonly used genesets include Biocarta, Kegg, and Reactome…</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="kw">BIOCARTA</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span>(species=<span class="st">"Homo sapiens"</span>, category=<span class="st">"C2"</span>, subcategory=<span class="st">"CP:BIOCARTA"</span>)
-<span class="kw">KEGG</span>     <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span>(species=<span class="st">"Homo sapiens"</span>, category=<span class="st">"C2"</span>, subcategory=<span class="st">"CP:KEGG"</span>)
-<span class="kw">REACTOME</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span>(species=<span class="st">"Homo sapiens"</span>, category=<span class="st">"C2"</span>, subcategory=<span class="st">"CP:REACTOME"</span>)
-</pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">BIOCARTA</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span><span class="op">(</span>species<span class="op">=</span><span class="st">"Homo sapiens"</span>, category<span class="op">=</span><span class="st">"C2"</span>, subcategory<span class="op">=</span><span class="st">"CP:BIOCARTA"</span><span class="op">)</span>
+<span class="va">KEGG</span>     <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span><span class="op">(</span>species<span class="op">=</span><span class="st">"Homo sapiens"</span>, category<span class="op">=</span><span class="st">"C2"</span>, subcategory<span class="op">=</span><span class="st">"CP:KEGG"</span><span class="op">)</span>
+<span class="va">REACTOME</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/msigdb_gsets.html">msigdb_gsets</a></span><span class="op">(</span>species<span class="op">=</span><span class="st">"Homo sapiens"</span>, category<span class="op">=</span><span class="st">"C2"</span>, subcategory<span class="op">=</span><span class="st">"CP:REACTOME"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="downloading-enrichr-genesets" class="section level1">
 <h1 class="hasAnchor">
 <a href="#downloading-enrichr-genesets" class="anchor"></a>Downloading <strong>enrichr</strong> Genesets</h1>
 <p>If msigdb genesets are not sufficient, we have also provided another set of functions for downloading and loading other publicly available genesets. This is facilitated by interfacing with the publicly available <a href="https://amp.pharm.mssm.edu/Enrichr/#stats">libraries</a> hosted by <a href="https://amp.pharm.mssm.edu/Enrichr/">enrichr</a>.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="kw">available</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_available.html">enrichr_available</a></span>()
-<span class="fu">reactable</span>(<span class="kw">available</span>)
-</pre></div>
-<div id="htmlwidget-502f0cc510b19f1c7f31" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-502f0cc510b19f1c7f31">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Geneset":["Genome_Browser_PWMs","TRANSFAC_and_JASPAR_PWMs","Transcription_Factor_PPIs","ChEA_2013","Drug_Perturbations_from_GEO_2014","ENCODE_TF_ChIP-seq_2014","BioCarta_2013","Reactome_2013","WikiPathways_2013","Disease_Signatures_from_GEO_up_2014","KEGG_2013","TF-LOF_Expression_from_GEO","TargetScan_microRNA","PPI_Hub_Proteins","GO_Molecular_Function_2015","GeneSigDB","Chromosome_Location","Human_Gene_Atlas","Mouse_Gene_Atlas","GO_Cellular_Component_2015","GO_Biological_Process_2015","Human_Phenotype_Ontology","Epigenomics_Roadmap_HM_ChIP-seq","KEA_2013","NURSA_Human_Endogenous_Complexome","CORUM","SILAC_Phosphoproteomics","MGI_Mammalian_Phenotype_Level_3","MGI_Mammalian_Phenotype_Level_4","Old_CMAP_up","Old_CMAP_down","OMIM_Disease","OMIM_Expanded","VirusMINT","MSigDB_Computational","MSigDB_Oncogenic_Signatures","Disease_Signatures_from_GEO_down_2014","Virus_Perturbations_from_GEO_up","Virus_Perturbations_from_GEO_down","Cancer_Cell_Line_Encyclopedia","NCI-60_Cancer_Cell_Lines","Tissue_Protein_Expression_from_ProteomicsDB","Tissue_Protein_Expression_from_Human_Proteome_Map","HMDB_Metabolites","Pfam_InterPro_Domains","GO_Biological_Process_2013","GO_Cellular_Component_2013","GO_Molecular_Function_2013","Allen_Brain_Atlas_up","ENCODE_TF_ChIP-seq_2015","ENCODE_Histone_Modifications_2015","Phosphatase_Substrates_from_DEPOD","Allen_Brain_Atlas_down","ENCODE_Histone_Modifications_2013","Achilles_fitness_increase","Achilles_fitness_decrease","MGI_Mammalian_Phenotype_2013","BioCarta_2015","HumanCyc_2015","KEGG_2015","NCI-Nature_2015","Panther_2015","WikiPathways_2015","Reactome_2015","ESCAPE","HomoloGene","Disease_Perturbations_from_GEO_down","Disease_Perturbations_from_GEO_up","Drug_Perturbations_from_GEO_down","Genes_Associated_with_NIH_Grants","Drug_Perturbations_from_GEO_up","KEA_2015","Gene_Perturbations_from_GEO_up","Gene_Perturbations_from_GEO_down","ChEA_2015","dbGaP","LINCS_L1000_Chem_Pert_up","LINCS_L1000_Chem_Pert_down","GTEx_Tissue_Sample_Gene_Expression_Profiles_down","GTEx_Tissue_Sample_Gene_Expression_Profiles_up","Ligand_Perturbations_from_GEO_down","Aging_Perturbations_from_GEO_down","Aging_Perturbations_from_GEO_up","Ligand_Perturbations_from_GEO_up","MCF7_Perturbations_from_GEO_down","MCF7_Perturbations_from_GEO_up","Microbe_Perturbations_from_GEO_down","Microbe_Perturbations_from_GEO_up","LINCS_L1000_Ligand_Perturbations_down","LINCS_L1000_Ligand_Perturbations_up","L1000_Kinase_and_GPCR_Perturbations_down","L1000_Kinase_and_GPCR_Perturbations_up","Reactome_2016","KEGG_2016","WikiPathways_2016","ENCODE_and_ChEA_Consensus_TFs_from_ChIP-X","Kinase_Perturbations_from_GEO_down","Kinase_Perturbations_from_GEO_up","BioCarta_2016","HumanCyc_2016","NCI-Nature_2016","Panther_2016","DrugMatrix","ChEA_2016","huMAP","Jensen_TISSUES","RNA-Seq_Disease_Gene_and_Drug_Signatures_from_GEO","MGI_Mammalian_Phenotype_2017","Jensen_COMPARTMENTS","Jensen_DISEASES","BioPlex_2017","GO_Cellular_Component_2017","GO_Molecular_Function_2017","GO_Biological_Process_2017","GO_Cellular_Component_2017b","GO_Molecular_Function_2017b","GO_Biological_Process_2017b","ARCHS4_Tissues","ARCHS4_Cell-lines","ARCHS4_IDG_Coexp","ARCHS4_Kinases_Coexp","ARCHS4_TFs_Coexp","SysMyo_Muscle_Gene_Sets","miRTarBase_2017","TargetScan_microRNA_2017","Enrichr_Libraries_Most_Popular_Genes","Enrichr_Submissions_TF-Gene_Coocurrence","Data_Acquisition_Method_Most_Popular_Genes","DSigDB","GO_Biological_Process_2018","GO_Cellular_Component_2018","GO_Molecular_Function_2018","TF_Perturbations_Followed_by_Expression","Chromosome_Location_hg19","NIH_Funded_PIs_2017_Human_GeneRIF","NIH_Funded_PIs_2017_Human_AutoRIF","Rare_Diseases_AutoRIF_ARCHS4_Predictions","Rare_Diseases_GeneRIF_ARCHS4_Predictions","NIH_Funded_PIs_2017_AutoRIF_ARCHS4_Predictions","NIH_Funded_PIs_2017_GeneRIF_ARCHS4_Predictions","Rare_Diseases_GeneRIF_Gene_Lists","Rare_Diseases_AutoRIF_Gene_Lists","SubCell_BarCode","GWAS_Catalog_2019","WikiPathways_2019_Human","WikiPathways_2019_Mouse","TRRUST_Transcription_Factors_2019","KEGG_2019_Human","KEGG_2019_Mouse","InterPro_Domains_2019","Pfam_Domains_2019","DepMap_WG_CRISPR_Screens_Broad_CellLines_2019","DepMap_WG_CRISPR_Screens_Sanger_CellLines_2019","MGI_Mammalian_Phenotype_Level_4_2019","UK_Biobank_GWAS_v1","BioPlanet_2019","ClinVar_2019","PheWeb_2019","DisGeNET","HMS_LINCS_KinomeScan","CCLE_Proteomics_2020","ProteomicsDB_2020","lncHUB_lncRNA_Co-Expression","Virus-Host_PPI_P-HIPSTer_2020","Elsevier_Pathway_Collection","Table_Mining_of_CRISPR_Studies","COVID-19_Related_Gene_Sets"],"Set Number":[615,326,290,353,701,498,249,78,199,142,200,269,222,385,1136,2139,386,84,96,641,5192,1779,383,474,1796,1658,84,71,476,6100,6100,90,187,85,858,189,142,323,323,967,93,207,30,3906,311,941,205,402,2192,816,412,59,2192,109,216,216,476,239,125,179,209,104,404,1389,315,12,839,839,906,32876,906,428,2460,2460,395,345,33132,33132,2918,2918,261,286,286,261,401,401,312,312,96,96,3644,3644,1530,293,437,104,285,285,237,152,209,112,7876,645,995,1842,1302,5231,2283,1811,3915,636,972,3166,816,3271,10125,108,125,352,498,1724,1135,3240,683,121,1722,12,4026,5103,446,1151,1958,36,5687,12558,3725,2244,12558,5684,2244,3725,104,1737,472,176,571,308,303,1071,608,558,325,5261,857,1510,182,1161,9828,148,378,913,3729,6715,1721,802,205],"Coverage":[13362,27884,6002,47172,47107,21493,1295,3185,2854,15057,4128,34061,7504,16399,12753,23726,32740,13373,19270,13236,14264,3096,22288,4533,10231,2741,5655,10406,10493,11251,8695,1759,2178,851,10061,11250,15406,17711,17576,15797,12232,13572,6454,3723,7588,7682,7324,8469,13121,26382,29065,280,13877,15852,4320,4271,10496,1678,756,3800,2541,1918,5863,6768,25651,19129,23939,23561,23877,15886,24350,3102,31132,30832,48230,5613,9559,9448,16725,19249,15090,16129,15309,15103,15022,15676,15854,15015,3788,3357,12668,12638,8973,7010,5966,15562,17850,17660,1348,934,2541,2041,5209,49238,2243,19586,22440,8184,18329,15755,10271,10427,10601,13822,8002,10089,13247,21809,23601,20883,19612,25983,19500,14893,17598,5902,12486,1073,19513,14433,8655,11459,19741,27360,13072,13464,13787,13929,16964,17258,10352,10471,12419,19378,6201,4558,3264,7802,8551,12444,9000,7744,6204,13420,14148,9813,1397,9116,17464,394,11851,8189,18704,5605,5718,14156,16979],"Genes Per Set":[275,1284,77,1370,509,3713,18,73,34,300,48,641,155,247,57,127,85,258,388,82,58,31,4368,37,158,5,342,715,200,100,100,25,89,15,106,166,300,300,300,176,343,301,301,47,35,78,172,122,305,1811,2123,9,304,912,129,128,201,21,12,48,39,39,51,47,807,1594,293,307,302,9,299,25,298,302,1429,36,73,63,1443,1443,282,292,308,318,290,310,279,321,159,153,300,300,64,87,51,887,300,300,19,13,39,42,300,1550,19,545,505,24,161,28,22,38,25,21,143,45,49,2316,2395,299,299,299,137,128,1208,109,299,100,117,36,61,39,270,802,26,45,200,200,200,200,58,76,491,37,45,54,22,92,98,23,20,363,387,32,122,49,13,22,63,73,586,421,100,39,31,40,295],"Source":["http://hgdownload.cse.ucsc.edu/goldenPath/hg18/database/","http://jaspar.genereg.net/html/DOWNLOAD/","","http://amp.pharm.mssm.edu/lib/cheadownload.jsp","http://www.ncbi.nlm.nih.gov/geo/","http://genome.ucsc.edu/ENCODE/downloads.html","https://cgap.nci.nih.gov/Pathways/BioCarta_Pathways","http://www.reactome.org/download/index.html","http://www.wikipathways.org/index.php/Download_Pathways","http://www.ncbi.nlm.nih.gov/geo/","http://www.kegg.jp/kegg/download/","http://www.ncbi.nlm.nih.gov/geo/","http://www.targetscan.org/cgi-bin/targetscan/data_download.cgi?db=vert_61","http://amp.pharm.mssm.edu/X2K","http://www.geneontology.org/GO.downloads.annotations.shtml","http://genesigdb.org/genesigdb/downloadall.jsp","http://software.broadinstitute.org/gsea/msigdb/index.jsp","http://biogps.org/downloads/","http://biogps.org/downloads/","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.human-phenotype-ontology.org/","http://www.roadmapepigenomics.org/","http://amp.pharm.mssm.edu/lib/keacommandline.jsp","https://www.nursa.org/nursa/index.jsf","http://mips.helmholtz-muenchen.de/genre/proj/corum/","http://amp.pharm.mssm.edu/lib/keacommandline.jsp","http://www.informatics.jax.org/","http://www.informatics.jax.org/","http://www.broadinstitute.org/cmap/","http://www.broadinstitute.org/cmap/","http://www.omim.org/downloads","http://www.omim.org/downloads","http://mint.bio.uniroma2.it/download.html","http://www.broadinstitute.org/gsea/msigdb/collections.jsp","http://www.broadinstitute.org/gsea/msigdb/collections.jsp","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","https://portals.broadinstitute.org/ccle/home\n","http://biogps.org/downloads/","https://www.proteomicsdb.org/","http://www.humanproteomemap.org/index.php","http://www.hmdb.ca/downloads","ftp://ftp.ebi.ac.uk/pub/databases/interpro/","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.brain-map.org/","http://genome.ucsc.edu/ENCODE/downloads.html","http://genome.ucsc.edu/ENCODE/downloads.html","http://www.koehn.embl.de/depod/","http://www.brain-map.org/","http://genome.ucsc.edu/ENCODE/downloads.html","http://www.broadinstitute.org/achilles","http://www.broadinstitute.org/achilles","http://www.informatics.jax.org/","https://cgap.nci.nih.gov/Pathways/BioCarta_Pathways","http://humancyc.org/","http://www.kegg.jp/kegg/download/","http://pid.nci.nih.gov/","http://www.pantherdb.org/","http://www.wikipathways.org/index.php/Download_Pathways","http://www.reactome.org/download/index.html","http://www.maayanlab.net/ESCAPE/","http://www.ncbi.nlm.nih.gov/homologene","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","https://grants.nih.gov/grants/oer.htm\n","http://www.ncbi.nlm.nih.gov/geo/","http://amp.pharm.mssm.edu/Enrichr","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://amp.pharm.mssm.edu/Enrichr","http://www.ncbi.nlm.nih.gov/gap","https://clue.io/","https://clue.io/","http://www.gtexportal.org/","http://www.gtexportal.org/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","https://clue.io/","https://clue.io/","https://clue.io/","https://clue.io/","http://www.reactome.org/download/index.html","http://www.kegg.jp/kegg/download/","http://www.wikipathways.org/index.php/Download_Pathways","","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://cgap.nci.nih.gov/Pathways/BioCarta_Pathways","http://humancyc.org/","http://pid.nci.nih.gov/","http://www.pantherdb.org/pathway/","https://ntp.niehs.nih.gov/drugmatrix/","http://amp.pharm.mssm.edu/Enrichr","http://proteincomplexes.org/","http://tissues.jensenlab.org/","http://www.ncbi.nlm.nih.gov/geo/","http://www.informatics.jax.org/","http://compartments.jensenlab.org/","http://diseases.jensenlab.org/","http://bioplex.hms.harvard.edu/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://amp.pharm.mssm.edu/archs4","http://amp.pharm.mssm.edu/archs4","http://amp.pharm.mssm.edu/archs4","http://amp.pharm.mssm.edu/archs4","http://amp.pharm.mssm.edu/archs4","http://sys-myo.rhcloud.com/","http://mirtarbase.mbc.nctu.edu.tw/","http://www.targetscan.org/","http://amp.pharm.mssm.edu/Enrichr","http://amp.pharm.mssm.edu/Enrichr","http://amp.pharm.mssm.edu/Enrichr","http://tanlab.ucdenver.edu/DSigDB/DSigDBv1.0/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.ncbi.nlm.nih.gov/geo/","http://hgdownload.cse.ucsc.edu/downloads.html","https://www.ncbi.nlm.nih.gov/pubmed/","https://www.ncbi.nlm.nih.gov/pubmed/","https://amp.pharm.mssm.edu/geneshot/","https://www.ncbi.nlm.nih.gov/gene/about-generif","https://www.ncbi.nlm.nih.gov/pubmed/","https://www.ncbi.nlm.nih.gov/pubmed/","https://www.ncbi.nlm.nih.gov/gene/about-generif","https://amp.pharm.mssm.edu/geneshot/","http://www.subcellbarcode.org/","https://www.ebi.ac.uk/gwas","https://www.wikipathways.org/","https://www.wikipathways.org/","https://www.grnpedia.org/trrust/","https://www.kegg.jp/","https://www.kegg.jp/","https://www.ebi.ac.uk/interpro/","https://pfam.xfam.org/","https://depmap.org/","https://depmap.org/","http://www.informatics.jax.org/","https://www.ukbiobank.ac.uk/tag/gwas/","https://tripod.nih.gov/bioplanet/","https://www.ncbi.nlm.nih.gov/clinvar/","http://pheweb.sph.umich.edu/","https://www.disgenet.org","http://lincs.hms.harvard.edu/kinomescan/","https://portals.broadinstitute.org/ccle","https://www.proteomicsdb.org/","https://amp.pharm.mssm.edu/lnchub/","http://phipster.org/","http://www.transgene.ru/disease-pathways/","","https://amp.pharm.mssm.edu/covid19"]},"columns":[{"accessor":"Geneset","name":"Geneset","type":"character"},{"accessor":"Set Number","name":"Set Number","type":"numeric"},{"accessor":"Coverage","name":"Coverage","type":"numeric"},{"accessor":"Genes Per Set","name":"Genes Per Set","type":"numeric"},{"accessor":"Source","name":"Source","type":"character"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"f310cbdab44a5353dc82c4e3412d00d1","key":"f310cbdab44a5353dc82c4e3412d00d1"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="kw">ATLAS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span>(<span class="st">"Human_Gene_Atlas"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">ATLAS</span>)
-</pre></div>
-<pre><code>Human_Gene_Atlas (Enrichr) Downloaded: 2020-09-16 
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">available</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_available.html">enrichr_available</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu">reactable</span><span class="op">(</span><span class="va">available</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-5aec972a09527bccfc10" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5aec972a09527bccfc10">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Geneset":["Genome_Browser_PWMs","TRANSFAC_and_JASPAR_PWMs","Transcription_Factor_PPIs","ChEA_2013","Drug_Perturbations_from_GEO_2014","ENCODE_TF_ChIP-seq_2014","BioCarta_2013","Reactome_2013","WikiPathways_2013","Disease_Signatures_from_GEO_up_2014","KEGG_2013","TF-LOF_Expression_from_GEO","TargetScan_microRNA","PPI_Hub_Proteins","GO_Molecular_Function_2015","GeneSigDB","Chromosome_Location","Human_Gene_Atlas","Mouse_Gene_Atlas","GO_Cellular_Component_2015","GO_Biological_Process_2015","Human_Phenotype_Ontology","Epigenomics_Roadmap_HM_ChIP-seq","KEA_2013","NURSA_Human_Endogenous_Complexome","CORUM","SILAC_Phosphoproteomics","MGI_Mammalian_Phenotype_Level_3","MGI_Mammalian_Phenotype_Level_4","Old_CMAP_up","Old_CMAP_down","OMIM_Disease","OMIM_Expanded","VirusMINT","MSigDB_Computational","MSigDB_Oncogenic_Signatures","Disease_Signatures_from_GEO_down_2014","Virus_Perturbations_from_GEO_up","Virus_Perturbations_from_GEO_down","Cancer_Cell_Line_Encyclopedia","NCI-60_Cancer_Cell_Lines","Tissue_Protein_Expression_from_ProteomicsDB","Tissue_Protein_Expression_from_Human_Proteome_Map","HMDB_Metabolites","Pfam_InterPro_Domains","GO_Biological_Process_2013","GO_Cellular_Component_2013","GO_Molecular_Function_2013","Allen_Brain_Atlas_up","ENCODE_TF_ChIP-seq_2015","ENCODE_Histone_Modifications_2015","Phosphatase_Substrates_from_DEPOD","Allen_Brain_Atlas_down","ENCODE_Histone_Modifications_2013","Achilles_fitness_increase","Achilles_fitness_decrease","MGI_Mammalian_Phenotype_2013","BioCarta_2015","HumanCyc_2015","KEGG_2015","NCI-Nature_2015","Panther_2015","WikiPathways_2015","Reactome_2015","ESCAPE","HomoloGene","Disease_Perturbations_from_GEO_down","Disease_Perturbations_from_GEO_up","Drug_Perturbations_from_GEO_down","Genes_Associated_with_NIH_Grants","Drug_Perturbations_from_GEO_up","KEA_2015","Gene_Perturbations_from_GEO_up","Gene_Perturbations_from_GEO_down","ChEA_2015","dbGaP","LINCS_L1000_Chem_Pert_up","LINCS_L1000_Chem_Pert_down","GTEx_Tissue_Sample_Gene_Expression_Profiles_down","GTEx_Tissue_Sample_Gene_Expression_Profiles_up","Ligand_Perturbations_from_GEO_down","Aging_Perturbations_from_GEO_down","Aging_Perturbations_from_GEO_up","Ligand_Perturbations_from_GEO_up","MCF7_Perturbations_from_GEO_down","MCF7_Perturbations_from_GEO_up","Microbe_Perturbations_from_GEO_down","Microbe_Perturbations_from_GEO_up","LINCS_L1000_Ligand_Perturbations_down","LINCS_L1000_Ligand_Perturbations_up","L1000_Kinase_and_GPCR_Perturbations_down","L1000_Kinase_and_GPCR_Perturbations_up","Reactome_2016","KEGG_2016","WikiPathways_2016","ENCODE_and_ChEA_Consensus_TFs_from_ChIP-X","Kinase_Perturbations_from_GEO_down","Kinase_Perturbations_from_GEO_up","BioCarta_2016","HumanCyc_2016","NCI-Nature_2016","Panther_2016","DrugMatrix","ChEA_2016","huMAP","Jensen_TISSUES","RNA-Seq_Disease_Gene_and_Drug_Signatures_from_GEO","MGI_Mammalian_Phenotype_2017","Jensen_COMPARTMENTS","Jensen_DISEASES","BioPlex_2017","GO_Cellular_Component_2017","GO_Molecular_Function_2017","GO_Biological_Process_2017","GO_Cellular_Component_2017b","GO_Molecular_Function_2017b","GO_Biological_Process_2017b","ARCHS4_Tissues","ARCHS4_Cell-lines","ARCHS4_IDG_Coexp","ARCHS4_Kinases_Coexp","ARCHS4_TFs_Coexp","SysMyo_Muscle_Gene_Sets","miRTarBase_2017","TargetScan_microRNA_2017","Enrichr_Libraries_Most_Popular_Genes","Enrichr_Submissions_TF-Gene_Coocurrence","Data_Acquisition_Method_Most_Popular_Genes","DSigDB","GO_Biological_Process_2018","GO_Cellular_Component_2018","GO_Molecular_Function_2018","TF_Perturbations_Followed_by_Expression","Chromosome_Location_hg19","NIH_Funded_PIs_2017_Human_GeneRIF","NIH_Funded_PIs_2017_Human_AutoRIF","Rare_Diseases_AutoRIF_ARCHS4_Predictions","Rare_Diseases_GeneRIF_ARCHS4_Predictions","NIH_Funded_PIs_2017_AutoRIF_ARCHS4_Predictions","NIH_Funded_PIs_2017_GeneRIF_ARCHS4_Predictions","Rare_Diseases_GeneRIF_Gene_Lists","Rare_Diseases_AutoRIF_Gene_Lists","SubCell_BarCode","GWAS_Catalog_2019","WikiPathways_2019_Human","WikiPathways_2019_Mouse","TRRUST_Transcription_Factors_2019","KEGG_2019_Human","KEGG_2019_Mouse","InterPro_Domains_2019","Pfam_Domains_2019","DepMap_WG_CRISPR_Screens_Broad_CellLines_2019","DepMap_WG_CRISPR_Screens_Sanger_CellLines_2019","MGI_Mammalian_Phenotype_Level_4_2019","UK_Biobank_GWAS_v1","BioPlanet_2019","ClinVar_2019","PheWeb_2019","DisGeNET","HMS_LINCS_KinomeScan","CCLE_Proteomics_2020","ProteomicsDB_2020","lncHUB_lncRNA_Co-Expression","Virus-Host_PPI_P-HIPSTer_2020","Elsevier_Pathway_Collection","Table_Mining_of_CRISPR_Studies","COVID-19_Related_Gene_Sets","MSigDB_Hallmark_2020","Enrichr_Users_Contributed_Lists_2020","TG_GATES_2020","Allen_Brain_Atlas_10x_scRNA_2021"],"Set Number":[615,326,290,353,701,498,249,78,199,142,200,269,222,385,1136,2139,386,84,96,641,5192,1779,383,474,1796,1658,84,71,476,6100,6100,90,187,85,858,189,142,323,323,967,93,207,30,3906,311,941,205,402,2192,816,412,59,2192,109,216,216,476,239,125,179,209,104,404,1389,315,12,839,839,906,32876,906,428,2460,2460,395,345,33132,33132,2918,2918,261,286,286,261,401,401,312,312,96,96,3644,3644,1530,293,437,104,285,285,237,152,209,112,7876,645,995,1842,1302,5231,2283,1811,3915,636,972,3166,816,3271,10125,108,125,352,498,1724,1135,3240,683,121,1722,12,4026,5103,446,1151,1958,36,5687,12558,3725,2244,12558,5684,2244,3725,104,1737,472,176,571,308,303,1071,608,558,325,5261,857,1510,182,1161,9828,148,378,913,3729,6715,1721,802,205,50,1482,1190,766],"Coverage":[13362,27884,6002,47172,47107,21493,1295,3185,2854,15057,4128,34061,7504,16399,12753,23726,32740,13373,19270,13236,14264,3096,22288,4533,10231,2741,5655,10406,10493,11251,8695,1759,2178,851,10061,11250,15406,17711,17576,15797,12232,13572,6454,3723,7588,7682,7324,8469,13121,26382,29065,280,13877,15852,4320,4271,10496,1678,756,3800,2541,1918,5863,6768,25651,19129,23939,23561,23877,15886,24350,3102,31132,30832,48230,5613,9559,9448,16725,19249,15090,16129,15309,15103,15022,15676,15854,15015,3788,3357,12668,12638,8973,7010,5966,15562,17850,17660,1348,934,2541,2041,5209,49238,2243,19586,22440,8184,18329,15755,10271,10427,10601,13822,8002,10089,13247,21809,23601,20883,19612,25983,19500,14893,17598,5902,12486,1073,19513,14433,8655,11459,19741,27360,13072,13464,13787,13929,16964,17258,10352,10471,12419,19378,6201,4558,3264,7802,8551,12444,9000,7744,6204,13420,14148,9813,1397,9116,17464,394,11851,8189,18704,5605,5718,14156,16979,4383,54974,12118,12361],"Genes Per Set":[275,1284,77,1370,509,3713,18,73,34,300,48,641,155,247,57,127,85,258,388,82,58,31,4368,37,158,5,342,715,200,100,100,25,89,15,106,166,300,300,300,176,343,301,301,47,35,78,172,122,305,1811,2123,9,304,912,129,128,201,21,12,48,39,39,51,47,807,1594,293,307,302,9,299,25,298,302,1429,36,73,63,1443,1443,282,292,308,318,290,310,279,321,159,153,300,300,64,87,51,887,300,300,19,13,39,42,300,1550,19,545,505,24,161,28,22,38,25,21,143,45,49,2316,2395,299,299,299,137,128,1208,109,299,100,117,36,61,39,270,802,26,45,200,200,200,200,58,76,491,37,45,54,22,92,98,23,20,363,387,32,122,49,13,22,63,73,586,421,100,39,31,40,295,146,483,448,124],"Source":["http://hgdownload.cse.ucsc.edu/goldenPath/hg18/database/","http://jaspar.genereg.net/html/DOWNLOAD/","","http://amp.pharm.mssm.edu/lib/cheadownload.jsp","http://www.ncbi.nlm.nih.gov/geo/","http://genome.ucsc.edu/ENCODE/downloads.html","https://cgap.nci.nih.gov/Pathways/BioCarta_Pathways","http://www.reactome.org/download/index.html","http://www.wikipathways.org/index.php/Download_Pathways","http://www.ncbi.nlm.nih.gov/geo/","http://www.kegg.jp/kegg/download/","http://www.ncbi.nlm.nih.gov/geo/","http://www.targetscan.org/cgi-bin/targetscan/data_download.cgi?db=vert_61","http://amp.pharm.mssm.edu/X2K","http://www.geneontology.org/GO.downloads.annotations.shtml","http://genesigdb.org/genesigdb/downloadall.jsp","http://software.broadinstitute.org/gsea/msigdb/index.jsp","http://biogps.org/downloads/","http://biogps.org/downloads/","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.human-phenotype-ontology.org/","http://www.roadmapepigenomics.org/","http://amp.pharm.mssm.edu/lib/keacommandline.jsp","https://www.nursa.org/nursa/index.jsf","http://mips.helmholtz-muenchen.de/genre/proj/corum/","http://amp.pharm.mssm.edu/lib/keacommandline.jsp","http://www.informatics.jax.org/","http://www.informatics.jax.org/","http://www.broadinstitute.org/cmap/","http://www.broadinstitute.org/cmap/","http://www.omim.org/downloads","http://www.omim.org/downloads","http://mint.bio.uniroma2.it/download.html","http://www.broadinstitute.org/gsea/msigdb/collections.jsp","http://www.broadinstitute.org/gsea/msigdb/collections.jsp","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","https://portals.broadinstitute.org/ccle/home\n","http://biogps.org/downloads/","https://www.proteomicsdb.org/","http://www.humanproteomemap.org/index.php","http://www.hmdb.ca/downloads","ftp://ftp.ebi.ac.uk/pub/databases/interpro/","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.geneontology.org/GO.downloads.annotations.shtml","http://www.brain-map.org/","http://genome.ucsc.edu/ENCODE/downloads.html","http://genome.ucsc.edu/ENCODE/downloads.html","http://www.koehn.embl.de/depod/","http://www.brain-map.org/","http://genome.ucsc.edu/ENCODE/downloads.html","http://www.broadinstitute.org/achilles","http://www.broadinstitute.org/achilles","http://www.informatics.jax.org/","https://cgap.nci.nih.gov/Pathways/BioCarta_Pathways","http://humancyc.org/","http://www.kegg.jp/kegg/download/","http://pid.nci.nih.gov/","http://www.pantherdb.org/","http://www.wikipathways.org/index.php/Download_Pathways","http://www.reactome.org/download/index.html","http://www.maayanlab.net/ESCAPE/","http://www.ncbi.nlm.nih.gov/homologene","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","https://grants.nih.gov/grants/oer.htm\n","http://www.ncbi.nlm.nih.gov/geo/","http://amp.pharm.mssm.edu/Enrichr","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://amp.pharm.mssm.edu/Enrichr","http://www.ncbi.nlm.nih.gov/gap","https://clue.io/","https://clue.io/","http://www.gtexportal.org/","http://www.gtexportal.org/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","https://clue.io/","https://clue.io/","https://clue.io/","https://clue.io/","http://www.reactome.org/download/index.html","http://www.kegg.jp/kegg/download/","http://www.wikipathways.org/index.php/Download_Pathways","","http://www.ncbi.nlm.nih.gov/geo/","http://www.ncbi.nlm.nih.gov/geo/","http://cgap.nci.nih.gov/Pathways/BioCarta_Pathways","http://humancyc.org/","http://pid.nci.nih.gov/","http://www.pantherdb.org/pathway/","https://ntp.niehs.nih.gov/drugmatrix/","http://amp.pharm.mssm.edu/Enrichr","http://proteincomplexes.org/","http://tissues.jensenlab.org/","http://www.ncbi.nlm.nih.gov/geo/","http://www.informatics.jax.org/","http://compartments.jensenlab.org/","http://diseases.jensenlab.org/","http://bioplex.hms.harvard.edu/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://amp.pharm.mssm.edu/archs4","http://amp.pharm.mssm.edu/archs4","http://amp.pharm.mssm.edu/archs4","http://amp.pharm.mssm.edu/archs4","http://amp.pharm.mssm.edu/archs4","http://sys-myo.rhcloud.com/","http://mirtarbase.mbc.nctu.edu.tw/","http://www.targetscan.org/","http://amp.pharm.mssm.edu/Enrichr","http://amp.pharm.mssm.edu/Enrichr","http://amp.pharm.mssm.edu/Enrichr","http://tanlab.ucdenver.edu/DSigDB/DSigDBv1.0/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.geneontology.org/","http://www.ncbi.nlm.nih.gov/geo/","http://hgdownload.cse.ucsc.edu/downloads.html","https://www.ncbi.nlm.nih.gov/pubmed/","https://www.ncbi.nlm.nih.gov/pubmed/","https://amp.pharm.mssm.edu/geneshot/","https://www.ncbi.nlm.nih.gov/gene/about-generif","https://www.ncbi.nlm.nih.gov/pubmed/","https://www.ncbi.nlm.nih.gov/pubmed/","https://www.ncbi.nlm.nih.gov/gene/about-generif","https://amp.pharm.mssm.edu/geneshot/","http://www.subcellbarcode.org/","https://www.ebi.ac.uk/gwas","https://www.wikipathways.org/","https://www.wikipathways.org/","https://www.grnpedia.org/trrust/","https://www.kegg.jp/","https://www.kegg.jp/","https://www.ebi.ac.uk/interpro/","https://pfam.xfam.org/","https://depmap.org/","https://depmap.org/","http://www.informatics.jax.org/","https://www.ukbiobank.ac.uk/tag/gwas/","https://tripod.nih.gov/bioplanet/","https://www.ncbi.nlm.nih.gov/clinvar/","http://pheweb.sph.umich.edu/","https://www.disgenet.org","http://lincs.hms.harvard.edu/kinomescan/","https://portals.broadinstitute.org/ccle","https://www.proteomicsdb.org/","https://amp.pharm.mssm.edu/lnchub/","http://phipster.org/","http://www.transgene.ru/disease-pathways/","","https://amp.pharm.mssm.edu/covid19","https://www.gsea-msigdb.org/gsea/msigdb/collections.jsp ","https://maayanlab.cloud/Enrichr","https://toxico.nibiohn.go.jp/english/","https://portal.brain-map.org/"]},"columns":[{"accessor":"Geneset","name":"Geneset","type":"character"},{"accessor":"Set Number","name":"Set Number","type":"numeric"},{"accessor":"Coverage","name":"Coverage","type":"numeric"},{"accessor":"Genes Per Set","name":"Genes Per Set","type":"numeric"},{"accessor":"Source","name":"Source","type":"character"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"298bf6d3c2e3bbdb5f328069cc66932b","key":"298bf6d3c2e3bbdb5f328069cc66932b"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ATLAS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span><span class="op">(</span><span class="st">"Human_Gene_Atlas"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ATLAS</span><span class="op">)</span></code></pre></div>
+<pre><code>Human_Gene_Atlas (Enrichr) Downloaded: 2021-03-29 
 Thyroid (388)
 CD33+ Myeloid (679)
 Testis (384)
@@ -243,103 +233,101 @@ CD14+ Monocytes (383)
 TestisLeydigCell (107)</code></pre>
 <p>Note: These libraries do not have a systematic versioning scheme, however the date downloaded will be recorded.</p>
 <p>Additionally download other species if you aren’t working with human or mouse genes!</p>
-<div class="sourceCode" id="cb16"><pre class="downlit">
-<span class="kw">yeast</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span>(<span class="st">"GO_Biological_Process_2018"</span>, db=<span class="st">"YeastEnrichr"</span>)
-<span class="kw">worm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span>(<span class="st">"GO_Biological_Process_2018"</span>, db=<span class="st">"WormEnrichr"</span>)
-<span class="kw">fish</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span>(<span class="st">"GO_Biological_Process_2018"</span>, db=<span class="st">"FishEnrichr"</span>)
-<span class="kw">fly</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span>(<span class="st">"GO_Biological_Process_2018"</span>, db=<span class="st">"FlyEnrichr"</span>)
-</pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">yeast</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span><span class="op">(</span><span class="st">"GO_Biological_Process_2018"</span>, db<span class="op">=</span><span class="st">"YeastEnrichr"</span><span class="op">)</span>
+<span class="va">worm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span><span class="op">(</span><span class="st">"GO_Biological_Process_2018"</span>, db<span class="op">=</span><span class="st">"WormEnrichr"</span><span class="op">)</span>
+<span class="va">fish</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span><span class="op">(</span><span class="st">"GO_Biological_Process_2018"</span>, db<span class="op">=</span><span class="st">"FishEnrichr"</span><span class="op">)</span>
+<span class="va">fly</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/enrichr_gsets.html">enrichr_gsets</a></span><span class="op">(</span><span class="st">"GO_Biological_Process_2018"</span>, db<span class="op">=</span><span class="st">"FlyEnrichr"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="relational-genesets" class="section level1">
 <h1 class="hasAnchor">
 <a href="#relational-genesets" class="anchor"></a>Relational Genesets</h1>
 <p>When dealing with hundreds of genesets, it’s often useful to understand the relationships between them. This allows researchers to summarize many enriched pathways as more general biological processes. To do this, we rely on curated relationships defined between them. For example, <a href="https://reactome.org/">Reactome</a> conveniently defines their genesets in a <a href="https://reactome.org/PathwayBrowser/">hiearchy of pathways</a>. This data can be formatted into a relational genesets object called <code>rgsets</code>.</p>
 <p>We currently curate some relational genesets for use with <strong>hypeR</strong> and plan to add more continuously.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit">
-<span class="fu"><a href="../../reference/hyperdb_info.html">hyperdb_info</a></span>()
-</pre></div>
-<pre><code>REACTOME
-Versions: 70.0
-KEGG
-Versions: 92.0</code></pre>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/hyperdb_available.html">hyperdb_available</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>         source                                gsets
+1          KEGG                       KEGG_v92.0.rds
+2 METABOANALYST   METABOANALYST_DISEASE_CSF_v5.0.rds
+3 METABOANALYST METABOANALYST_DISEASE_FECAL_v5.0.rds
+4 METABOANALYST METABOANALYST_DISEASE_URINE_v5.0.rds
+5 METABOANALYST          METABOANALYST_DRUG_v5.0.rds
+6 METABOANALYST          METABOANALYST_KEGG_v5.0.rds
+7 METABOANALYST         METABOANALYST_SMPDB_v5.0.rds
+8      REACTOME                   REACTOME_v70.0.rds
+9         SMPDB                      SMPDB_v2.75.rds</code></pre>
 <p>Downloading relational genesets is easy…</p>
-<div class="sourceCode" id="cb19"><pre class="downlit">
-<span class="kw">genesets</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/hyperdb_rgsets.html">hyperdb_rgsets</a></span>(<span class="st">"REACTOME"</span>, <span class="st">"70.0"</span>)
-</pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">genesets</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/hyperdb_rgsets.html">hyperdb_rgsets</a></span><span class="op">(</span><span class="st">"REACTOME"</span>, <span class="st">"70.0"</span><span class="op">)</span></code></pre></div>
 <p>And can be passed directly to <code>hyper()</code>…</p>
-<div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span>(<span class="kw">signature</span>, <span class="kw">genesets</span>)
-</pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/hypeR.html">hypeR</a></span><span class="op">(</span><span class="va">signature</span>, <span class="va">genesets</span><span class="op">)</span></code></pre></div>
 <div id="creating-relational-genesets" class="section level3">
 <h3 class="hasAnchor">
 <a href="#creating-relational-genesets" class="anchor"></a>Creating Relational Genesets</h3>
 <p>We try to provide relational genesets for popular databases that include hierarchical information. For users who want to create their own, we provide this example.</p>
 <p>Raw data for gsets, nodes, and edges can be directly downloaded.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit">
-<span class="kw">genesets.url</span> <span class="op">&lt;-</span> <span class="st">"https://reactome.org/download/current/ReactomePathways.gmt.zip"</span>
-<span class="kw">nodes.url</span> <span class="op">&lt;-</span> <span class="st">"https://reactome.org/download/current/ReactomePathways.txt"</span>
-<span class="kw">edges.url</span> <span class="op">&lt;-</span> <span class="st">"https://reactome.org/download/current/ReactomePathwaysRelation.txt"</span>
-</pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">genesets.url</span> <span class="op">&lt;-</span> <span class="st">"https://reactome.org/download/current/ReactomePathways.gmt.zip"</span>
+<span class="va">nodes.url</span> <span class="op">&lt;-</span> <span class="st">"https://reactome.org/download/current/ReactomePathways.txt"</span>
+<span class="va">edges.url</span> <span class="op">&lt;-</span> <span class="st">"https://reactome.org/download/current/ReactomePathwaysRelation.txt"</span></code></pre></div>
 <div id="loading-data" class="section level4">
 <h4 class="hasAnchor">
 <a href="#loading-data" class="anchor"></a>Loading Data</h4>
-<div class="sourceCode" id="cb22"><pre class="downlit">
-<span class="co"># Genesets</span>
-<span class="kw">genesets.tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span>(fileext=<span class="st">".gmt.zip"</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span>(<span class="kw">genesets.url</span>, destfile = <span class="kw">genesets.tmp</span>, mode = <span class="st">"wb"</span>)
-<span class="kw">genesets.raw</span> <span class="op">&lt;-</span> <span class="kw">genesets.tmp</span> <span class="op">%&gt;%</span>
-                <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html">unzip</a></span>() <span class="op">%&gt;%</span>
-                <span class="fu">read.gmt</span>() <span class="op">%&gt;%</span>
-                <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="fu">function</span>(<span class="kw">x</span>) {
-                    <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span>(<span class="kw">x</span>[<span class="kw">x</span> != <span class="st">"Reactome Pathway"</span>])
-                })
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Genesets</span>
+<span class="va">genesets.tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>fileext<span class="op">=</span><span class="st">".gmt.zip"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="va">genesets.url</span>, destfile <span class="op">=</span> <span class="va">genesets.tmp</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span>
+<span class="va">genesets.raw</span> <span class="op">&lt;-</span> <span class="va">genesets.tmp</span> <span class="op">%&gt;%</span>
+                <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html">unzip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                <span class="fu">read.gmt</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+                    <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">!=</span> <span class="st">"Reactome Pathway"</span><span class="op">]</span><span class="op">)</span>
+                <span class="op">}</span><span class="op">)</span>
 <span class="co"># Nodes</span>
-<span class="kw">nodes.raw</span> <span class="op">&lt;-</span> <span class="kw">nodes.url</span> <span class="op">%&gt;%</span>
-             <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(sep=<span class="st">"\t"</span>, 
-                        header=<span class="fl">FALSE</span>, 
-                        fill=<span class="fl">TRUE</span>, 
-                        col.names=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"id"</span>, <span class="st">"label"</span>, <span class="st">"species"</span>), 
-                        stringsAsFactors=<span class="fl">FALSE</span>)
+<span class="va">nodes.raw</span> <span class="op">&lt;-</span> <span class="va">nodes.url</span> <span class="op">%&gt;%</span>
+             <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span>sep<span class="op">=</span><span class="st">"\t"</span>, 
+                        header<span class="op">=</span><span class="cn">FALSE</span>, 
+                        fill<span class="op">=</span><span class="cn">TRUE</span>, 
+                        col.names<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"label"</span>, <span class="st">"species"</span><span class="op">)</span>, 
+                        stringsAsFactors<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="co"># Edges</span>
-<span class="kw">edges.raw</span> <span class="op">&lt;-</span> <span class="kw">edges.url</span> <span class="op">%&gt;%</span>
-             <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(sep=<span class="st">"\t"</span>, 
-                        header=<span class="fl">FALSE</span>, 
-                        fill=<span class="fl">TRUE</span>, 
-                        col.names=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"from"</span>, <span class="st">"to"</span>),
-                        stringsAsFactors=<span class="fl">FALSE</span>)
-</pre></div>
+<span class="va">edges.raw</span> <span class="op">&lt;-</span> <span class="va">edges.url</span> <span class="op">%&gt;%</span>
+             <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span>sep<span class="op">=</span><span class="st">"\t"</span>, 
+                        header<span class="op">=</span><span class="cn">FALSE</span>, 
+                        fill<span class="op">=</span><span class="cn">TRUE</span>, 
+                        col.names<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"from"</span>, <span class="st">"to"</span><span class="op">)</span>,
+                        stringsAsFactors<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="organizing-a-hierarchy" class="section level4">
 <h4 class="hasAnchor">
 <a href="#organizing-a-hierarchy" class="anchor"></a>Organizing a Hierarchy</h4>
-<div class="sourceCode" id="cb23"><pre class="downlit">
-<span class="co"># Species-specific nodes</span>
-<span class="kw">nodes</span> <span class="op">&lt;-</span> <span class="kw">nodes.raw</span> <span class="op">%&gt;%</span>
-         <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>( <span class="kw">label</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">genesets.raw</span>) ) <span class="op">%&gt;%</span>
-         <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>( <span class="kw">species</span> <span class="op">==</span> <span class="st">"Homo sapiens"</span> ) <span class="op">%&gt;%</span>
-         <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="op">!</span> <span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span>(<span class="kw">id</span>) ) <span class="op">%&gt;%</span>
-         <span class="kw">magrittr</span>::<span class="fu"><a href="https://rdrr.io/pkg/magrittr/man/aliases.html">set_rownames</a></span>( <span class="kw">.</span><span class="op">$</span><span class="kw">id</span> ) <span class="op">%&gt;%</span>
-         { <span class="kw">.</span>[, <span class="st">"label"</span>, drop=<span class="fl">FALSE</span>] }
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Species-specific nodes</span>
+<span class="va">nodes</span> <span class="op">&lt;-</span> <span class="va">nodes.raw</span> <span class="op">%&gt;%</span>
+         <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span> <span class="va">label</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">genesets.raw</span><span class="op">)</span> <span class="op">)</span> <span class="op">%&gt;%</span>
+         <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span> <span class="va">species</span> <span class="op">==</span> <span class="st">"Homo sapiens"</span> <span class="op">)</span> <span class="op">%&gt;%</span>
+         <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span> <span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op">)</span> <span class="op">%&gt;%</span>
+         <span class="fu">magrittr</span><span class="fu">::</span><span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">set_rownames</a></span><span class="op">(</span> <span class="va">.</span><span class="op">$</span><span class="va">id</span> <span class="op">)</span> <span class="op">%&gt;%</span>
+         <span class="op">{</span> <span class="va">.</span><span class="op">[</span>, <span class="st">"label"</span>, drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">]</span> <span class="op">}</span>
 
 <span class="co"># Species-specific edges</span>
-<span class="kw">edges</span> <span class="op">&lt;-</span> <span class="kw">edges.raw</span> <span class="op">%&gt;%</span>
-         <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>( <span class="kw">from</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="kw">nodes</span>) ) <span class="op">%&gt;%</span>
-         <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>( <span class="kw">to</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="kw">nodes</span>) )
+<span class="va">edges</span> <span class="op">&lt;-</span> <span class="va">edges.raw</span> <span class="op">%&gt;%</span>
+         <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span> <span class="va">from</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">nodes</span><span class="op">)</span> <span class="op">)</span> <span class="op">%&gt;%</span>
+         <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span> <span class="va">to</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">nodes</span><span class="op">)</span> <span class="op">)</span>
 
 <span class="co"># Leaf genesets</span>
-<span class="kw">genesets</span> <span class="op">&lt;-</span> <span class="kw">nodes</span> <span class="op">%&gt;%</span>
-            <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>() <span class="op">%&gt;%</span>
-            <span class="kw">.</span>[<span class="op">!</span> <span class="kw">.</span> <span class="op">%in%</span> <span class="kw">edges</span><span class="op">$</span><span class="kw">from</span>] <span class="op">%&gt;%</span>
-            <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>( <span class="fu">function</span>(<span class="kw">x</span>) <span class="kw">nodes</span>[<span class="kw">x</span>, <span class="st">"label"</span>] ) <span class="op">%&gt;%</span>
-            <span class="kw">genesets.raw</span>[<span class="kw">.</span>]
-</pre></div>
+<span class="va">genesets</span> <span class="op">&lt;-</span> <span class="va">nodes</span> <span class="op">%&gt;%</span>
+            <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+            <span class="va">.</span><span class="op">[</span><span class="op">!</span> <span class="va">.</span> <span class="op">%in%</span> <span class="va">edges</span><span class="op">$</span><span class="va">from</span><span class="op">]</span> <span class="op">%&gt;%</span>
+            <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">nodes</span><span class="op">[</span><span class="va">x</span>, <span class="st">"label"</span><span class="op">]</span> <span class="op">)</span> <span class="op">%&gt;%</span>
+            <span class="va">genesets.raw</span><span class="op">[</span><span class="va">.</span><span class="op">]</span></code></pre></div>
 <div id="nodes" class="section level5">
 <h5 class="hasAnchor">
 <a href="#nodes" class="anchor"></a>nodes</h5>
 <p>A single-column data frame of labels where the rownames are unique identifiers. Leaf node labels should have an associated geneset, while internal nodes do not have to. The only genesets tested, will be those in the list of genesets.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">nodes</span>)
-</pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">nodes</span><span class="op">)</span></code></pre></div>
 <pre><code>                                                                        label
 R-HSA-164843                                           2-LTR circle formation
 R-HSA-73843                        5-Phosphoribose 1-diphosphate biosynthesis
@@ -352,9 +340,8 @@ R-HSA-382556                           ABC-family proteins mediated transport</c
 <h5 class="hasAnchor">
 <a href="#edges" class="anchor"></a>edges</h5>
 <p>A dataframe with two columns of identifiers, indicating directed edges between nodes in the hierarchy.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">edges</span>)
-</pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">edges</span><span class="op">)</span></code></pre></div>
 <pre><code>          from            to
 1 R-HSA-109581  R-HSA-109606
 2 R-HSA-109581  R-HSA-169911
@@ -367,9 +354,8 @@ R-HSA-382556                           ABC-family proteins mediated transport</c
 <h5 class="hasAnchor">
 <a href="#genesets" class="anchor"></a>genesets</h5>
 <p>A list of character vectors, named by the geneset labels. Typically, genesets will be at the leaves of the hierarchy, while not required.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">genesets</span>))
-</pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">genesets</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "2-LTR circle formation"                                         
 [2] "5-Phosphoribose 1-diphosphate biosynthesis"                     
 [3] "A tetrasaccharide linker sequence is required for GAG synthesis"
@@ -381,10 +367,9 @@ R-HSA-382556                           ABC-family proteins mediated transport</c
 <div id="the-rgsets-object" class="section level4">
 <h4 class="hasAnchor">
 <a href="#the-rgsets-object" class="anchor"></a>The <code>rgsets</code> Object</h4>
-<div class="sourceCode" id="cb30"><pre class="downlit">
-<span class="kw">genesets</span> <span class="op">&lt;-</span> <span class="kw">rgsets</span><span class="op">$</span><span class="fu">new</span>(<span class="kw">genesets</span>, <span class="kw">nodes</span>, <span class="kw">edges</span>, name=<span class="st">"REACTOME"</span>, version=<span class="st">"v70.0"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">genesets</span>)
-</pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">genesets</span> <span class="op">&lt;-</span> <span class="va"><a href="../../reference/rgsets.html">rgsets</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">genesets</span>, <span class="va">nodes</span>, <span class="va">edges</span>, name<span class="op">=</span><span class="st">"REACTOME"</span>, version<span class="op">=</span><span class="st">"v70.0"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">genesets</span><span class="op">)</span></code></pre></div>
 <pre><code>REACTOME v70.0 
 
 Genesets
@@ -442,7 +427,7 @@ Edges
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

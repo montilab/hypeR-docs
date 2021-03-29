@@ -1,8 +1,16 @@
 pandoc: 2.7.3
-pkgdown: 1.6.0
+pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: []
-last_built: 2020-09-16T14:27Z
+articles:
+  docs/basics: basics.html
+  docs/data: data.html
+  docs/installation: installation.html
+  docs/multihyp: multihyp.html
+  docs/reporting: reporting.html
+  docs/shiny: shiny.html
+  docs/visualize: visualize.html
+  hypeR: hypeR.html
+last_built: 2021-03-29T18:44Z
 urls:
   reference: https://github.com/montilab/hypeR/reference
   article: https://github.com/montilab/hypeR/articles
