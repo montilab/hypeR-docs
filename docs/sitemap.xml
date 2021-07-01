@@ -28,6 +28,9 @@
     <loc>https://github.com/montilab/hypeR/reference/dot-github_rds.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/dot-hexa.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/dot-hiearchy_map.html</loc>
   </url>
   <url>
@@ -106,6 +109,9 @@
     <loc>https://github.com/montilab/hypeR/reference/hyp_to_excel.html</loc>
   </url>
   <url>
+    <loc>https://github.com/montilab/hypeR/reference/hyp_to_graph.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/montilab/hypeR/reference/hyp_to_rmd.html</loc>
   </url>
   <url>
@@ -173,6 +179,12 @@
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/data.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/articles/docs/fgsea.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/montilab/hypeR/articles/docs/hierarchy.html</loc>
   </url>
   <url>
     <loc>https://github.com/montilab/hypeR/articles/docs/installation.html</loc>

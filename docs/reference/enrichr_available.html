@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hypeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
       </span>
     </div>
 
@@ -110,6 +110,9 @@
       <a href="../articles/docs/data.html">Downloading Genesets</a>
     </li>
     <li>
+      <a href="../articles/docs/hierarchy.html">Hierarchical Genesets</a>
+    </li>
+    <li>
       <a href="../articles/docs/multihyp.html">Multiple Signatures</a>
     </li>
     <li>
@@ -117,6 +120,9 @@
     </li>
     <li>
       <a href="../articles/docs/shiny.html">Shiny Modules</a>
+    </li>
+    <li>
+      <a href="../articles/docs/fgsea.html">Fast Gene Set Enrichment Analysis</a>
     </li>
   </ul>
 </li>
@@ -351,6 +357,11 @@
 #&gt; 173                                    KEGG_2021_Human        320     8078
 #&gt; 174                             WikiPathway_2021_Human        622     7173
 #&gt; 175 HuBMAP_ASCT_plus_B_augmented_w_RNAseq_Coexpression        344     5833
+#&gt; 176                         GO_Biological_Process_2021       6036    14937
+#&gt; 177                         GO_Cellular_Component_2021        511    11497
+#&gt; 178                         GO_Molecular_Function_2021       1274    11936
+#&gt; 179               MGI_Mammalian_Phenotype_Level_4_2021       4601     9767
+#&gt; 180                          CellMarker_Augmented_2021       1097    14167
 #&gt;     Genes Per Set
 #&gt; 1             275
 #&gt; 2            1284
@@ -527,6 +538,11 @@
 #&gt; 173           102
 #&gt; 174            43
 #&gt; 175           100
+#&gt; 176            33
+#&gt; 177            80
+#&gt; 178            34
+#&gt; 179            33
+#&gt; 180            80
 #&gt;                                                                              Source
 #&gt; 1                          http://hgdownload.cse.ucsc.edu/goldenPath/hg18/database/
 #&gt; 2                                          http://jaspar.genereg.net/html/DOWNLOAD/
@@ -702,7 +718,12 @@
 #&gt; 172 https://descartes.brotmanbaty.org/bbi/human-gene-expression-during-development/
 #&gt; 173                                                            https://www.kegg.jp/
 #&gt; 174                                                   https://www.wikipathways.org/
-#&gt; 175                           https://hubmapconsortium.github.io/ccf-asct-reporter/</div><div class='input'>
+#&gt; 175                           https://hubmapconsortium.github.io/ccf-asct-reporter/
+#&gt; 176                                                    http://www.geneontology.org/
+#&gt; 177                                                    http://www.geneontology.org/
+#&gt; 178                                                    http://www.geneontology.org/
+#&gt; 179                                                 http://www.informatics.jax.org/
+#&gt; 180                                           http://biocc.hrbmu.edu.cn/CellMarker/</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
